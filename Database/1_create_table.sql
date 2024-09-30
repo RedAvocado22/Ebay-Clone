@@ -44,6 +44,8 @@ CREATE TABLE Feedback (
     Content NVARCHAR(MAX) NOT NULL,
     [Type] NVARCHAR(10) CHECK (Type IN ('positive', 'negative')),
     [Status] BIT NOT NULL DEFAULT 1
+	Buyer NVARCHAR(50) FOREIGN KEY REFERENCES Account(Username),
+    Seller NVARCHAR(50) FOREIGN KEY REFERENCES Account(Username)
 );
 GO
 
