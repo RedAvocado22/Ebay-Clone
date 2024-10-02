@@ -9,11 +9,11 @@ package models;
  * @author ASUS
  */
 public class Cart {
+
     private int id;
     private Account account;
 
     // Getters and Setters
-
     public Cart() {
     }
 
@@ -21,7 +21,7 @@ public class Cart {
         this.id = id;
         this.account = account;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -38,4 +38,3 @@ public class Cart {
         this.account = account;
     }
 }
-

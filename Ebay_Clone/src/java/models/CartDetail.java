@@ -9,13 +9,13 @@ package models;
  * @author ASUS
  */
 public class CartDetail {
+
     private int id;
     private Cart cart;
     private Product product;
     private int quantity;
 
     // Getters and Setters
-
     public CartDetail() {
     }
 
@@ -25,7 +25,7 @@ public class CartDetail {
         this.product = product;
         this.quantity = quantity;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -58,4 +58,3 @@ public class CartDetail {
         this.quantity = quantity;
     }
 }
-

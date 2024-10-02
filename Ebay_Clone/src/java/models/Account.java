@@ -9,6 +9,7 @@ package models;
  * @author ASUS
  */
 public class Account {
+
     private String username;
     private String password;
     private String fullname;
@@ -17,7 +18,6 @@ public class Account {
     private String status;
 
     // Getters and Setters
-
     public Account() {
     }
 
@@ -29,7 +29,7 @@ public class Account {
         this.role = role;
         this.status = status;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -78,4 +78,3 @@ public class Account {
         this.status = status;
     }
 }
-

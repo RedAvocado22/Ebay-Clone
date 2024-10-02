@@ -9,11 +9,11 @@ package models;
  * @author ASUS
  */
 public class Categories {
+
     private int id;
     private String name;
 
     // Getters and Setters
-
     public Categories() {
     }
 
@@ -21,7 +21,7 @@ public class Categories {
         this.id = id;
         this.name = name;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -38,4 +38,3 @@ public class Categories {
         this.name = name;
     }
 }
-

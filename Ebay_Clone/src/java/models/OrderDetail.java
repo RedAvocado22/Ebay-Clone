@@ -9,13 +9,13 @@ package models;
  * @author ASUS
  */
 public class OrderDetail {
+
     private int id;
     private Product product;
     private Order order;
     private int quantity;
 
     // Getters and Setters
-
     public OrderDetail() {
     }
 
@@ -25,7 +25,7 @@ public class OrderDetail {
         this.order = order;
         this.quantity = quantity;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -58,4 +58,3 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 }
-

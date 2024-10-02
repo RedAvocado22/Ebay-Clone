@@ -9,6 +9,7 @@ package models;
  * @author ASUS
  */
 public class Product {
+
     private int id;
     private String name;
     private double price;
@@ -16,6 +17,17 @@ public class Product {
     private byte[] image;
 
     // Getters and Setters
+    public Product() {
+    }
+
+    public Product(int id, String name, double price, int quantity, byte[] image) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }
@@ -56,6 +68,4 @@ public class Product {
         this.image = image;
     }
 
-    
 }
-

@@ -9,6 +9,7 @@ package models;
  * @author ASUS
  */
 public class Feedback {
+
     private int id;
     private String content;
     private String type;
@@ -17,7 +18,6 @@ public class Feedback {
     private Account seller;
 
     // Getters and Setters
-
     public Feedback() {
     }
 
@@ -29,9 +29,7 @@ public class Feedback {
         this.buyer = buyer;
         this.seller = seller;
     }
-    
-    
-    
+
     public int getId() {
         return id;
     }
@@ -80,4 +78,3 @@ public class Feedback {
         this.seller = seller;
     }
 }
-

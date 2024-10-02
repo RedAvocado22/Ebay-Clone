@@ -9,6 +9,7 @@ package models;
  * @author ASUS
  */
 public class Order {
+
     private int id;
     private double total;
     private Account buyer;
@@ -16,7 +17,6 @@ public class Order {
     private String status;
 
     // Getters and Setters
-
     public Order() {
     }
 
@@ -27,7 +27,7 @@ public class Order {
         this.seller = seller;
         this.status = status;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -68,4 +68,3 @@ public class Order {
         this.status = status;
     }
 }
-
