@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.List;
+
 /**
  *
  * @author ASUS
@@ -12,14 +14,15 @@ public class Cart {
 
     private int id;
     private Account account;
+    List<Product> products;
 
-    // Getters and Setters
     public Cart() {
     }
 
-    public Cart(int id, Account account) {
+    public Cart(int id, Account account, List<Product> productList) {
         this.id = id;
         this.account = account;
+        this.products = products;
     }
 
     public int getId() {
@@ -36,5 +39,13 @@ public class Cart {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

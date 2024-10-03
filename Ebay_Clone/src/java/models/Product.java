@@ -14,13 +14,12 @@ public class Product {
     private String name;
     private double price;
     private int quantity;
-    private byte[] image;
+    private String image;
 
-    // Getters and Setters
     public Product() {
     }
 
-    public Product(int id, String name, double price, int quantity, byte[] image) {
+    public Product(int id, String name, double price, int quantity, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -60,12 +59,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
-
 }

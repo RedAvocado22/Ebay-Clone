@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.List;
+
 /**
  *
  * @author ASUS
@@ -15,17 +17,18 @@ public class Order {
     private Account buyer;
     private Account seller;
     private String status;
+    List<Product> products;
 
-    // Getters and Setters
     public Order() {
     }
 
-    public Order(int id, double total, Account buyer, Account seller, String status) {
+    public Order(int id, double total, Account buyer, Account seller, String status, List<Product> products) {
         this.id = id;
         this.total = total;
         this.buyer = buyer;
         this.seller = seller;
         this.status = status;
+        this.products = products;
     }
 
     public int getId() {
@@ -67,4 +70,13 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
 }

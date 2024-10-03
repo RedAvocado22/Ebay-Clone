@@ -13,7 +13,6 @@ public class Categories {
     private int id;
     private String name;
 
-    // Getters and Setters
     public Categories() {
     }
 

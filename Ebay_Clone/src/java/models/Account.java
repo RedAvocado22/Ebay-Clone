@@ -17,7 +17,6 @@ public class Account {
     private String role;
     private String status;
 
-    // Getters and Setters
     public Account() {
     }
 

@@ -17,7 +17,6 @@ public class Feedback {
     private Account buyer;
     private Account seller;
 
-    // Getters and Setters
     public Feedback() {
     }
 
