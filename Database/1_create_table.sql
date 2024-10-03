@@ -1,3 +1,20 @@
+
+DROP DATABASE IF EXISTS Ebay_Clone
+GO
+
+CREATE DATABASE Ebay_Clone
+GO
+
+DROP TABLE Account
+DROP TABLE Product
+DROP TABLE [Order]
+DROP TABLE OrderDetail
+DROP TABLE Feedback
+DROP TABLE Categories
+DROP TABLE Products_To_Categories
+DROP TABLE Cart
+DROP TABLE CartDetail
+
 -- Create Account table
 CREATE TABLE Account (
     Username NVARCHAR(50) PRIMARY KEY,
