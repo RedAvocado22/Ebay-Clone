@@ -1,7 +1,7 @@
-
 package models;
 
 public class OrderItem {
+
     private Product product;
     private int quantity;
 
@@ -21,4 +21,3 @@ public class OrderItem {
         this.quantity = quantity;
     }
 }
-
