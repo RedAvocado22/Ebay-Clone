@@ -21,15 +21,18 @@
     <body>
         <jsp:include page="common/header.jsp"></jsp:include>
             <div id="nav-categories">
-                <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore</a>
+                <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore(New!)</a>
                 <a>Saved</a>
                 <a>Electronics</a>
-                <a>Motors</a>
-                <a>Fashion</a>
-                <a>Collectibles and Art</a>
-                <a>Health & Beauty</a>
+                <a>Clothing</a>
+                <a>Home & Kitchen</a>
+                <a>Books</a>
+                <a>Toys</a>
                 <a>Sports</a>
-                <a>Home & Garden</a>
+                <a>Beauty</a>
+                <a>Jewelry</a>
+                <a>Deals</a>
+                <a>Sell</a>
             </div>
             <main>
                 <div id="products">
@@ -48,61 +51,61 @@
                             >
                             arrow_forward
                         </span>
-                        <h1>Geschenkideen</h1>
+                        <h1>Your Recently viewed Items</h1>
                         <ul id="geschenkideen">
                             <li>
                                 <img
                                     class="image-product"
-                                    src="${pageContext.request.contextPath}/public/images/products/Straykidsalbum20€.jpg"
+                                    src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_1_1.png" 
                                 />
                             <p>
-                                EUR 20
+                                USD 20
                                 <a
                                     href="https://www.youtube.com/watch?v=TxU07WQVkko"
-                                    ><span class="right">Yeetou</span></a
+                                    ><span class="right">camera</span></a
                                 >
                             </p>
                         </li>
                         <li>
-                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/cat.jpg" />
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_2_1.png" />
                             <p>
-                                EUR 69,69 <span class="right">FloofyFoxy</span>
+                                USD 69,69 <span class="right">camera</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/pizza.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_3_1.png"
                                 />
                             <p>
-                                EUR 4,20 <span class="right">FloofyFoxy</span>
+                                USD 4,20 <span class="right">camera</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/doener.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_4_1.png"
                                 />
                             <p>
-                                EUR 6,66 <span class="right">FloofyFoxy</span>
+                                USD 6,66 <span class="right">camera</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/money.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_5_1.png"
                                 />
                             <p>
-                                EUR 694,20 <span class="right">FloofyFoxy</span>
+                                USD 694,20 <span class="right">camera</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/creepytree.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_6_1.png"
                                 />
                             <p>
-                                EUR 1,99 <span class="right">FloofyFoxy</span>
+                                USD 1,99 <span class="right">camera</span>
                             </p>
                         </li>
                     </ul>
@@ -110,13 +113,12 @@
 
                 <div id="advert">
                     <a id="anchor-garage"
-                       >Nutze My Garage <img id="arrow-right"
-                                          /></a>
-                    <h1>Ersatzteile, die passen</h1>
+                       >Shop now <img id="arrow-right"
+                                        /></a>
+                    <h1>Hunt down your next card</h1>
                     <div>
                         <p>
-                            Fahrzeugdaten einmalig angeben und immer das
-                            Richtige finden.
+                            Each bid brings you closer to completing your collection.
                         </p>
                     </div>
                 </div>
@@ -134,59 +136,59 @@
                         >
                         arrow_forward
                     </span>
-                    <h1>WOW! Des Tages!</h1>
+                    <h1>WOW! Offer of the day!</h1>
                     <ul id="wow">
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/sunset.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_1_1.png"
                                 />
                             <p>
-                                EUR 1899,55 <span class="right">Asecave</span>
+                                USD 1899,55 <span class="right">cellphones</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/klöße.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_2_1.png"
                                 />
-                            <p>EUR 101,10 <span class="right">~Lyte~</span></p>
+                            <p>USD 101,10 <span class="right">cellphones</span></p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/keyboard.png"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_3_1.png"
                                 />
-                            <p>EUR 23,33 <span class="right">Asecave</span></p>
+                            <p>USD 23,33 <span class="right">cellphones</span></p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/camera.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_4_1.png"
                                 />
                             <p>
-                                EUR 30,00 VB
-                                <span class="right">BraveBoyB...</span>
+                                USD 30,00 VB
+                                <span class="right">cellphones</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/printer.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_5_1.png"
                                 />
                             <p>
-                                EUR 30,00 VB
-                                <span class="right">BraveBoyB...</span>
+                                USD 30,00 VB
+                                <span class="right">cellphones</span>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/coin.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_6_1.png"
                                 />
                             <p>
-                                EUR 2,98
-                                <span class="right">BraveBoyBackfisch</span>
+                                USD 2,98
+                                <span class="right">cellphones</span>
                             </p>
                         </li>
                     </ul>
@@ -205,59 +207,61 @@
                         >
                         arrow_forward
                     </span>
-                    <h1>Kracher Angebote!</h1>
+                    <h1>Great offers!</h1>
                     <ul id="kracher">
                         <li>
-                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/anh the.jpg" />
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_1_1.png" />
                             <p>
-                                VND ???  
+                                USD 999  
                                 <a href="https://www.youtube.com/@ChayPham">
-                                    <span class="right">CHAYPHAM</span>
+                                    <span class="right">computers</span>
                                 </a>
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/shroom.jpeg"
-                                />
-                            <p>EUR 90,69 <span class="right">Tobi</span></p>
-                        </li>
-                        <li>
-                            <img
-                                class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/rubiks.png"
-                                />
-                            <p>EUR 23,33 <span class="right">Asecave</span></p>
-                        </li>
-                        <li>
-                            <img
-                                class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/schnauzer.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_2_1.png"
                                 />
                             <p>
-                                EUR 12,99
-                                <span class="right">BraveBoyBackfisch</span>
+                                USD 90,69 <span class="right">computers</span></p>
+                        </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_3_1.png"
+                                />
+                            <p>
+                                USD 23,33 <span class="right">computers</span></p>
+                        </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_4_1.png"
+                                />
+                            <p>
+                                USD 12,99
+                                <span class="right">computers</span>
                             </p>
                         </li>
                         <li>
-                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/ice.jpg" />
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_5_1.png" />
                             <p>
-                                EUR 2,00
+                                USD 2,00
                                 <a
                                     href="https://www.youtube.com/watch?v=TxU07WQVkko"
-                                    ><span class="right">Yeetou</span></a
+                                    ><span class="right">computers</span></a
                                 >
                             </p>
                         </li>
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/spoodaalien.jpg"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_6_2.png"
                                 />
                             <p>
-                                EUR 5069
-                                <span class="right">BraveBoyBackfisch</span>
+                                USD 5069
+                                <span class="right">computers</span>
                             </p>
                         </li>
                     </ul>
