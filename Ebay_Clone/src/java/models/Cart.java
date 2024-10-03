@@ -1,28 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models;
 
 import java.util.List;
 
-/**
- *
- * @author ASUS
- */
 public class Cart {
 
     private int id;
-    private Account account;
-    List<Product> products;
+    private List<CartItem> items;
 
     public Cart() {
     }
 
-    public Cart(int id, Account account, List<Product> productList) {
+    public Cart(int id, List<CartItem> items) {
         this.id = id;
-        this.account = account;
-        this.products = products;
+        this.items = items;
     }
 
     public int getId() {
@@ -33,19 +23,12 @@ public class Cart {
         this.id = id;
     }
 
-    public Account getAccount() {
-        return account;
+    public List<CartItem> getItems() {
+        return items;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setItems(List<CartItem> items) {
+        this.items = items;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

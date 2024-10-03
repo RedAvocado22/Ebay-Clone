@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package models;
 
-/**
- *
- * @author ASUS
- */
 public class Account {
 
     private String username;
@@ -16,6 +9,7 @@ public class Account {
     private String email;
     private String role;
     private String status;
+    private String avatar;
 
     public Account() {
     }
@@ -75,5 +69,13 @@ public class Account {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

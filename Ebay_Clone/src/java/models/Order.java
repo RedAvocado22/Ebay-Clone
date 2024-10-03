@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models;
 
 import java.util.List;
 
-/**
- *
- * @author ASUS
- */
 public class Order {
 
     private int id;
@@ -17,18 +9,18 @@ public class Order {
     private Account buyer;
     private Account seller;
     private String status;
-    List<Product> products;
+    private List<OrderItem> items;
 
     public Order() {
     }
 
-    public Order(int id, double total, Account buyer, Account seller, String status, List<Product> products) {
+    public Order(int id, double total, Account buyer, Account seller, String status, List<OrderItem> orders) {
         this.id = id;
         this.total = total;
         this.buyer = buyer;
         this.seller = seller;
         this.status = status;
-        this.products = products;
+        this.items = orders;
     }
 
     public int getId() {
@@ -71,12 +63,11 @@ public class Order {
         this.status = status;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderItem> getOrders() {
+        return items;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setOrders(List<OrderItem> orders) {
+        this.items = orders;
     }
-
 }
