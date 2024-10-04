@@ -2,7 +2,9 @@
     box-sizing: border-box;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+#button-search {
+    border-radius: 30px
+}
 body {
     margin: 0;
     padding: 0;
@@ -303,6 +305,7 @@ li .right:hover {
 
 .image-product img {
     cursor: pointer;
+    
 }
 
 .product-list {

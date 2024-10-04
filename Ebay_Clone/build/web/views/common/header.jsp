@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
 <nav>
     <div id="nav" class="clearfix">
         <div>

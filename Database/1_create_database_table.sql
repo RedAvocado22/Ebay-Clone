@@ -4,7 +4,7 @@ GO
 
 CREATE DATABASE Ebay_Clone
 GO
-
+/*
 DROP TABLE Account
 DROP TABLE Product
 DROP TABLE [Order]
@@ -14,7 +14,7 @@ DROP TABLE Categories
 DROP TABLE Products_To_Categories
 DROP TABLE Cart
 DROP TABLE CartDetail
-
+*/
 -- Create Account table
 CREATE TABLE Account (
     Username NVARCHAR(50) PRIMARY KEY,
@@ -22,7 +22,8 @@ CREATE TABLE Account (
     Fullname NVARCHAR(100),
     Email NVARCHAR(100) UNIQUE NOT NULL,
     [Role] NVARCHAR(10) CHECK (Role IN ('user', 'admin')) DEFAULT 'user',
-    [Status] BIT NOT NULL DEFAULT 1
+    [Status] BIT NOT NULL DEFAULT 1,
+	Avatar NVARCHAR(255)
 );
 GO
 
@@ -32,7 +33,7 @@ CREATE TABLE Product (
     [Name] NVARCHAR(100) NOT NULL,
     Price FLOAT NOT NULL, 
     Quantity INT NOT NULL,
-	[Image] IMAGE
+	[Image] VARCHAR(255) NOT NULL
 );
 GO
 

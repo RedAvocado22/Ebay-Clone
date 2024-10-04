@@ -14,8 +14,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
         <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-            />
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"        />
         <title>Ebay</title>
     </head>
     <body>
@@ -167,7 +166,7 @@
                                 src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_4_1.png"
                                 />
                             <p>
-                                USD 30,00 VB
+                                USD 30,00
                                 <span class="right">cellphones</span>
                             </p>
                         </li>
