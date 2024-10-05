@@ -107,6 +107,42 @@
                                 USD 1,99 <span class="right">camera</span>
                             </p>
                         </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_7_1.png"
+                                />
+                            <p>
+                                USD 1,99 <span class="right">camera</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_8_1.png"
+                                />
+                            <p>
+                                USD 1,99 <span class="right">camera</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_9_1.png"
+                                />
+                            <p>
+                                USD 1,99 <span class="right">camera</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_10_1.png"
+                                />
+                            <p>
+                                USD 1,99 <span class="right">camera</span>
+                            </p>
+                        </li>
                     </ul>
                 </div>
 
@@ -115,6 +151,10 @@
                        >Shop now <img id="arrow-right"
                                         /></a>
                     <h1>Hunt down your next card</h1>
+                    <img
+                                class="image-banner"
+                                src="${pageContext.request.contextPath}/public/images/banner/banner_12.png"
+                                />
                     <div>
                         <p>
                             Each bid brings you closer to completing your collection.
@@ -190,6 +230,36 @@
                                 <span class="right">cellphones</span>
                             </p>
                         </li>
+                                                <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_7_1.png"
+                                />
+                            <p>
+                                USD 2,98
+                                <span class="right">cellphones</span>
+                            </p>
+                        </li>
+                                                <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_8_1.png"
+                                />
+                            <p>
+                                USD 2,98
+                                <span class="right">cellphones</span>
+                            </p>
+                        </li>
+                                                <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_9_1.png"
+                                />
+                            <p>
+                                USD 2,98
+                                <span class="right">cellphones</span>
+                            </p>
+                        </li>
                     </ul>
                 </div>
 
@@ -256,11 +326,51 @@
                         <li>
                             <img
                                 class="image-product"
-                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_6_2.png"
+                                src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_6_1.png"
                                 />
                             <p>
                                 USD 5069
                                 <span class="right">computers</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_7_1.png" />
+                            <p>
+                                USD 2,00
+                                <a
+                                    href="https://www.youtube.com/watch?v=TxU07WQVkko"
+                                    ><span class="right">computers</span></a
+                                >
+                            </p>
+                        </li>
+                        <li>
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_8_1.png" />
+                            <p>
+                                USD 2,00
+                                <a
+                                    href="https://www.youtube.com/watch?v=TxU07WQVkko"
+                                    ><span class="right">computers</span></a
+                                >
+                            </p>
+                        </li>
+                        <li>
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_9_1.png" />
+                            <p>
+                                USD 2,00
+                                <a
+                                    href="https://www.youtube.com/watch?v=TxU07WQVkko"
+                                    ><span class="right">computers</span></a
+                                >
+                            </p>
+                        </li>
+                        <li>
+                            <img class="image-product" src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_10_1.png" />
+                            <p>
+                                USD 2,00
+                                <a
+                                    href="https://www.youtube.com/watch?v=TxU07WQVkko"
+                                    ><span class="right">computers</span></a
+                                >
                             </p>
                         </li>
                     </ul>

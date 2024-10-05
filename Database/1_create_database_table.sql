@@ -33,9 +33,11 @@ CREATE TABLE Product (
     [Name] NVARCHAR(100) NOT NULL,
     Price FLOAT NOT NULL, 
     Quantity INT NOT NULL,
-	[Image] VARCHAR(255) NOT NULL
+    [Image] VARCHAR(255) NOT NULL,
+    Seller NVARCHAR(50) FOREIGN KEY REFERENCES Account(Username)
 );
 GO
+
 
 -- Create Order table
 CREATE TABLE [Order] (
