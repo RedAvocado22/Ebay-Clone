@@ -7,7 +7,8 @@ public class Product {
     private double price;
     private int quantity;
     private String image;
-
+    private Account seller;
+    
     public Product() {
     }
 
