@@ -12,12 +12,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, double price, int quantity, String image) {
+    public Product(int id, String name, double price, int quantity, String image, Account seller) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.image = image;
+        this.seller = seller;
     }
 
     public int getId() {
@@ -58,5 +59,13 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Account getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Account seller) {
+        this.seller = seller;
     }
 }
