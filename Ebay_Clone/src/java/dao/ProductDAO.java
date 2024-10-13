@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,16 +34,11 @@ public class ProductDAO extends DBUtils {
 
                 listFound.add(product);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return listFound;
     }
-//    public static void main(String[] args) {
-//        for (Product product : new ProductDAO().findAll()) {
-//            System.out.println(product);
-//        }
-//    }
 
     public List<Product> findByName(String keyword) {
         List<Product> listFound = new ArrayList<>();
@@ -69,7 +65,7 @@ public class ProductDAO extends DBUtils {
 
                 listFound.add(product);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return listFound;
@@ -101,7 +97,7 @@ public class ProductDAO extends DBUtils {
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -126,7 +122,7 @@ public class ProductDAO extends DBUtils {
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -169,23 +165,8 @@ public class ProductDAO extends DBUtils {
                 Product product = new Product(id, name, price, quantity, img, sellerAccount);
 
                 listFound.add(product);
-            }ps = con.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("ID");
-                String name = rs.getString("Name");
-                double price = rs.getDouble("Price");
-                int quantity = rs.getInt("Quantity");
-                String img = rs.getString("Image");
-                String seller = rs.getString("Seller");
-                Account sellerAccount = new Account();
-                sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
-
-                listFound.add(product);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return listFound;
