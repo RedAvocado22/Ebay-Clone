@@ -125,7 +125,7 @@ public class ProductDAO extends DBUtils {
             ps.setObject(2, product.getPrice());
             ps.setObject(3, product.getQuantity());
             ps.setObject(4, product.getImage());
-            ps.setObject(5, product.getSeller());
+            ps.setObject(5, product.getSeller().getUsername());
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
@@ -150,7 +150,7 @@ public class ProductDAO extends DBUtils {
             ps.setObject(2, product.getPrice());
             ps.setObject(3, product.getQuantity());
             ps.setObject(4, product.getImage());
-            ps.setObject(5, product.getSeller());
+            ps.setObject(5, product.getSeller().getUsername());
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
@@ -170,7 +170,7 @@ public class ProductDAO extends DBUtils {
             //thuc thi cau lenh
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
