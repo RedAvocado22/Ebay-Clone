@@ -25,13 +25,13 @@ public class FeedbackDAO extends DBUtils {
                 String content = rs.getString("Content");
                 String type = rs.getString("Type");
                 String status = rs.getString("Status");
-                String buyerName = rs.getString("BuyerName");
-                String sellerName = rs.getString("SellerName");
+                String buyerName = rs.getString("Buyer");
+                String sellerName = rs.getString("Seller");
 
                 Account buyerAccount = new Account();
                 buyerAccount.setUsername(buyerName);
                 Account sellerAccount = new Account();
-                sellerAccount.setUsername(buyerName);
+                sellerAccount.setUsername(sellerName);
                 Feedback feedback = new Feedback(id, content, type, status, buyerAccount, sellerAccount);
                 listFound.add(feedback);
             }
