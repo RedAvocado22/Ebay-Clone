@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.Account;
 import models.Categories;
 import models.Product;
@@ -13,7 +11,7 @@ import utils.DBUtils;
 
 public class ProductDAO extends DBUtils {
 
-    public List<Product> findAll() {
+    public List<Product> getAll() {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT p.*\n"
@@ -103,7 +101,7 @@ public class ProductDAO extends DBUtils {
         return productFound;
     }
 
-    public void insertNewProduct(Product product) {
+    public void insert(Product product) {
         con = getConnection();
         String sql = "INSERT INTO [dbo].[Product]\n"
                 + "           ([Name]\n"
@@ -134,7 +132,7 @@ public class ProductDAO extends DBUtils {
         }
     }
 
-    public void UpdateProduct(Product product) {
+    public void update(Product product) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Product]\n"
                 + "   SET [Name] = ?\n"
@@ -159,7 +157,7 @@ public class ProductDAO extends DBUtils {
         }
     }
 
-    public void deleteProduct(Product product) {
+    public void delete(Product product) {
         con = getConnection();
         String sql = "DELETE FROM [dbo].[Product]\n"
                 + "      WHERE [ID] = ?";

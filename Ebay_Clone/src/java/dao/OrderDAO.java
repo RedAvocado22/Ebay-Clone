@@ -42,7 +42,7 @@ public class OrderDAO extends DBUtils {
         return listOd;
     }
 
-    public void insertOrder(Order order) {
+    public void insert(Order order) {
         con = getConnection();
 
         String sql = "INSERT INTO [dbo].[Order]\n"
@@ -60,7 +60,6 @@ public class OrderDAO extends DBUtils {
             con = getConnection();
             ps = con.prepareStatement(sql);
 
-            // Gán giá trị cho các tham số
             ps.setDouble(1, order.getTotal());
             ps.setString(2, order.getBuyer().getUsername());
             ps.setString(3, order.getSeller().getUsername());
@@ -73,7 +72,7 @@ public class OrderDAO extends DBUtils {
                 orderItemDAO.insertItem(item, getLastOrderId());
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -88,7 +87,7 @@ public class OrderDAO extends DBUtils {
             if (rs.next()) {
                 return rs.getInt("ID");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;

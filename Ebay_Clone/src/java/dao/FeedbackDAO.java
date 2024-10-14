@@ -4,19 +4,16 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.Account;
 import models.Feedback;
 import utils.DBUtils;
 
 public class FeedbackDAO extends DBUtils {
 
-    public List<Feedback> findAll() {
+    public List<Feedback> getAllByUsername() {
         List<Feedback> listFound = new ArrayList<>();
         con = getConnection();
-        String sql = "SELECT f.*\n"
-                + "FROM [dbo].[Feedback] f\n"
-                + "JOIN [dbo].[Account] b ON f.Buyer = b.Username\n"
-                + "JOIN [dbo].[Account] s ON f.Seller = s.Username";
+        String sql = "SELECT *\n"
+                + "FROM [dbo].[Feedback]";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -28,11 +25,7 @@ public class FeedbackDAO extends DBUtils {
                 String buyerName = rs.getString("Buyer");
                 String sellerName = rs.getString("Seller");
 
-                Account buyerAccount = new Account();
-                buyerAccount.setUsername(buyerName);
-                Account sellerAccount = new Account();
-                sellerAccount.setUsername(sellerName);
-                Feedback feedback = new Feedback(id, content, type, status, buyerAccount, sellerAccount);
+                Feedback feedback = new Feedback(id, content, type, status, buyerName, sellerName);
                 listFound.add(feedback);
             }
         } catch (SQLException e) {
@@ -41,7 +34,7 @@ public class FeedbackDAO extends DBUtils {
         return listFound;
     }
 
-    public void insertNewFeedback(Feedback feedback) {
+    public void insert(Feedback feedback) {
         con = getConnection();
         String sql = "INSERT INTO [dbo].[Feedback]\n"
                 + "           ([Content]\n"
@@ -60,8 +53,8 @@ public class FeedbackDAO extends DBUtils {
             ps.setString(1, feedback.getContent());
             ps.setString(2, feedback.getType());
             ps.setString(3, feedback.getStatus());
-            ps.setString(4, feedback.getBuyer().getUsername());
-            ps.setString(5, feedback.getSeller().getUsername());
+            ps.setString(4, feedback.getBuyer());
+            ps.setString(5, feedback.getSeller());
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
         } catch (SQLException e) {
@@ -69,7 +62,7 @@ public class FeedbackDAO extends DBUtils {
         }
     }
 
-    public void updateFeedback(Feedback feedback) {
+    public void update(Feedback feedback) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Feedback]\n"
                 + "   SET [Content] = ?\n"
@@ -86,7 +79,7 @@ public class FeedbackDAO extends DBUtils {
         }
     }
 
-    public void deleteFeedback(Feedback feedback) {
+    public void delete(Feedback feedback) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Feedback]\n"
                 + "   SET [Status] = ?\n"

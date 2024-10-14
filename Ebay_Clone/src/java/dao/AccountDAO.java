@@ -63,7 +63,7 @@ public class AccountDAO extends DBUtils {
             if (affected > 0) {
                 return true;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -90,13 +90,13 @@ public class AccountDAO extends DBUtils {
 
                 listFound.add(account);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return listFound;
     }
 
-    public void updateByAdmin(Account account) {
+    public void update(Account account) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Account]\n"
                 + "   SET [Password] = ?\n"
@@ -120,13 +120,13 @@ public class AccountDAO extends DBUtils {
 
                 ps.executeUpdate();
                 rs = ps.getGeneratedKeys();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void supportAccount(Account account) {
+    public void delete(Account account) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Account]\n"
                 + "   SET [Status] = ?\n"
@@ -139,7 +139,7 @@ public class AccountDAO extends DBUtils {
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
