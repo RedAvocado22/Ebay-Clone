@@ -9,7 +9,7 @@ import utils.DBUtils;
 
 public class FeedbackDAO extends DBUtils {
 
-    public List<Feedback> getAllByUsername() {
+    public List<Feedback> getAllByUsername(String username) {
         List<Feedback> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT *\n"
@@ -79,7 +79,7 @@ public class FeedbackDAO extends DBUtils {
         }
     }
 
-    public void delete(Feedback feedback) {
+    public void delete(Feedback feedback, String username) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Feedback]\n"
                 + "   SET [Status] = ?\n"

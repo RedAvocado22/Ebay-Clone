@@ -126,7 +126,7 @@ public class AccountDAO extends DBUtils {
         }
     }
 
-    public void delete(Account account) {
+    public void delete(String username, String status) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Account]\n"
                 + "   SET [Status] = ?\n"
@@ -134,8 +134,8 @@ public class AccountDAO extends DBUtils {
         try {
             ps = con.prepareStatement(sql);
 
-            ps.setObject(1, account.getStatus());
-            ps.setObject(2, account.getUsername());
+            ps.setObject(1, status);
+            ps.setObject(2, username);
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
