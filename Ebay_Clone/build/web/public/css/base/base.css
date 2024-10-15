@@ -1,10 +1,301 @@
-/*
-  Student ID   : HE187382
-  Student name : Nguyen Minh Cuong
-  Due date     :  
-*/
-/* 
-    Created on : Sep 18, 2024, 10:59:55 PM
-    Author     : Minh Cuong
-*/
+* {
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
+#nav-categories a{
+    text-decoration: none;
+    color: black;
+}
+
+#bell span, #cart span {
+    position: relative;
+    top: 3px;
+}
+
+nav {
+    overflow: hidden;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+nav a {
+    position: relative;
+    top: 50%;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 15px;
+}
+
+nav a:hover {
+    cursor: pointer;
+    background-color: #DDDDDD;
+}
+
+#cart, #bell {
+    padding: 0 15px;
+}
+
+.right {
+    float: right;
+}
+
+#nav {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 1;
+}
+
+
+
+/*---header---*/
+
+header {
+    display: block;
+    max-width: 1300px;
+    margin: auto;
+    border-bottom: solid 1px #BBBBBB;
+    display: flex;
+    height: 100px;
+    align-items: center;
+}
+
+/*search*/
+
+#search * {
+    display: inline-block;
+}
+
+#search {
+    border: solid 2px black;
+    padding: 0;
+    width: 50%;
+    height: 50px;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+}
+
+#search{
+    border-radius: 25px 0px 0px 25px;
+}
+
+#search input {
+    width:70%;
+    height: 30px;
+    font-size: 1.2em;
+    color:black;
+    border: none;
+}
+
+#search input:focus {
+    outline: none;
+}
+
+#magnification-glass {
+    margin: 0 15px;
+}
+
+#button-search {
+    font-size: 1.2em;
+    width: 15%;
+    height: 50px;
+    border: none;
+    background-color: dodgerblue;
+    color: white;
+    float: left;
+    margin: auto;
+    border-radius: 25px;
+}
+
+#button-search:hover {
+    cursor: pointer;
+    background-color: rgb(20, 110, 201);
+}
+
+#search input::placeholder {
+    color: #BBBBBB;
+}
+
+/*categories-dropdown*/
+#categories-dropdown {
+    border: solid 2px black;
+    height: 51%;
+    width: 15%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#categories-dropdown{
+    border-left: 0px;
+    border-radius: 0 25px 25px 0; 
+}
+
+#categories-dropdown:hover {
+    background-color: #DDDDDD;
+    cursor: pointer;
+    border-radius: 0 25px 25px 0;
+}
+
+#categories-dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+#categories-dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropbtn {
+  background-color: #767676;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 113px;
+  font-size: 12px;
+  background-color: whitesmoke;
+  min-width: 260px;
+  max-height: 600px;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #949393;
+  border-radius: 10px;
+}
+
+#categories-dropdown:hover .dropdown-content {
+  display: block;
+}
+/*logo*/
+
+#logo {
+    font-size: 1.5em;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: .1em;
+    text-transform: full-width;
+    padding: 0;
+    margin-left: 5%;
+
+}
+
+#logo:hover {
+    cursor: pointer;
+}
+
+#logo span {
+    display: inline-block;
+    -webkit-transform: scale(1.5, 1);
+    -moz-transform:scale(1.5, 1.0);
+    -ms-transform:scale(1.5, 1.0);
+    -o-transform:scale(1.5, 1.0);
+    transform:scale(1.5, 1.0);
+}
+
+#logo span:nth-child(1) {
+    color: #E02F3B;
+}
+
+#logo span:nth-child(2) {
+    color: rgb(26, 98, 205);
+}
+
+#logo span:nth-child(3) {
+    color: rgb(241, 174, 46);
+}
+
+#logo span:nth-child(4) {
+    color: rgb(135, 183, 50);
+}
+
+#categories-dropdown {
+    margin: 0;
+}
+
+/*---categories nav---*/
+
+#nav-categories {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline ;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 5px 5px;
+    height: 30px
+}
+
+#nav-categories a {
+    height: 25px;
+    padding: 0;
+
+}
+
+#nav-categories a:hover {
+    position: relative;
+    animation-name: standout;
+    animation-duration: .1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    cursor: pointer;
+}
+
+@keyframes standout {
+    from {
+        top: 0px;
+        right: 0px;
+
+    }
+    to {
+        top: -2px;
+        right: -2px;
+        text-shadow: -2px 2px 2px #BBBBBB;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    #nav-categories a:nth-child(4),
+    #nav-categories a:nth-child(7),
+    #nav-categories a:nth-child(10),
+    #nav-categories a:nth-child(11) {
+        display: none;
+    }
+}
