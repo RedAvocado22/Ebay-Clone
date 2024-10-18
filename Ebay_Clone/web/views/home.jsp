@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/base/base.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"        />
@@ -41,15 +42,11 @@
                         <img class="img-banners" src="${pageContext.request.contextPath}/public/images/banner/Banner_15_sua.png" alt="">
                     </div>
                     <div class="btns">
-                        <span
-                            class="btn-left btn material-symbols-outlined"
-                            <i class='bx bx-chevron-right'></i>
-                            arrow_back
+                        <span class="btn-left btn material-icons md-36">
+                            keyboard_arrow_left
                         </span>
-                        <span
-                            class="btn-right btn material-symbols-outlined"
-                            <i class='bx bx-chevron-right'></i>
-                            arrow_forward
+                        <span class="btn-right btn material-icons md-36">
+                            keyboard_arrow_right
                         </span>
                     </div>
                 </div>
