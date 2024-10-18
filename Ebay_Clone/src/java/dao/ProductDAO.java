@@ -72,7 +72,7 @@ public class ProductDAO extends DBUtils {
         return listFound;
     }
 
-    public Product findById(Product p) {
+    public Product findById(int id) {
         Product productFound = null;
         con = getConnection();
         String sql = "SELECT p.*\n"
@@ -82,17 +82,16 @@ public class ProductDAO extends DBUtils {
                 + "WHERE [ID] = ? ";
         try {
             ps = con.prepareStatement(sql);
-            ps.setObject(1, p.getId());
+            ps.setObject(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ID");
                 String name = rs.getString("Name");
                 double price = rs.getDouble("Price");
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
-                Account sellerAccount = new Account();
-                sellerAccount.setUsername(seller);
+                AccountDAO accountDAO = new AccountDAO();
+                Account sellerAccount = accountDAO.getByUsername(seller);
                 productFound = new Product(id, name, price, quantity, img, sellerAccount);
             }
         } catch (SQLException e) {

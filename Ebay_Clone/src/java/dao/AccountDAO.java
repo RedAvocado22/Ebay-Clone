@@ -10,8 +10,7 @@ public class AccountDAO extends DBUtils {
 
     public Account login(String username, String password) {
         con = getConnection();
-        String sql = "SELECT *\n"
-                + "  FROM [dbo].[Account]\n"
+        String sql = "SELECT * FROM [dbo].[Account]\n"
                 + "WHERE [Username] = ? AND  [Password] = ? ";
         try {
             ps = con.prepareStatement(sql);
@@ -22,8 +21,8 @@ public class AccountDAO extends DBUtils {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                String username_Found = rs.getString("Username").trim();
-                String password_Found = rs.getString("Password").trim();
+                String usernameFound = rs.getString("Username").trim();
+                String passwordFound = rs.getString("Password").trim();
                 Account account = new Account();
                 account.getUsername();
                 account.getPassword();
@@ -69,11 +68,32 @@ public class AccountDAO extends DBUtils {
         return false;
     }
 
-    public List<Account> getAllAccount() {
+    public Account getByUsername(String username) {
+        con = getConnection();
+        String sql = "SELECT * FROM [dbo].[Account]\n"
+                + "WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String password = rs.getString("Password");
+                String fullname = rs.getString("Fullname");
+                String email = rs.getString("Email");
+                String role = rs.getString("Role");
+                String status = rs.getString("Status");
+                String avatar = rs.getString("Avatar");
+                return new Account(username, password, fullname, email, role, status, avatar);
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    public List<Account> getAll() {
         List<Account> listFound = new ArrayList<>();
         con = getConnection();
-        String sql = "SELECT *\n"
-                + "  FROM [dbo].[Account]";
+        String sql = "SELECT * FROM [dbo].[Account]";
         try {
             ps = con.prepareStatement(sql);
 
@@ -126,16 +146,15 @@ public class AccountDAO extends DBUtils {
         }
     }
 
-    public void delete(String username, String status) {
+    public void delete(String username) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Account]\n"
-                + "   SET [Status] = ?\n"
-                + " WHERE [Username] = ?";
+                + "SET [Status] = 0\n"
+                + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
 
-            ps.setObject(1, status);
-            ps.setObject(2, username);
+            ps.setObject(1, username);
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();

@@ -10,7 +10,7 @@ import utils.DBUtils;
 
 public class OrderDAO extends DBUtils {
 
-    public List<Order> getAllOrder() {
+    public List<Order> getAll() {
         List<Order> listOd = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT o.*\n"
@@ -31,7 +31,7 @@ public class OrderDAO extends DBUtils {
                 account.setUsername(buyer);
                 account.setUsername(seller);
 
-                List<OrderItem> orderItems = (List<OrderItem>) new OrderItemDAO().getAllItems();
+                List<OrderItem> orderItems = (List<OrderItem>) new OrderItemDAO().getItemsByOrderId(id);
                 Order order = new Order(id, total, account, account, status, orderItems);
 
                 listOd.add(order);
@@ -69,7 +69,7 @@ public class OrderDAO extends DBUtils {
 
             OrderItemDAO orderItemDAO = new OrderItemDAO();
             for (OrderItem item : order.getOrders()) {
-                orderItemDAO.insertItem(item, getLastOrderId());
+                orderItemDAO.insertItem(item, getLastId());
             }
 
         } catch (SQLException e) {
@@ -77,7 +77,7 @@ public class OrderDAO extends DBUtils {
         }
     }
 
-    private int getLastOrderId() {
+    private int getLastId() {
         con = getConnection();
         String sql = "SELECT TOP 1 ID FROM [dbo].[Order] ORDER BY ID DESC";
         try {
@@ -93,7 +93,7 @@ public class OrderDAO extends DBUtils {
         return 0;
     }
 
-    public Order getOrderById(int id) {
+    public Order getById(int id) {
         con = getConnection();
         String sql = "SELECT * FROM [dbo].[Order] WHERE ID = ?";
         Order order = null;

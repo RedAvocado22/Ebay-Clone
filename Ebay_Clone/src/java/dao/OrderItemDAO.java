@@ -9,38 +9,38 @@ import utils.DBUtils;
 
 public class OrderItemDAO extends DBUtils {
 
-    public List<OrderItem> getAllItems() {
-        List<OrderItem> listItems = new ArrayList<>();
-        con = getConnection();
-        String sql = "SELECT p.Name, p.Image, p.Price, od.Quantity\n"
-                + "  FROM [dbo].[OrderDetail] od\n"
-                + "  JOIN [dbo].[Product] p \n"
-                + "  ON od.ID_Product = p.ID";
-        try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                String productName = rs.getString("Name");
-                String productImage = rs.getString("Image");
-                Double productPrice = rs.getDouble("Price");
-                int quantity = rs.getInt("Quantity");
-
-                Product product = new Product();
-                product.setName(productName);
-                product.setImage(productImage);
-                product.setPrice(productPrice);
-
-                OrderItem oi = new OrderItem();
-                oi.setProduct(product);
-                oi.setQuantity(quantity);
-
-                listItems.add(oi);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return listItems;
-    }
+//    public List<OrderItem> getAllItems() {
+//        List<OrderItem> listItems = new ArrayList<>();
+//        con = getConnection();
+//        String sql = "SELECT p.Name, p.Image, p.Price, od.Quantity\n"
+//                + "  FROM [dbo].[OrderDetail] od\n"
+//                + "  JOIN [dbo].[Product] p \n"
+//                + "  ON od.ID_Product = p.ID";
+//        try {
+//            ps = con.prepareStatement(sql);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                String productName = rs.getString("Name");
+//                String productImage = rs.getString("Image");
+//                Double productPrice = rs.getDouble("Price");
+//                int quantity = rs.getInt("Quantity");
+//
+//                Product product = new Product();
+//                product.setName(productName);
+//                product.setImage(productImage);
+//                product.setPrice(productPrice);
+//
+//                OrderItem oi = new OrderItem();
+//                oi.setProduct(product);
+//                oi.setQuantity(quantity);
+//
+//                listItems.add(oi);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return listItems;
+//    }
 
     public void insertItem(OrderItem orderItem, int orderId) {
         con = getConnection();
@@ -89,7 +89,7 @@ public class OrderItemDAO extends DBUtils {
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, orderId);  // Thiết lập OrderID vào câu truy vấn
+            ps.setInt(1, orderId); 
             rs = ps.executeQuery();
 
             while (rs.next()) {

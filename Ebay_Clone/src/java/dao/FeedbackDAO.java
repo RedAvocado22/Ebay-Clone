@@ -13,9 +13,11 @@ public class FeedbackDAO extends DBUtils {
         List<Feedback> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT *\n"
-                + "FROM [dbo].[Feedback]";
+                + "FROM [dbo].[Feedback]"
+                + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
+            ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -25,8 +27,7 @@ public class FeedbackDAO extends DBUtils {
                 String buyerName = rs.getString("Buyer");
                 String sellerName = rs.getString("Seller");
 
-                Feedback feedback = new Feedback(id, content, type, status, buyerName, sellerName);
-                listFound.add(feedback);
+                listFound.add(new Feedback(id, content, type, status, buyerName, sellerName));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -39,12 +40,10 @@ public class FeedbackDAO extends DBUtils {
         String sql = "INSERT INTO [dbo].[Feedback]\n"
                 + "           ([Content]\n"
                 + "           ,[Type]\n"
-                + "           ,[Status]\n"
                 + "           ,[Buyer]\n"
                 + "           ,[Seller])\n"
                 + "     VALUES\n"
                 + "           (?\n"
-                + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?)";
@@ -52,9 +51,8 @@ public class FeedbackDAO extends DBUtils {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, feedback.getContent());
             ps.setString(2, feedback.getType());
-            ps.setString(3, feedback.getStatus());
-            ps.setString(4, feedback.getBuyer());
-            ps.setString(5, feedback.getSeller());
+            ps.setString(3, feedback.getBuyer());
+            ps.setString(4, feedback.getSeller());
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
         } catch (SQLException e) {
@@ -79,10 +77,10 @@ public class FeedbackDAO extends DBUtils {
         }
     }
 
-    public void delete(Feedback feedback, String username) {
+    public void delete(Feedback feedback) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Feedback]\n"
-                + "   SET [Status] = ?\n"
+                + "   SET [Status] = 0\n"
                 + " WHERE [ID] = ?";
         try {
             ps = con.prepareStatement(sql);
