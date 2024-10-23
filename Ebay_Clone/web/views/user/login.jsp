@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
 
 <head>
@@ -20,12 +21,15 @@
 
     </div>
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form" method="post" action="login">
             <h2>Sign in to your account</h2>
             <p>New to eBay? <a href="#">Create account</a></p>
-            <input type="text" placeholder="Email or username" class="input-field">
-            <input type="password" placeholder="Password" class="input-field">
-            <button class="continue-btn">Continue</button>
+            <input name="username" type="text" placeholder="Email or username" class="input-field">
+            <input name="password" type="password" placeholder="Password" class="input-field">
+            <c:if test="${not empty error}">
+                <div style="color: red; margin-bottom: 15px; font-family: inherit">${error}</div>
+            </c:if>
+            <button class="continue-btn" type="submit">Sign in</button>
             <div class="or-section">
                 <span></span>
             </div>
@@ -35,7 +39,7 @@
         </form>
     </div>
     <footer>
-        <p>Copyright © 1995-2024 eBay Inc. All Rights Reserved.</p>
+        <p>Copyright Â© 1995-2024 eBay Inc. All Rights Reserved.</p>
         <ul class="footer-links">
             <li><a href="#">Accessibility</a></li>
             <li><a href="#">User Agreement</a></li>
