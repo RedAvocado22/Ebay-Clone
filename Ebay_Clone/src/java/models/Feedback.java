@@ -6,13 +6,13 @@ public class Feedback {
     private String content;
     private String type;
     private String status;
-    private Account buyer;
-    private Account seller;
+    private String buyer;
+    private String seller;
 
     public Feedback() {
     }
 
-    public Feedback(int id, String content, String type, String status, Account buyer, Account seller) {
+    public Feedback(int id, String content, String type, String status, String buyer, String seller) {
         this.id = id;
         this.content = content;
         this.type = type;
@@ -53,19 +53,19 @@ public class Feedback {
         this.status = status;
     }
 
-    public Account getBuyer() {
+    public String getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(Account buyer) {
+    public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
 
-    public Account getSeller() {
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(Account seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 }

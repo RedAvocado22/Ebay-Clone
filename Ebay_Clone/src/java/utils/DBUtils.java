@@ -3,9 +3,13 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager; 
 import java.sql.SQLException;
+import java.sql.*;
 
 public class DBUtils {
-
+    
+    protected static Connection con;
+    protected static PreparedStatement ps;
+    protected static ResultSet rs;
     private final static String SERVERNAME = "localhost";
     private final static String DBNAME = "Ebay_Clone"; //database's name
     private final static String PORTNUMBER = "1433";
@@ -29,7 +33,7 @@ public class DBUtils {
         }
 
         try {
-            Connection con = DriverManager.getConnection(url, USERID, PASSWORD);
+            DBUtils.con = DriverManager.getConnection(url, USERID, PASSWORD);
             return con;
         } catch (SQLException ex) {
             System.out.println("PRJ301DEMO: Can not connect SQL Server. Reason: " + ex.getMessage());
