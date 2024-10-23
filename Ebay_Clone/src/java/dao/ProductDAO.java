@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.Account;
-import models.Categories;
+import models.Category;
 import models.Product;
 import utils.DBUtils;
 
@@ -175,7 +175,7 @@ public class ProductDAO extends DBUtils {
     public List<Product> findNewProduct() {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
-        String sql = "SELECT TOP 10 *\n"
+        String sql = "SELECT TOP 12 *\n"
                 + "  FROM [dbo].[Product]\n"
                 + "  ORDER BY [ID] DESC";
         try {
@@ -253,7 +253,7 @@ public class ProductDAO extends DBUtils {
         return listFound;
     }
 
-    public int findTotalRecordByCategory(Categories category) {
+    public int findTotalRecordByCategory(Category category) {
         int totalRecord = 0;
         con = getConnection();
         String sql = "SELECT COUNT(p.ID ) as total\n"
@@ -276,7 +276,7 @@ public class ProductDAO extends DBUtils {
         return totalRecord;
     }
 
-    public List<Product> findByCategory(Categories category, int page) {
+    public List<Product> findByCategory(Category category, int page) {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
         int pageSize = 30;

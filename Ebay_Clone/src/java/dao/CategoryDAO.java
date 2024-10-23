@@ -3,13 +3,13 @@ package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.Categories;
+import models.Category;
 import utils.DBUtils;
 
 public class CategoryDAO extends DBUtils {
 
-    public List<Categories> getAll() {
-        List<Categories> listFound = new ArrayList<>();
+    public List<Category> getAll() {
+        List<Category> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Categories]";
@@ -20,7 +20,7 @@ public class CategoryDAO extends DBUtils {
             while (rs.next()) {                
                 int id = rs.getInt("ID");
                 String name = rs.getString("Name");
-                Categories categories = new Categories(id, name);
+                Category categories = new Category(id, name);
                 
                 listFound.add(categories);
             }
