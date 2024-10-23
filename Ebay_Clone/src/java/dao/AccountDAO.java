@@ -21,12 +21,14 @@ public class AccountDAO extends DBUtils {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                String usernameFound = rs.getString("Username").trim();
-                String passwordFound = rs.getString("Password").trim();
-                Account account = new Account();
-                account.getUsername();
-                account.getPassword();
-                return account;
+                String fullname = rs.getString("Fullname");
+                String email = rs.getString("Email");
+                String role = rs.getString("Role");
+                String avatar = rs.getString("Avatar");
+                return new Account(
+                        username, password, 
+                        fullname, email, role, avatar, avatar
+                );
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
