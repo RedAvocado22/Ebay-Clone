@@ -39,6 +39,10 @@ nav a:hover {
   padding: 0 15px;
 }
 
+a:visited {
+    color: black;
+}
+
 .right {
   float: right;
 }
