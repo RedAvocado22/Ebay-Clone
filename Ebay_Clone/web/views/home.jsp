@@ -3,7 +3,7 @@
     Created on : Sep 18, 2024, 11:12:35 PM
     Author     : Minh Cuong
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,21 +23,16 @@
         <jsp:include page="common/header.jsp"></jsp:include>
             <div id="nav-categories">
                 <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore(New!)</a>
-                <a>Electronics</a>
-                <a>Clothing</a>
-                <a>Home & Kitchen</a>
-                <a href="#">Books</a>
-                <a href="#">Toys</a>
-                <a href="#">Sports</a>
-                <a href="#">Beauty</a>
-                <a href="#">Jewelry</a>
-                <a href="#">Sell</a>
-            </div>
-            <main>
+            <c:forEach var="category" items="${categories}">
+                <a href="${pageContext.request.contextPath}/product?category=${category.id}">${category.name}</a>
+            </c:forEach>
+            <a href="${pageContext.request.contextPath}/account">Sell</a>
+        </div>
+        <main>
 
-                <div class="body-slide">
-                    <div class="slide-show">
-                        <div class="list-images">
+            <div class="body-slide">
+                <div class="slide-show">
+                    <div class="list-images">
                         <img class="img-banners" src="${pageContext.request.contextPath}/public/images/banner/banner_14.png" alt="">
                         <img class="img-banners" src="${pageContext.request.contextPath}/public/images/banner/Banner_15_sua.png" alt="">
                     </div>
@@ -67,89 +62,17 @@
                 </span>
                 <h1>WOW! Offer of the day!</h1>
                 <ul id="wow">
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_1_1.png"
-                            />
-                        <p>
-                            USD 20 <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_2_1.png"
-                            />
-                        <p>USD 69,69 <span class="right">camera</span></p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_3_1.png"
-                            />
-                        <p>USD 4,20 <span class="right">camera</span></p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_4_1.png"
-                            />
-                        <p>
-                            USD 6,66
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_5_1.png"
-                            />
-                        <p>
-                            USD 694,20
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_6_1.png"
-                            />
-                        <p>
-                            USD 1,99
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_7_1.png"
-                            />
-                        <p>
-                            USD 1,99
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_8_1.png"
-                            />
-                        <p>
-                            USD 2,98
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
-                    <li>
-                        <img
-                            class="image-product"
-                            src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_9_1.png"
-                            />
-                        <p>
-                            USD 2,98
-                            <span class="right">camera</span>
-                        </p>
-                    </li>
+                    <c:forEach var="product" items="${products}">
+                        <li>
+                            <img
+                                class="image-product"
+                                src="${pageContext.request.contextPath}${product.image}"
+                                />
+                            <p>
+                                ${product.price}$ <span class="right">${product.name}</span>
+                            </p>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
 
@@ -157,35 +80,54 @@
 
             <h1 class="category-h1">Explore Popular Categories</h1>
             <div class="categories">
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_5.png" alt="beauty">
-                    <p>Luxury</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_4.png" alt="">
-                    <p>Sneakers</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_6.jpg" alt="">
-                    <p>Pre-loved Luxury</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_3.png" alt="">
-                    <p>P&A</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_2.png" alt="">
-                    <p>Trading cards</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_7.jpg" alt="">
-                    <p>Refurbished</p>
-                </div>
-                <div class="category">
-                    <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
-                    <p>Toys</p>
-                </div>
-
+                <a href="${pageContext.request.contextPath}/product?category=1">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_5.png" alt="beauty">
+                        <p>Electronics</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=2">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_4.png" alt="">
+                        <p>Clothing</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=3">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_6.jpg" alt="">
+                        <p>Home & Kitchen</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=4">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_3.png" alt="">
+                        <p>Books</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=5">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_2.png" alt="">
+                        <p>Toys</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=6">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_7.jpg" alt="">
+                        <p>Sports</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=7">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
+                        <p>Beauty</p>
+                    </div>
+                </a>
+                <a href="${pageContext.request.contextPath}/product?category=8">
+                    <div class="category">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
+                        <p>Jewelry</p>
+                    </div>
+                </a>
             </div>
 
 
