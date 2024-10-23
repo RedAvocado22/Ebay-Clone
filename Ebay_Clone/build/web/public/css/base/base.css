@@ -176,7 +176,7 @@ header {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 113px;
+  top: 95px;
   font-size: 12px;
   background-color: whitesmoke;
   min-width: 260px;
