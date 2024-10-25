@@ -20,7 +20,7 @@
         <title>Ebay</title>
     </head>
     <body>
-        <jsp:include page="common/header.jsp"></jsp:include>
+        <jsp:include page="../common/header.jsp"></jsp:include>
             <div id="nav-categories">
                 <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore(New!)</a>
             <c:forEach var="category" items="${categories}">
@@ -69,7 +69,10 @@
                                 src="${pageContext.request.contextPath}${product.image}"
                                 />
                             <p>
-                                ${product.price}$ <span class="right">${product.name}</span>
+                                <a style="color: black; text-decoration: none" href="${pageContext.request.contextPath}/product?id=${product.id}">
+                                    ${product.name}
+                                </a> 
+                                <span class="right">${product.price}$</span>
                             </p>
                         </li>
                     </c:forEach>
@@ -141,10 +144,9 @@
                     </div>
                 </div>
             </div> 
-        </div>
-    </main>
-    <hr />
-    <jsp:include page="common/footer.jsp"></jsp:include> 
-    <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
-</body>
+        </main>
+        <hr />
+        <jsp:include page="../common/footer.jsp"></jsp:include> 
+        <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
+    </body>
 </html>

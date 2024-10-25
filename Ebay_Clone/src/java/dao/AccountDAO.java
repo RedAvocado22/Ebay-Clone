@@ -76,6 +76,7 @@ public class AccountDAO extends DBUtils {
                 + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
+            ps.setString(1, username);
             rs = ps.executeQuery();
 
             while (rs.next()) {

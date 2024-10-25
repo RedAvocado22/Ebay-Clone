@@ -41,7 +41,6 @@ public class OrderItemDAO extends DBUtils {
 //        }
 //        return listItems;
 //    }
-
     public void insertItem(OrderItem orderItem, int orderId) {
         con = getConnection();
         String sql = "INSERT INTO [dbo].[OrderDetail]\n"
@@ -81,27 +80,23 @@ public class OrderItemDAO extends DBUtils {
 
     public List<OrderItem> getItemsByOrderId(int orderId) {
         List<OrderItem> listItems = new ArrayList<>();
-        con = getConnection();
-        String sql = "SELECT p.Name, p.Image, p.Price, od.Quantity "
+        String sql = "SELECT p.ID, od.Quantity "
                 + "FROM [dbo].[OrderDetail] od "
                 + "JOIN [dbo].[Product] p ON od.ID_Product = p.ID "
                 + "WHERE od.ID_Order = ?";
 
         try {
+            con = getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, orderId); 
+            ps.setInt(1, orderId);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                String productName = rs.getString("Name");
-                String productImage = rs.getString("Image");
-                double productPrice = rs.getDouble("Price");
+                int productID = rs.getInt("ID");
                 int quantity = rs.getInt("Quantity");
 
-                Product product = new Product();
-                product.setName(productName);
-                product.setImage(productImage);
-                product.setPrice(productPrice);
+                ProductDAO productDAO = new ProductDAO();
+                Product product = productDAO.findById(productID);
 
                 OrderItem item = new OrderItem();
                 item.setProduct(product);

@@ -27,12 +27,13 @@ public class OrderDAO extends DBUtils {
                 String seller = rs.getString("Seller");
                 String status = rs.getString("Status");
 
-                Account account = new Account();
-                account.setUsername(buyer);
-                account.setUsername(seller);
+                Account sellerAccount = new Account();
+                Account buyerAccount = new Account();
+                buyerAccount.setUsername(buyer);
+                sellerAccount.setUsername(seller);
 
                 List<OrderItem> orderItems = (List<OrderItem>) new OrderItemDAO().getItemsByOrderId(id);
-                Order order = new Order(id, total, account, account, status, orderItems);
+                Order order = new Order(id, total, buyerAccount, sellerAccount, status, orderItems);
 
                 listOd.add(order);
             }
