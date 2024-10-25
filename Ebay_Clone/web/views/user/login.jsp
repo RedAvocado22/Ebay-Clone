@@ -23,7 +23,7 @@
     <div class="login-container">
         <form class="login-form" method="post" action="login">
             <h2>Sign in to your account</h2>
-            <p>New to eBay? <a href="#">Create account</a></p>
+            <p>New to eBay? <a href="${pageContext.request.contextPath}/views/user/register.jsp">Create account</a></p>
             <input name="username" type="text" placeholder="Email or username" class="input-field">
             <input name="password" type="password" placeholder="Password" class="input-field">
             <c:if test="${not empty error}">
