@@ -43,24 +43,23 @@
         </div>
         <input type="text" name="search" placeholder="Search for anything " />
     </form>
-    <div id="categories-dropdown">
-        <button class="dropbtn">Category
+    <select id="categories-dropdown">
+        <option class="dropbtn">Category
             <i class="fa fa-caret-down"></i>
-        </button>
+        </option>
         <div class="material-icons md-18">
             arrow_drop_down
-        </div>
         <div class="dropdown-content">
-            <a href="${pageContext.request.contextPath}/product">All categories</a>
-            <a href="${pageContext.request.contextPath}/product?category=1">Electronics</a>
-            <a href="${pageContext.request.contextPath}/product?category=2">Clothing</a>
-            <a href="${pageContext.request.contextPath}/product?category=3">Home & Kitchen</a>
-            <a href="${pageContext.request.contextPath}/product?category=4">Books</a>
-            <a href="${pageContext.request.contextPath}/product?category=5">Toys</a>
-            <a href="${pageContext.request.contextPath}/product?category=6">Sports</a>
-            <a href="${pageContext.request.contextPath}/product?category=7">Beauty</a>
-            <a href="${pageContext.request.contextPath}/product?category=8">Jewelry</a>
+            <option href="${pageContext.request.contextPath}/product">All categories</option>
+            <option href="${pageContext.request.contextPath}/product?category=1">Electronics</option>
+            <option href="${pageContext.request.contextPath}/product?category=2">Clothing</option>
+            <option href="${pageContext.request.contextPath}/product?category=3">Home & Kitchen</option>
+            <option href="${pageContext.request.contextPath}/product?category=4">Books</option>
+            <option href="${pageContext.request.contextPath}/product?category=5">Toys</option>
+            <option href="${pageContext.request.contextPath}/product?category=6">Sports</option>
+            <option href="${pageContext.request.contextPath}/product?category=7">Beauty</option>
+            <option href="${pageContext.request.contextPath}/product?category=8">Jewelry</option>
         </div>
-    </div>
+    </select>
     <button type="submit" id="button-search">Search</button>
 </header>

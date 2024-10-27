@@ -8,6 +8,70 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 /* Header styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.view-options {
+    display: flex;
+    justify-content: end;
+
+}
+
+.sort-list-style {
+    display: flex;
+    justify-content: end;
+}
+
+.header-product{
+    display: flex;
+}
+
+.sort-dropdown{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    height: 30px;
+    background-color: #e5e5e5;
+    border: none;
+    text-align: center;
+    margin-left: 90px;
+}
+
+.sort-dropdown option{
+    height: 40px;
+    width: 40%;
+}
+
+.search {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.search-box{
+    height: 40px;
+    width:40%;
+}
+
+.search-button{
+    height: 40px;
+    width: 10%;
+    border-radius: 20px;
+    background-color: #574cf1;
+    border: none;
+    color: white;
+}
+
+.search-button:hover{
+    background-color: #382aef;
+}
+
 .header {
     padding: 15px;
     border-bottom: 1px solid #ddd;
@@ -67,7 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .product-card {
     border: 1px solid #ddd;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-align: center; /* Căn giữa nội dung bên trong card */
 }
 
@@ -76,6 +140,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     height: 200px;
     object-fit: contain;
     margin-bottom: 10px;
+    background-color: #f2f2f2;
 }
 
 .product-title {

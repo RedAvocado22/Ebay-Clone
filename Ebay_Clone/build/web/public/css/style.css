@@ -397,17 +397,14 @@ footer h3:hover, footer li:hover {
 /*footer-banner*/
 
 .footer-slide {
-    height: 150px;
+    height: 360px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    margin-top: 25px;
 }
 .slide-footer{
-    display: flex;
-    align-items: center;
-    width: 16000px;
+    width: 1460px;
     overflow: hidden;
     position: relative;
     border-radius: inherit;

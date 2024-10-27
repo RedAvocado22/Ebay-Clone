@@ -121,7 +121,7 @@
                 </a>
                 <a href="${pageContext.request.contextPath}/product?category=7">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/beauty_icon.png" alt="">
                         <p>Beauty</p>
                     </div>
                 </a>
@@ -145,7 +145,6 @@
                 </div>
             </div> 
         </main>
-        <hr />
         <jsp:include page="../common/footer.jsp"></jsp:include> 
         <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
     </body>
