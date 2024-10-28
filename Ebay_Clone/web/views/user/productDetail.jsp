@@ -61,6 +61,11 @@
                             purchase may be eligible for eBay Money Back Guarantee if the return request is made within 3 days
                             from delivery. See details- for more information about returns</p>
                     </div>
+                    
+                    <div class="shipping">
+                    <p>Payment:</p>
+                    <img src="${pageContext.request.contextPath}/public/images/others/img_payment.png" alt="">
+                </div>
                 </div>
             </div>
         </div>

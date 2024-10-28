@@ -17,7 +17,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    justify-content: center; 
+    
 }
 
 .product-image {
@@ -173,6 +173,11 @@ button {
 
 .shipping-fee2{
     margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+.shipping img{
+    width: 80%;
 }
 
 /* similar-items */
@@ -183,15 +188,11 @@ button {
 }
 
 .similar-items {
-    max-width: 860px; /* Giới hạn chiều rộng tối đa */
-    margin: 20px auto; /* Căn giữa */
-    background-color: white;
+    max-width: 860px;
+    margin: 20px 50px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
-
 
 .similar-items h2 {
     font-size: 24px;
@@ -200,28 +201,9 @@ button {
 
 .similar-items-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Hiển thị 4 cột trên màn hình lớn */
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-
-@media (max-width: 1024px) {
-    .similar-items-grid {
-        grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 cột trên màn hình trung bình */
-    }
-}
-
-@media (max-width: 768px) {
-    .similar-items-grid {
-        grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột trên màn hình nhỏ */
-    }
-}
-
-@media (max-width: 480px) {
-    .similar-items-grid {
-        grid-template-columns: 1fr; /* Hiển thị 1 cột trên màn hình rất nhỏ */
-    }
-}
-
 
 .item {
     background-color: #f9f9f9;
