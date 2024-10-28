@@ -41,7 +41,6 @@
 
                 <!-- Main Content -->
                 <div class="product-content">
-
                     <!-- Product View Toggle & Filter Options -->
                     <div class="header-product">
                         <div class="search">
@@ -58,7 +57,6 @@
                                 <option>Highest Price</option>
                                 <option>Ending Soonest</option>
                             </select>
-
                         </div>
                     </div>
 

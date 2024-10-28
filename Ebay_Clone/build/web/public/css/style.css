@@ -388,10 +388,28 @@ footer h3:hover, footer li:hover {
     height: 150px;
     border-radius: 50%;
 }
+
 .category p {
     margin-top: 10px;
     font-weight: bold;
     color: #333;
+}
+
+.categories a:hover{
+    .category p{
+        width: fit-content;
+        height: fit-content;
+        border: green 3px solid;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        margin: auto auto;
+    }
+
+}
+
+.categories a{
+    text-decoration: none;
 }
 
 /*footer-banner*/
