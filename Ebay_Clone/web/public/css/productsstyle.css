@@ -1,0 +1,198 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 26, 2024, 8:53:44 PM
+    Author     : Qanh
+*/
+
+/* Header styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.view-options {
+    display: flex;
+    justify-content: end;
+
+}
+
+.sort-list-style {
+    display: flex;
+    justify-content: end;
+}
+
+.header-product{
+    display: flex;
+}
+
+.sort-dropdown{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    height: 30px;
+    background-color: #e5e5e5;
+    border: none;
+    text-align: center;
+    margin-left: 90px;
+}
+
+.sort-dropdown option{
+    height: 40px;
+    width: 40%;
+}
+
+.search {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.search-box{
+    height: 40px;
+    width:40%;
+}
+
+.search-button{
+    height: 40px;
+    width: 10%;
+    border-radius: 20px;
+    background-color: #574cf1;
+    border: none;
+    color: white;
+}
+
+.search-button:hover{
+    background-color: #382aef;
+}
+
+.header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Main layout */
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center; /* Căn giữa nội dung */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung bên trong sidebar */
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 8px;
+}
+
+/* Product grid styles */
+.product-grid {
+    flex: 1;
+}
+
+.filters {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 5px;
+}
+
+/* Product list */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center; /* Căn giữa từng sản phẩm trong lưới */
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center; /* Căn giữa nội dung bên trong card */
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    background-color: #f2f2f2;
+}
+
+.product-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.shipping-info {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Xếp chồng layout cho di động */
+        padding: 10px; /* Giảm padding */
+    }
+
+    .sidebar {
+        width: 100%; /* Đặt sidebar full chiều rộng */
+        border-right: none; /* Ẩn đường viền phải */
+        padding: 0; /* Giảm padding */
+    }
+
+    .product-list {
+        grid-template-columns: 1fr; /* Hiển thị sản phẩm theo cột */
+    }
+
+    .product-card {
+        margin: 10px 0; /* Thêm khoảng cách giữa các sản phẩm */
+    }
+}
+
+/* Tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột cho tablet */
+    }
+}
+
+/* Desktop devices */
+@media (min-width: 1025px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 cột cho màn hình lớn */
+    }
+}
