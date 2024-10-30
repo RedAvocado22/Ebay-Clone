@@ -64,18 +64,8 @@
 
                 </div>
 
-                <!-- Main Content -->
                 <div class="product-content">
-
-                    <!-- Product View Toggle & Filter Options -->
                     <div class="header-product">
-                        <!-- <div class="search">
-                            <form>
-                                <input class="search-box" type="text" name="txtSearchValue" value="" />
-                                <input class="search-button" type="submit" value="Search" name="btAction" />
-                            </form>
-                        </div> -->
-                        <!-- Sort and list style options -->
                         <div class="sort-list-style">
                             <select class="sort-dropdown">
                                 <option>Best Match</option>
@@ -87,108 +77,20 @@
                         </div>
                     </div>
 
-
-                    <!-- Product List -->
                     <div class="product-list">
                     <c:forEach var="product" items="${products}">
                         <div class="product-card">
-                            <img src="${pageContext.request.contextPath}/public/images/products/${product.image}"
-                                 alt="${product.name}" class="product-image">
-                            <h2 class="product-title">${product.name}</h2>
-                            <div class="product-price">$${product.price}</div>
-                            <div class="shipping-info">Seller: ${product.seller.name}</div>
+                            <a href="product?id=${product.id}">
+                                <img src="${pageContext.request.contextPath}${product.image}"
+                                     alt="${product.name}" class="product-image">
+                                <a href="product?id=${product.id}">
+                                    <h2 class="product-title">${product.name}</h2>
+                                </a>
+
+                                <div class="product-price">$${product.price}</div>
+                                <div class="shipping-info">Free shipping</div>
                         </div>
                     </c:forEach>
-                    <!-- Product Card 1 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_1_1.png"
-                             alt="Canon PowerShot" class="product-image">
-                        <h2 class="product-title">Canon PowerShot SD1100 IS Digital ELPH Camera -
-                            Needs Repair
-                        </h2>
-                        <div class="product-price">$32.99</div>
-                        <div class="shipping-info">901,863.04 VND shipping</div>
-                    </div>
-
-                    <!-- Product Card 2 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_2_1.png"
-                             alt="Panasonic Lumix" class="product-image">
-                        <h2 class="product-title">Dmc-Fz7 Blackday Panasonic Lumix Digital Camera
-                            Body</h2>
-                        <div class="product-price">$119.36</div>
-                        <div class="shipping-info">Free shipping</div>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_3_1.png"
-                             alt="Canon PowerShot" class="product-image">
-                        <h2 class="product-title">Canon PowerShot SD1100 IS Digital ELPH Camera -
-                            Needs Repair
-                        </h2>
-                        <div class="product-price">$32.99</div>
-                        <div class="shipping-info">901,863.04 VND shipping</div>
-                    </div>
-
-                    <!-- Product Card 4 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_4_1.png"
-                             alt="Panasonic Lumix" class="product-image">
-                        <h2 class="product-title">Dmc-Fz7 Blackday Panasonic Lumix Digital Camera
-                            Body</h2>
-                        <div class="product-price">$119.36</div>
-                        <div class="shipping-info">Free shipping</div>
-                    </div>
-                    <!-- Product Card 5 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_5_1.png"
-                             alt="Canon PowerShot" class="product-image">
-                        <h2 class="product-title">Canon PowerShot SD1100 IS Digital ELPH Camera -
-                            Needs Repair
-                        </h2>
-                        <div class="product-price">$32.99</div>
-                        <div class="shipping-info">901,863.04 VND shipping</div>
-                    </div>
-
-                    <!-- Product Card 6 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_6_1.png"
-                             alt="Panasonic Lumix" class="product-image">
-                        <h2 class="product-title">Dmc-Fz7 Blackday Panasonic Lumix Digital Camera
-                            Body</h2>
-                        <div class="product-price">$119.36</div>
-                        <div class="shipping-info">Free shipping</div>
-                    </div>
-                    <!-- Product Card 7 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_7_1.png"
-                             alt="Canon PowerShot" class="product-image">
-                        <h2 class="product-title">Canon PowerShot SD1100 IS Digital ELPH Camera -
-                            Needs Repair
-                        </h2>
-                        <div class="product-price">$32.99</div>
-                        <div class="shipping-info">901,863.04 VND shipping</div>
-                    </div>
-
-                    <!-- Product Card 8 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_8_1.png"
-                             alt="Panasonic Lumix" class="product-image">
-                        <h2 class="product-title">Dmc-Fz7 Blackday Panasonic Lumix Digital Camera
-                            Body</h2>
-                        <div class="product-price">$119.36</div>
-                        <div class="shipping-info">Free shipping</div>
-                    </div>
-                    <!-- Product Card 9 -->
-                    <div class="product-card">
-                        <img src="${pageContext.request.contextPath}/public/images/products/electronics/cameras/camera_9_1.png"
-                             alt="Panasonic Lumix" class="product-image">
-                        <h2 class="product-title">Dmc-Fz7 Blackday Panasonic Lumix Digital Camera
-                            Body</h2>
-                        <div class="product-price">$119.36</div>
-                        <div class="shipping-info">Free shipping</div>
-                    </div>
-
                 </div>
             </div>
         </div>

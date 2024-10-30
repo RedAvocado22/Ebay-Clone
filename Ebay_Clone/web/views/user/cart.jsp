@@ -158,14 +158,14 @@
                         </div>
                     </div>
                     <div class="qty-select">
-                        <form action="cart" method="post" style="display: inline;">
-                            <input type="hidden" name="productId" value="${item.product.id}">
+                        <form action="cart?action=change" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="${item.product.id}">
                             <input type="hidden" name="change" value="-1">
                             <button type="submit">-</button>
                         </form>
                         <input type="text" value="${item.quantity}" readonly>
-                        <form action="cart" method="post" style="display: inline;">
-                            <input type="hidden" name="productId" value="${item.product.id}">
+                        <form action="cart?action=change" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="${item.product.id}">
                             <input type="hidden" name="change" value="1">
                             <button type="submit">+</button>
                         </form>
