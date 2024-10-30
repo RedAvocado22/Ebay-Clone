@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product Page - Magic the Gathering</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/productDetailstyle.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/productstyle.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/base/base.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -16,35 +17,36 @@
         <jsp:include page="/views/common/header.jsp"></jsp:include>
             <div class="container">
                 <div class="product-image">
-                    <img src="${pageContext.request.contextPath}/public/images/products/toys/toy_16_1.png" alt="Magic the Gathering Lord of the Rings Set Booster">
+                    <img src="${pageContext.request.contextPath}/${product.image}" 
+                     alt="">
             </div>
 
             <div class="product-details">
-                <h1>Set Booster Box Lord of the Rings Tales of Middle Earth LTR MTG</h1>
+                <h1>${product.name}</h1>
                 <div class="seller">
                     <div class="avatar">
-
-                        <img src="${pageContext.request.contextPath}/public/images/avatar/user1.png" alt="Avatar">
+                        <img src="${pageContext.request.contextPath}/${seller.avatar}" alt="${seller.avatar}">
                     </div>
                     <div class="seller-infor">
-                        <a class="seller-name" href="#">FlipSide Gaming (228642)</a>
+                        <a class="seller-name" href="#">${seller.fullname} (${seller.username})</a>
                         <br>
                         <a class="contact-seller" href="#">Contact seller</a>
                     </div>
 
                 </div>
                 <div class="price-infor">
-                    <p class="price">$154.99</p>
+                    <p class="price">${product.price}</p>
                 </div>
                 <p class="status-info">
-                    Condition: <b style="color: black;"> New/Factory Sealed </b>
+                    Stock: <b style="color: black;"> ${product.quantity} </b>
                 </p>
 
                 <label class="quantity">Quantity:</label>
-                <input type="number" id="quantity" value="1" min="1" class="quantity-input">
-
-                <button class="buy-now-btn">Buy It Now</button>
-                <button class="add-to-cart-btn">Add to cart</button>
+                <form action="cart?action=add" method="post">
+                    <input type="number" id="quantity" value="1" min="1" max="${product.quantity}" name="quantity" class="quantity-input">
+                    <input value="${product.id}" type="text" name="id" hidden>
+                    <button class="buy-now-btn" type="submit">Add to cart</button>
+                </form>
                 <button class="add-to-watchlist-btn"> Add to watchlist</button>
 
                 <div class="shipping-info">
@@ -61,46 +63,31 @@
                             purchase may be eligible for eBay Money Back Guarantee if the return request is made within 3 days
                             from delivery. See details- for more information about returns</p>
                     </div>
-                    
+
                     <div class="shipping">
-                    <p>Payment:</p>
-                    <img src="${pageContext.request.contextPath}/public/images/others/img_payment.png" alt="">
-                </div>
+                        <p>Payment:</p>
+                        <img src="${pageContext.request.contextPath}/public/images/others/img_payment.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="similar-items">
-            <h2>Similar Items</h2>
-            <div class="similar-items-grid">
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_1_1.png" alt="Canon PowerShot" class="product-image">
-                    <p class="item-title">Set of 4 - 1 of Each Type - Scene Box Lord of the Rings Tales Vol 2 LTR MTG</p>
-                    <p class="item-price">2,407,421.00 VND</p>
-                    <p class="item-shipping">Free 2-3 day shipping</p>
-                    <p class="item-sold">626 sold</p>
-                </div>
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/public/images/products/electronics/computers/pc_2_2.png" alt="Canon PowerShot" class="product-image">
-                    <p class="item-title">Lord of The Rings Tales of Middle-Earth Magic The Gathering Draft Booster Box</p>
-                    <p class="item-price">4,212,162.00 VND</p>
-                    <p class="item-shipping">+ shipping</p>
-                    <p class="item-feedback">Seller with 100% positive feedback</p>
-                </div>
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/public/images/products/electronics/tv/tv_3_1.png" alt="Canon PowerShot" class="product-image">
-                    <p class="item-title">MTG The One Ring The Lord of the Rings: Tales of Middle-earth 451 Foil Mythic</p>
-                    <p class="item-price">1,294,176.00 VND</p>
-                    <p class="item-auction">7 bids</p>
-                    <p class="item-shipping">+ 101,504.00 VND shipping</p>
-                    <p class="item-feedback">Seller with 99.3% positive feedback</p>
-                </div>
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/public/images/products/electronics/cellphones/phone_4_1.png" alt="Canon PowerShot" class="product-image">
-                    <p class="item-title">Draft Booster Box Lord of the Rings Tales of Middle Earth LTR MTG</p>
-                    <p class="item-price">3,933,026.00 VND</p>
-                    <p class="item-shipping">Free 2-3 day shipping</p>
-                    <p class="item-sold">308 sold</p>
+        <div class="container" style="margin-bottom: 50px">
+            <div class="similar-items">
+                <h2>Similar Items</h2>
+                <div class="similar-items-grid">
+                    <c:forEach var="p" items="${products}">
+                        <div class="item">
+                            <a href="product?id=${p.id}">
+                                <img src="${pageContext.request.contextPath}${p.image}" alt="${p.name}" class="product-image">
+                            </a>
+                            <a href="product?id=${p.id}">
+                                <p class="item-title">${p.name}</p>
+                            </a>
+                            <p class="item-price">${p.price}$</p>
+                            <p class="item-shipping">Free 2-3 day shipping</p>
+                            <p class="item-sold">Stock: ${p.quantity}</p>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

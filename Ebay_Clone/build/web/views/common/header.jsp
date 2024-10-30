@@ -9,6 +9,7 @@
                 <c:when test="${not empty sessionScope.account}">
                     <!-- Display Hello, account.name if account exists in session -->
                     <a href="${pageContext.request.contextPath}/account">Hello, ${sessionScope.account.fullname}</a>
+                    <a href="${pageContext.request.contextPath}/logout">Sign out</a>
                 </c:when>
                 <c:otherwise>
                     <!-- Default sign in or register if no account in session -->
@@ -37,29 +38,26 @@
         </a>
     </div>
 
-        <form id="search" action="product" method="post">
+    <form id="search" action="products" method="post">
         <div class="material-icons magnification-glass md-18">
             search
         </div>
         <input type="text" name="search" placeholder="Search for anything " />
     </form>
-    <select id="categories-dropdown">
-        <option class="dropbtn">Category
-            <i class="fa fa-caret-down"></i>
-        </option>
-        <div class="material-icons md-18">
-            arrow_drop_down
-        <div class="dropdown-content">
-            <option href="${pageContext.request.contextPath}/product">All categories</option>
-            <option href="${pageContext.request.contextPath}/product?category=1">Electronics</option>
-            <option href="${pageContext.request.contextPath}/product?category=2">Clothing</option>
-            <option href="${pageContext.request.contextPath}/product?category=3">Home & Kitchen</option>
-            <option href="${pageContext.request.contextPath}/product?category=4">Books</option>
-            <option href="${pageContext.request.contextPath}/product?category=5">Toys</option>
-            <option href="${pageContext.request.contextPath}/product?category=6">Sports</option>
-            <option href="${pageContext.request.contextPath}/product?category=7">Beauty</option>
-            <option href="${pageContext.request.contextPath}/product?category=8">Jewelry</option>
-        </div>
-    </select>
+        <select id="categories-dropdown" onchange="this.form.submit())">
+            <option href="${pageContext.request.contextPath}/products">All categories</option>
+            <div class="material-icons md-18">
+                arrow_drop_down
+                <div class="dropdown-content">
+                    <option href="${pageContext.request.contextPath}/products?category=1">Electronics</option>
+                    <option href="${pageContext.request.contextPath}/products?category=2">Clothing</option>
+                    <option href="${pageContext.request.contextPath}/products?category=3">Home & Kitchen</option>
+                    <option href="${pageContext.request.contextPath}/products?category=4">Books</option>
+                    <option href="${pageContext.request.contextPath}/products?category=5">Toys</option>
+                    <option href="${pageContext.request.contextPath}/products?category=6">Sports</option>
+                    <option href="${pageContext.request.contextPath}/products?category=7">Beauty</option>
+                    <option href="${pageContext.request.contextPath}/products?category=8">Jewelry</option>
+                </div>
+        </select>
     <button type="submit" id="button-search">Search</button>
 </header>

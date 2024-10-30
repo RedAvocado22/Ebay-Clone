@@ -7,7 +7,6 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #ffffff;
-    padding: 20px;
 }
 
 .container {
@@ -188,9 +187,7 @@ button {
 }
 
 .similar-items {
-    max-width: 860px;
-    margin: 20px 50px;
-    padding: 20px;
+    width: 100%;
     border-radius: 8px;
 }
 
@@ -200,8 +197,9 @@ button {
 }
 
 .similar-items-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
 }
 

@@ -220,9 +220,7 @@
   }
   
   /* user_infor */
-  .profile {
-    display: flex;
-  }
+
   .user-info {
     display: flex;
     justify-content: space-between;
