@@ -1,6 +1,38 @@
 /*main*/
 
+* { padding-inline-start: 0; }
 
+#nav-categories {
+    display: flex;
+    justify-content: center;
+    align-items: baseline ;
+    max-width: 1500px;
+    padding: 5px 0px;
+    height: 30px;
+    border-top: 1px solid #ddd;
+}
+
+#nav-categories a {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 0px 25px;
+    font-size: 14px;
+}
+
+#nav-categories a:hover {
+    position: relative;
+    animation-name: standout;
+    animation-duration: .1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    cursor: pointer;
+}
+
+#nav-categories a {
+  text-decoration: none;
+  color: #555555;
+}
 
 .right {
     text-align: right;
@@ -22,7 +54,6 @@ li .right:hover {
 .product-list h1 {
     max-width: 1300px;
     margin: auto;
-    margin-top: 30px;
     padding: 20px 0px;
 }
 
@@ -51,11 +82,11 @@ li .right:hover {
     width: 200px;
     height: 200px;
     object-fit:cover;
+    border-radius: 10px;
 }
 
 .image-product img {
     cursor: pointer;
-
 }
 
 .product-list {
@@ -161,11 +192,11 @@ wow
     object-position: 100% 100%;
 }
 #wow li:nth-child(4) img {
-    transform: rotateZ(-90deg);
+    object-position: 100% 100%;
 }
 
 #wow li:nth-child(5) img {
-    transform: rotateZ(-90deg);
+    object-position: 100% 100%;
 }
 
 #wow li:nth-child(6) img {
@@ -178,7 +209,7 @@ Kracher
 }
 
 
-Footer
+/*Footer*/
 
 hr {
     border: none;
@@ -188,24 +219,22 @@ hr {
 footer {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    justify-content: end;
     align-content: center;
     color: #777777;
-    max-width: 1300px;
+    max-width: 100%;
     font-size: .9em;
-    margin: auto;
 }
 
 footer ul {
-    list-style-type: none;
+    list-style: none;
 }
 
 footer li {
-    margin: 10px 0;
+    margin: 10px 96px;
 }
 
-footer h3 {
-    margin-left: 40px;
+footer h3{
+    margin: 20px 96px;
 }
 
 footer p {
@@ -230,6 +259,10 @@ footer a {
 footer h3:hover, footer li:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+footer{
+    border-top: 1px solid #ddd;
 }
 
 
@@ -292,7 +325,7 @@ footer h3:hover, footer li:hover {
 
 /*---slide-show banner---**/
 .body-slide {
-    height: 360px;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
