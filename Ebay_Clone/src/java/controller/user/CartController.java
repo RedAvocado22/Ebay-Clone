@@ -1,6 +1,7 @@
 package controller.user;
 
 import dao.CartDAO;
+import dao.ProductDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import models.Account;
 import models.Cart;
 import models.CartItem;
@@ -38,30 +40,41 @@ public class CartController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
-        
+
         if (account == null) {
             response.sendRedirect("login");
             return;
         }
-        
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        int change = Integer.parseInt(request.getParameter("change"));
-        
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String changeString = request.getParameter("change");
+        String quantityString = request.getParameter("quantity");
+        String action = request.getParameter("action");
+
+        ProductDAO productDAO = new ProductDAO();
         CartDAO cartDAO = new CartDAO();
         Cart cart = cartDAO.get(account.getUsername());
 
-        for (CartItem item : cart.getItems()) {
-            if (item.getProduct().getId() == productId) {
-                int newQuantity = item.getQuantity() + change;
-                if (newQuantity > 0) {
-                    item.setQuantity(newQuantity);
+        if ("change".equalsIgnoreCase(action)) {
+            for (CartItem item : cart.getItems()) {
+                if (item.getProduct().getId() == id) {
+                    int newQuantity = item.getQuantity() + Integer.parseInt(changeString);
+                    if (newQuantity > 0 && newQuantity <= item.getProduct().getQuantity()) {
+                        item.setQuantity(newQuantity);
+                    }
+                    break;
                 }
-                break;
             }
+        } else {
+            cart.getItems().add(new CartItem(productDAO.findById(id), Integer.parseInt(quantityString)));
         }
-        
+
         cartDAO.update(cart);
-        
+
+//        PrintWriter out = response.getWriter();
+//        for (CartItem item : cart.getItems()) {
+//            out.print(item.getProduct().getName());
+//        }
         response.sendRedirect("cart");
     }
 }
