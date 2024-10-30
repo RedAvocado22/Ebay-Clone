@@ -14,9 +14,9 @@ public class OrderDAO extends DBUtils {
         List<Order> listOd = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT o.*\n"
-                + "FROM [dbo].[Order] o\n"
-                + "JOIN [dbo].[Account] b ON o.Buyer = b.Username\n"
-                + "JOIN [dbo].[Account] s ON o.Seller = s.Username";
+                + "FROM [dbo].[Orders] o\n"
+                + "JOIN [dbo].[Accounts] b ON o.Buyer = b.Username\n"
+                + "JOIN [dbo].[Accounts] s ON o.Seller = s.Username";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -46,7 +46,7 @@ public class OrderDAO extends DBUtils {
     public void insert(Order order) {
         con = getConnection();
 
-        String sql = "INSERT INTO [dbo].[Order]\n"
+        String sql = "INSERT INTO [dbo].[Orders]\n"
                 + "           ([Total]\n"
                 + "           ,[Buyer]\n"
                 + "           ,[Seller]\n"
@@ -80,7 +80,7 @@ public class OrderDAO extends DBUtils {
 
     private int getLastId() {
         con = getConnection();
-        String sql = "SELECT TOP 1 ID FROM [dbo].[Order] ORDER BY ID DESC";
+        String sql = "SELECT TOP 1 ID FROM [dbo].[Orders] ORDER BY ID DESC";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -96,7 +96,7 @@ public class OrderDAO extends DBUtils {
 
     public Order getById(int id) {
         con = getConnection();
-        String sql = "SELECT * FROM [dbo].[Order] WHERE ID = ?";
+        String sql = "SELECT * FROM [dbo].[Orders] WHERE ID = ?";
         Order order = null;
 
         try {
@@ -131,7 +131,7 @@ public class OrderDAO extends DBUtils {
 
     public void updateOrderStatus(int orderId, String status) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Order] SET Status = ? WHERE ID = ?";
+        String sql = "UPDATE [dbo].[Orders] SET Status = ? WHERE ID = ?";
 
         try {
             ps = con.prepareStatement(sql);

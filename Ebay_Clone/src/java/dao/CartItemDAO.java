@@ -20,7 +20,7 @@ public class CartItemDAO extends DBUtils {
 
     public List<CartItem> getItemsByCartId(String username) {
         List<CartItem> cartItems = new ArrayList<>();
-        String sql = "SELECT ID_Product, Quantity FROM Cart c \n"
+        String sql = "SELECT ID_Product, Quantity FROM Carts c \n"
                 + "JOIN CartDetail cd ON c.ID = cd.ID_Cart\n"
                 + "WHERE c.ID_Account = ?";
 

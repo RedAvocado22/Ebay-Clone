@@ -82,7 +82,7 @@ public class OrderItemDAO extends DBUtils {
         List<OrderItem> listItems = new ArrayList<>();
         String sql = "SELECT p.ID, od.Quantity "
                 + "FROM [dbo].[OrderDetail] od "
-                + "JOIN [dbo].[Product] p ON od.ID_Product = p.ID "
+                + "JOIN [dbo].[Products] p ON od.ID_Product = p.ID "
                 + "WHERE od.ID_Order = ?";
 
         try {

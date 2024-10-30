@@ -19,7 +19,7 @@ public class CartDAO extends DBUtils {
 
     public Cart get(String username) {
         con = getConnection();
-        String sql = "SELECT * FROM Cart WHERE ID_Account = ?";
+        String sql = "SELECT * FROM Carts WHERE ID_Account = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, username);

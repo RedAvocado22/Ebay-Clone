@@ -13,7 +13,7 @@ public class FeedbackDAO extends DBUtils {
         List<Feedback> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT *\n"
-                + "FROM [dbo].[Feedback]"
+                + "FROM [dbo].[Feedbacks]"
                 + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class FeedbackDAO extends DBUtils {
 
     public void insert(Feedback feedback) {
         con = getConnection();
-        String sql = "INSERT INTO [dbo].[Feedback]\n"
+        String sql = "INSERT INTO [dbo].[Feedbacks]\n"
                 + "           ([Content]\n"
                 + "           ,[Type]\n"
                 + "           ,[Buyer]\n"
@@ -62,7 +62,7 @@ public class FeedbackDAO extends DBUtils {
 
     public void update(Feedback feedback) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Feedback]\n"
+        String sql = "UPDATE [dbo].[Feedbacks]\n"
                 + "   SET [Content] = ?\n"
                 + "      ,[Type] = ?\n"
                 + " WHERE [ID] = ? ";
@@ -79,7 +79,7 @@ public class FeedbackDAO extends DBUtils {
 
     public void delete(Feedback feedback) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Feedback]\n"
+        String sql = "UPDATE [dbo].[Feedbacks]\n"
                 + "   SET [Status] = 0\n"
                 + " WHERE [ID] = ?";
         try {

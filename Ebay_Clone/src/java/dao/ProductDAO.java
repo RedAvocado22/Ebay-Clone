@@ -15,8 +15,8 @@ public class ProductDAO extends DBUtils {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT p.*\n"
-                + "  FROM [dbo].[Product] p\n"
-                + "  JOIN [dbo].[Account] a\n"
+                + "  FROM [dbo].[Products] p\n"
+                + "  JOIN [dbo].[Accounts] a\n"
                 + "  ON p.Seller = a.Username;";
         try {
             ps = con.prepareStatement(sql);
@@ -29,9 +29,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
 
                 listFound.add(product);
             }
@@ -45,8 +46,8 @@ public class ProductDAO extends DBUtils {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT p.*\n"
-                + "FROM [dbo].[Product] p\n"
-                + "JOIN [dbo].[Account] a\n"
+                + "FROM [dbo].[Products] p\n"
+                + "JOIN [dbo].[Accounts] a\n"
                 + "ON p.Seller = a.Username\n"
                 + "WHERE [Name] LIKE ? ";
         try {
@@ -60,9 +61,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
 
                 listFound.add(product);
             }
@@ -76,8 +78,8 @@ public class ProductDAO extends DBUtils {
         Product productFound = null;
         con = getConnection();
         String sql = "SELECT p.*\n"
-                + "FROM [dbo].[Product] p\n"
-                + "JOIN [dbo].[Account] a\n"
+                + "FROM [dbo].[Products] p\n"
+                + "JOIN [dbo].[Accounts] a\n"
                 + "ON p.Seller = a.Username\n"
                 + "WHERE [ID] = ? ";
         try {
@@ -90,9 +92,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 AccountDAO accountDAO = new AccountDAO();
                 Account sellerAccount = accountDAO.getByUsername(seller);
-                productFound = new Product(id, name, price, quantity, img, sellerAccount);
+                productFound = new Product(id, name, price, quantity, img, category,sellerAccount);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -102,7 +105,7 @@ public class ProductDAO extends DBUtils {
 
     public void insert(Product product) {
         con = getConnection();
-        String sql = "INSERT INTO [dbo].[Product]\n"
+        String sql = "INSERT INTO [dbo].[Products]\n"
                 + "           ([Name]\n"
                 + "           ,[Price]\n"
                 + "           ,[Quantity]\n"
@@ -133,7 +136,7 @@ public class ProductDAO extends DBUtils {
 
     public void update(Product product) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Product]\n"
+        String sql = "UPDATE [dbo].[Products]\n"
                 + "   SET [Name] = ?\n"
                 + "      ,[Price] = ?\n"
                 + "      ,[Quantity] = ?\n"
@@ -158,7 +161,7 @@ public class ProductDAO extends DBUtils {
 
     public void delete(Product product) {
         con = getConnection();
-        String sql = "DELETE FROM [dbo].[Product]\n"
+        String sql = "DELETE FROM [dbo].[Products]\n"
                 + "      WHERE [ID] = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -176,7 +179,7 @@ public class ProductDAO extends DBUtils {
         List<Product> listFound = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT TOP 12 *\n"
-                + "  FROM [dbo].[Product]\n"
+                + "  FROM [dbo].[Products]\n"
                 + "  ORDER BY [ID] DESC";
         try {
             ps = con.prepareStatement(sql);
@@ -189,9 +192,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
 
                 listFound.add(product);
             }
@@ -205,7 +209,7 @@ public class ProductDAO extends DBUtils {
         int totalRecord = 0;
         con = getConnection();
         String sql = "SELECT COUNT(*) AS total\n"
-                + "  FROM [dbo].[Product]\n";
+                + "  FROM [dbo].[Products]\n";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -224,7 +228,7 @@ public class ProductDAO extends DBUtils {
         int pageSize = 30;
         int offset = (page - 1) * pageSize;
         String sql = "SELECT *\n"
-                + "FROM [dbo].[Product]\n"
+                + "FROM [dbo].[Products]\n"
                 + "ORDER BY [ID]\n"
                 + "OFFSET ? ROWS\n"
                 + "FETCH NEXT ? ROWS ONLY";
@@ -242,9 +246,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
                 listFound.add(product);
             }
         } catch (SQLException e) {
@@ -256,12 +261,10 @@ public class ProductDAO extends DBUtils {
     public int findTotalRecordByCategory(Category category) {
         int totalRecord = 0;
         con = getConnection();
-        String sql = "SELECT COUNT(p.ID ) as total\n"
-                + "FROM [dbo].[Product] p\n"
-                + "RIGHT OUTER JOIN [dbo].[Products_To_Categories] ptc \n"
-                + "ON p.ID = ptc.ID_Product\n"
-                + "RIGHT OUTER JOIN [dbo].[Categories] c\n"
-                + "ON c.[ID] = ptc.[ID_Categories]\n"
+        String sql = "SELECT COUNT(p.ID) as total\n"
+                + "FROM [dbo].[Products] p\n"
+                + "JOIN [dbo].[Categories] c\n"
+                + "ON p.[CategoryID] = c.[ID]\n"
                 + "WHERE c.Name = ? ";
         try {
             ps = con.prepareStatement(sql);
@@ -282,11 +285,9 @@ public class ProductDAO extends DBUtils {
         int pageSize = 30;
         int offset = (page - 1) * pageSize;
         String sql = "SELECT p.*\n"
-                + "FROM [dbo].[Product] p\n"
-                + "RIGHT OUTER JOIN [dbo].[Products_To_Categories] ptc \n"
-                + "ON p.ID = ptc.ID_Product\n"
-                + "RIGHT OUTER JOIN [dbo].[Categories] c\n"
-                + "ON c.[ID] = ptc.[ID_Categories]\n"
+                + "FROM [dbo].[Products] p\n"
+                + "JOIN [dbo].[Categories] c\n"
+                + "ON p.[CategoryID] = c.[ID]\n"
                 + "WHERE c.Name = ? \n"
                 + "ORDER BY p.ID\n"
                 + "OFFSET ? ROWS\n"
@@ -305,10 +306,11 @@ public class ProductDAO extends DBUtils {
                 double price = rs.getDouble("Price");
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
-                String seller = rs.getString("Seller");
+                String seller = rs.getString("Seller");               
+                int categoryID = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, categoryID, sellerAccount);
                 listFound.add(product);
             }
         } catch (SQLException e) {
@@ -322,10 +324,8 @@ public class ProductDAO extends DBUtils {
         con = getConnection();
         String sql = "SELECT COUNT(p.ID ) as total\n"
                 + "FROM [dbo].[Product] p\n"
-                + "RIGHT OUTER JOIN [dbo].[Products_To_Categories] ptc \n"
-                + "ON p.ID = ptc.ID_Product\n"
-                + "RIGHT OUTER JOIN [dbo].[Categories] c\n"
-                + "ON c.[ID] = ptc.[ID_Categories]\n"
+                + "JOIN [dbo].[Categories] c\n"
+                + "ON c.[ID] = p.[CategoryID]\n"
                 + "WHERE p.Name LIKE ?";
         try {
             ps = con.prepareStatement(sql);
@@ -347,10 +347,8 @@ public class ProductDAO extends DBUtils {
         int offset = (page - 1) * pageSize;
         String sql = "SELECT p.*\n"
                 + "FROM [dbo].[Product] p\n"
-                + "RIGHT OUTER JOIN [dbo].[Products_To_Categories] ptc \n"
-                + "ON p.ID = ptc.ID_Product\n"
-                + "RIGHT OUTER JOIN [dbo].[Categories] c\n"
-                + "ON c.[ID] = ptc.[ID_Categories]\n"
+                + "JOIN [dbo].[Categories] c\n"
+                + "ON c.[ID] = p.[CategoryID]\n"
                 + "WHERE p.Name LIKE ? \n"
                 + "ORDER BY p.ID\n"
                 + "OFFSET ? ROWS\n"
@@ -370,9 +368,10 @@ public class ProductDAO extends DBUtils {
                 int quantity = rs.getInt("Quantity");
                 String img = rs.getString("Image");
                 String seller = rs.getString("Seller");
+                int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, sellerAccount);
+                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
                 listFound.add(product);
             }
         } catch (SQLException e) {
