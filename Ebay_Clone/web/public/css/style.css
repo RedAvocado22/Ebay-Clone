@@ -2,6 +2,9 @@
 
 * { padding-inline-start: 0; }
 
+body {
+    margin: 0;
+}
 #nav-categories {
     display: flex;
     justify-content: center;
