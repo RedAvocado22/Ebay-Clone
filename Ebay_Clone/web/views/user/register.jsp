@@ -23,13 +23,13 @@
     <body>
 
         <div class="sign-in">
-            Already have an account? <a href="${pageContext.request.contextPath}/views/user/login.jsp">Sign in</a>
+            Already have an account? <a href="${pageContext.request.contextPath}/login">Sign in</a>
         </div>
 
         <div class="logo-img">
 
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/views/home.jsp"><img src="${pageContext.request.contextPath}/public/images/icon/ebay_icon.png" alt=""></a>
+                <a href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/public/images/icon/ebay_icon.png" alt=""></a>
 
             </div>
             <div class="image-section">
