@@ -159,7 +159,7 @@ footer p {
 /* Product list */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     justify-items: center; /* Căn giữa từng sản phẩm trong lưới */
     margin: 10px 20px;
@@ -182,7 +182,7 @@ footer p {
 
 .product-title {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 
 .product-price {

@@ -11,14 +11,14 @@ public class FeedbackDAO extends DBUtils {
 
     public List<Feedback> getAllByUsername(String username) {
         List<Feedback> listFound = new ArrayList<>();
+        List<String> buyers = new ArrayList(), sellers = new ArrayList();
         con = getConnection();
-        String sql = "SELECT *\n"
-                + "FROM [dbo].[Feedbacks]"
-                + "WHERE [Username] = ?";
+        String sql = "SELECT * FROM Feedbacks WHERE Seller = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
+
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String content = rs.getString("Content");
@@ -27,8 +27,18 @@ public class FeedbackDAO extends DBUtils {
                 String buyerName = rs.getString("Buyer");
                 String sellerName = rs.getString("Seller");
 
-                listFound.add(new Feedback(id, content, type, status, buyerName, sellerName));
+                buyers.add(buyerName);
+                sellers.add(sellerName);
+                
+                listFound.add(new Feedback(id, content, type, status, null, null));
             }
+            
+            AccountDAO accountDAO = new AccountDAO();
+            for (int i = 0; i < listFound.size(); i++) {
+                listFound.get(i).setBuyer(accountDAO.getByUsername(buyers.get(i)));
+                listFound.get(i).setSeller(accountDAO.getByUsername(sellers.get(i)));
+            }
+            
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -51,8 +61,8 @@ public class FeedbackDAO extends DBUtils {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, feedback.getContent());
             ps.setString(2, feedback.getType());
-            ps.setString(3, feedback.getBuyer());
-            ps.setString(4, feedback.getSeller());
+            ps.setString(3, feedback.getBuyer().getUsername());
+            ps.setString(4, feedback.getSeller().getUsername());
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
         } catch (SQLException e) {
@@ -91,4 +101,12 @@ public class FeedbackDAO extends DBUtils {
             e.printStackTrace();
         }
     }
+
+//    public static void main(String[] args) {
+//        FeedbackDAO feedbackDAO = new FeedbackDAO();
+//
+//        for (Feedback feedback : feedbackDAO.getAllByUsername("admin1")) {
+//            System.out.println(feedback.getBuyer().getUsername());
+//        }
+//    }
 }

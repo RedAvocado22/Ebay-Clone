@@ -71,43 +71,28 @@
 
                     <!-- Các nút chọn feedback -->
                     <div class="feedback-buttons">
-                        <button class="btn-feedback" onclick="showFeedback('positive')">Positive: 1</button>
-                        <button class="btn-feedback" onclick="showFeedback('neutral')">Neutral: 1</button>
-                        <button class="btn-feedback" onclick="showFeedback('negative')">Negative: 1</button>
+                        <button class="btn-feedback" onclick="showFeedback('positive')">Positive: ${positive.size()}</button>
+                        <button class="btn-feedback" onclick="showFeedback('negative')">Negative: ${negative.size()}</button>
                     </div>
 
                     <!-- Nội dung feedback sẽ hiển thị tại đây -->
                     <div class="feedback-content">
                         <!-- Positive feedback -->
                         <div id="positive-feedback" class="feedback-item hidden">
-                            <div class="feedback-box">
-                                <div class="avatar">
-                                    <img src="${pageContext.request.contextPath}/public/images/products/toys/toy_19_1.png" alt="Avatar">
-                                </div>
-                                <div class="feedback-content">
-                                    <p><strong>Người dùng:</strong> <br>Đây là một nội dung feedback mẫu. Tôi rất hài lòng với dịch vụ này.</p>
-                                    <div class="feedback-actions">
-                                        <span class="material-icons like">thumb_up</span>
-                                        <span class="material-icons dislike">thumb_down</span>
+                            <c:forEach var="p" items="positive">
+                                <div class="feedback-box">
+                                    <div class="avatar">
+                                        <img src="${pageContext.request.contextPath}${p.buyer.avatar}" alt="${p.buyer.name}">
+                                    </div>
+                                    <div class="feedback-content">
+                                        <p><strong>User: ${p.buyer.name}</strong> <br>${p.content}</p>
+                                        <div class="feedback-actions">
+                                            <span class="material-icons like">thumb_up</span>
+                                            <span class="material-icons dislike">thumb_down</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Neutral feedback -->
-                        <div id="neutral-feedback" class="feedback-item hidden">
-                            <div class="feedback-box">
-                                <div class="avatar">
-                                    <img src="${pageContext.request.contextPath}/public/images/products/toys/toy_11_1.png" alt="Avatar">
-                                </div>
-                                <div class="feedback-content">
-                                    <p><strong>Người dùng 2:</strong> <br>Giao hàng nhanh, nhưng mà hàng ko đc như mong đợi.</p>
-                                    <div class="feedback-actions">
-                                        <span class="material-icons like">thumb_up</span>
-                                        <span class="material-icons dislike">thumb_down</span>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
 
                         <!-- Negative feedback -->

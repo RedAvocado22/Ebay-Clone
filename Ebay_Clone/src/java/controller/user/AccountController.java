@@ -5,6 +5,8 @@
  */
 package controller.user;
 
+import dao.FeedbackDAO;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +14,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import models.Account;
+import models.Feedback;
+import models.Product;
 
 /**
  *
@@ -31,6 +38,23 @@ public class AccountController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        ProductDAO productDAO = new ProductDAO();
+        
+        Account account = (Account) session.getAttribute("account");
+        FeedbackDAO feedbackDAO = new FeedbackDAO();
+        
+        List<Product> products = productDAO.getAll();
+        List<Feedback> feedbacks = feedbackDAO.getAllByUsername(account.getUsername());
+        
+        products = products.stream().filter(p -> p.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();
+        List<Feedback> positive = feedbacks.stream().filter(f -> "positive".equals(f.getType())).toList();
+        List<Feedback> negetive = feedbacks.stream().filter(f -> "negative".equals(f.getType())).toList();
+        
+        request.setAttribute("products", products);
+        request.setAttribute("positive", positive);
+        request.setAttribute("negative", negetive);
+        
         request.getRequestDispatcher("views/user/account.jsp").forward(request, response);
     }
 
