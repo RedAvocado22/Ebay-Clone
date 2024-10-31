@@ -136,6 +136,15 @@
             .total-section .btn-checkout:hover {
                 background-color: #e65c00;
             }
+
+            .button-remove {
+                background-color: white;
+                color: black;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+            }
         </style>
     </head>
     <body class="cart">
@@ -174,7 +183,9 @@
                         Total: ${lineTotal}$
                     </div>
                     <div class="actions">
-                        <a href="#">Save for later</a> | <a href="#">Remove</a>
+                        <form action="cart?action=delete&id=${item.product.id}" method="post">
+                            <button type="submit" class="button-remove">Remove</button>
+                        </form>
                     </div>
                 </div>
             </c:forEach>

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import models.Cart;
 import models.CartItem;
+import models.Product;
 import utils.DBUtils;
 
 /**
@@ -50,14 +51,44 @@ public class CartDAO extends DBUtils {
                 ps.setInt(1, cartItem.getQuantity());
                 ps.setInt(2, cartItem.getProduct().getId());
                 ps.setInt(3, cart.getId());
-
                 // Execute the update for each item 
                 ps.executeUpdate();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
+        }
+    }
+
+    public void add(Product product, int quantity, Cart cart) {
+        con = getConnection();
+        String sql = "insert CartDetail (ID_Product, Quantity, ID_Cart) values (?, ?, ?)";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, product.getId());
+            ps.setInt(2, quantity);
+            ps.setInt(3, cart.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void delete(Product product, Cart cart) {
+        con = getConnection();
+        String sql = "delete CartDetail where ID_Product = ? and ID_Cart = ?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, product.getId());
+            ps.setInt(2, cart.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 //    public static void main(String[] args) {

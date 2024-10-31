@@ -55,21 +55,43 @@ public class CartController extends HttpServlet {
         CartDAO cartDAO = new CartDAO();
         Cart cart = cartDAO.get(account.getUsername());
 
-        if ("change".equalsIgnoreCase(action)) {
-            for (CartItem item : cart.getItems()) {
-                if (item.getProduct().getId() == id) {
-                    int newQuantity = item.getQuantity() + Integer.parseInt(changeString);
-                    if (newQuantity > 0 && newQuantity <= item.getProduct().getQuantity()) {
-                        item.setQuantity(newQuantity);
+        switch (action) {
+            case "change" -> {
+                for (CartItem item : cart.getItems()) {
+                    if (item.getProduct().getId() == id) {
+                        int newQuantity = item.getQuantity() + Integer.parseInt(changeString);
+                        if (newQuantity > 0 && newQuantity <= item.getProduct().getQuantity()) {
+                            item.setQuantity(newQuantity);
+                        }
+                        break;
                     }
-                    break;
+                }
+                cartDAO.update(cart);
+            }
+
+            case "add" -> {
+                boolean isExist = cart.getItems().stream().anyMatch(c -> c.getProduct().getId() == id);
+
+                if (isExist) {
+                    for (CartItem item : cart.getItems()) {
+                        if (item.getProduct().getId() == id) {
+                            int newQuantity = item.getQuantity() + Integer.parseInt(quantityString);
+                            if (newQuantity > 0 && newQuantity <= item.getProduct().getQuantity()) {
+                                item.setQuantity(Math.min(newQuantity, item.getProduct().getQuantity()));
+                            }
+                            break;
+                        }
+                    }
+                    cartDAO.update(cart);
+                } else {
+                    cartDAO.add(productDAO.findById(id), Integer.parseInt(quantityString), cart);
                 }
             }
-        } else {
-            cart.getItems().add(new CartItem(productDAO.findById(id), Integer.parseInt(quantityString)));
-        }
 
-        cartDAO.update(cart);
+            case "delete" -> {
+                cartDAO.delete(productDAO.findById(id), cart);
+            }
+        }
 
 //        PrintWriter out = response.getWriter();
 //        for (CartItem item : cart.getItems()) {
