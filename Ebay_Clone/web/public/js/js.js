@@ -89,3 +89,69 @@ function scrollb(list, direction) {
 
 document.querySelector(".arrow-left").addEventListener("click", () => scrollb("geschenkideen", "left"));
 document.querySelector(".arrow-right").addEventListener("click", () => scrollb("geschenkideen", "right"));
+
+//another-banner
+// Slide show code for footer images
+const listFooter = document.querySelector('.list-footer');
+const footerImgs = document.getElementsByClassName('footer-banners');
+const footerLeft = document.querySelector('.footer-left');
+const footerRight = document.querySelector('.footer-right');
+const length2 = footerImgs.length;
+let currentFooter = 0;
+
+const handleFooterSlide = () => {
+    if (currentFooter === length2 - 1) {
+        currentFooter = 0;
+        listFooter.style.transform = `translateX(0px)`;
+    } else {
+        currentFooter++;
+        let width = footerImgs[0].offsetWidth;
+        listFooter.style.transform = `translateX(${width * -1 * currentFooter}px)`;
+    }
+
+    const activeElement = document.querySelector('.footer-active');
+    if (activeElement) {
+        activeElement.classList.remove('footer-active');
+    }
+
+    const newActiveElement = document.querySelector(`.footer-banners:nth-child(${currentFooter + 1})`);
+    if (newActiveElement) {
+        newActiveElement.classList.add('footer-active');
+    } else {
+        console.error('New active element not found');
+    }
+};
+
+let handleFooterEventChangeSlide = setInterval(handleFooterSlide, 4000);
+
+footerRight.addEventListener('click', () => {
+    clearInterval(handleFooterEventChangeSlide);
+    handleFooterSlide();
+    handleFooterEventChangeSlide = setInterval(handleFooterSlide, 4000);
+});
+
+footerLeft.addEventListener('click', () => {
+    clearInterval(handleFooterEventChangeSlide);
+    if (currentFooter === 0) {
+        currentFooter = length2 - 1;
+        let width = footerImgs[0].offsetWidth;
+        listFooter.style.transform = `translateX(${width * -1 * currentFooter}px)`;
+    } else {
+        currentFooter--;
+        let width = footerImgs[0].offsetWidth;
+        listFooter.style.transform = `translateX(${width * -1 * currentFooter}px)`;
+    }
+
+    const activeElement = document.querySelector('.footer-active');
+    if (activeElement) {
+        activeElement.classList.remove('footer-active');
+    }
+
+    const newActiveElement = document.querySelector(`.footer-banners:nth-child(${currentFooter + 1})`);
+    if (newActiveElement) {
+        newActiveElement.classList.add('footer-active');
+    } else {
+        console.error('New active element not found');
+    }
+    handleFooterEventChangeSlide = setInterval(handleFooterSlide, 4000);
+});
