@@ -81,5 +81,3 @@ function showFeedback(type) {
         document.querySelector('button[onclick="showFeedback(\'negative\')"]').classList.add('open');
     }
 }
-
-
