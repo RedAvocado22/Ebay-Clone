@@ -211,64 +211,6 @@ Kracher
     transform: rotateZ(-90deg);
 }
 
-
-/*Footer*/
-
-hr {
-    border: none;
-    border-bottom: 1px solid #BBBBBB;
-}
-
-footer {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    align-content: center;
-    color: #777777;
-    max-width: 100%;
-    font-size: .9em;
-}
-
-footer ul {
-    list-style: none;
-}
-
-footer li {
-    margin: 10px 96px;
-}
-
-footer h3{
-    margin: 20px 96px;
-}
-
-footer p {
-    font-size: .8em;
-    grid-column: 1/6;
-    margin: 40px auto;
-}
-
-footer p a {
-    text-decoration: underline;
-}
-
-footer p a:hover {
-    color: black;
-}
-
-footer a {
-    color:#777777;
-    text-decoration: none;
-}
-
-footer h3:hover, footer li:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-footer{
-    border-top: 1px solid #ddd;
-}
-
-
 /*responsive tablet*/
 
 @media only screen and (max-width: 1000px) {

@@ -66,7 +66,7 @@
                     <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
                 </section>
 
-                <section id="feedback-section" style="display: none;"">
+                <section id="feedback-section" style="display: none;">
                     <h2>Customer Feedback</h2>
 
                     <!-- Các nút chọn feedback -->
