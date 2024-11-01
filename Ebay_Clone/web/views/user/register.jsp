@@ -38,18 +38,18 @@
 
                 <form method="POST" action="register">
                     <div class="username-input width-input">
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" placeholder="Username" name="username">
                     </div>
                     <div class="input-group width-input">
-                        <input type="text" placeholder="First name" required>
-                        <input type="text" placeholder="Last name" required>
+                        <input type="text" placeholder="First name" name="firstName">
+                        <input type="text" placeholder="Last name" name="lastName">
                     </div>
                     <div class="email-input width-input">
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" placeholder="Email" name="email">
                     </div>
 
                     <div class="password-field width-input">
-                        <input type="password" placeholder="Password" required>
+                        <input type="password" placeholder="Password" name="password">
                         <button type="button" class="toggle-password"></button>
                     </div>
                     <span style="color: red">${error}</span>

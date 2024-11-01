@@ -41,44 +41,45 @@ public class RegisterController extends HttpServlet {
         String error = validateInput(username, password, firstName, lastName, email, request);
 
         if (error != null) {
-            request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
+            request.getRequestDispatcher("register").forward(request, response);
             return;
         }
 
         Account account = new Account(username, password, firstName + " " + lastName, email, "user", "1", avatar);
         if (accountDAO.register(account)) {
             response.sendRedirect("login");
-        } else {
-            request.setAttribute("error", "Registration failed. The username or email may already be in use.");
-            request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
         }
+
+        request.setAttribute("error", "Registration failed. The username or email may already be in use.");
+        request.getRequestDispatcher("register").forward(request, response);
+//        response.sendRedirect("register");
     }
 
     private String validateInput(String username, String password, String firstName, String lastName, String email, HttpServletRequest request) {
         if (username == null || username.isEmpty()) {
-            request.setAttribute("usernameError", "Username is required.");
+            request.setAttribute("error", "Username is required.");
             return "username";
         }
         if (firstName == null || firstName.isEmpty()) {
-            request.setAttribute("firstNameError", "First name is required.");
+            request.setAttribute("error", "First name is required.");
             return "name";
         }
         if (lastName == null || lastName.isEmpty()) {
-            request.setAttribute("lastNameError", "Last name is required.");
+            request.setAttribute("error", "Last name is required.");
             return "name";
         }
         if (email == null || email.isEmpty()) {
-            request.setAttribute("emailError", "Email is required.");
+            request.setAttribute("error", "Email is required.");
             return "email";
         } else if (!Pattern.matches(EMAIL_REGEX, email)) {
-            request.setAttribute("emailError", "Invalid email format.");
+            request.setAttribute("error", "Invalid email format.");
             return "email";
         }
         if (password == null || password.isEmpty()) {
-            request.setAttribute("passwordError", "Password is required.");
+            request.setAttribute("error", "Password is required.");
             return "password";
         } else if (password.length() < MIN_PASSWORD_LENGTH) {
-            request.setAttribute("passwordError", "Password must be at least " + MIN_PASSWORD_LENGTH + " characters.");
+            request.setAttribute("error", "Password must be at least " + MIN_PASSWORD_LENGTH + " characters.");
             return "password";
         }
         return null;
