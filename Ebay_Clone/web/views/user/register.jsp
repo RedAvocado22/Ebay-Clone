@@ -36,7 +36,7 @@
             <div class="form-section">
                 <h1 class="form-title">Create an account</h1>
 
-                <form method="POST" action="register">
+                <form method="post" action="register">
                     <div class="username-input width-input">
                         <input type="text" placeholder="Username" name="username">
                     </div>
@@ -52,7 +52,9 @@
                         <input type="password" placeholder="Password" name="password">
                         <button type="button" class="toggle-password"></button>
                     </div>
-                    <span style="color: red">${error}</span>
+                    <div class="password-field width-input">
+                        <span style="color: red">${error}</span>
+                    </div>
                     <p class="terms">By selecting Create personal account, you agree to our <a href="#">User Agreement</a>
                         and acknowledge reading our <a href="#">User Privacy Notice</a>.</p>
                     <button type="submit" class="create-btn">Create personal account</button>
@@ -62,7 +64,7 @@
                     <div class="or-section">
                         <span></span>
                     </div>
-                 
+
                     <div class="social-icons">
                         <button class="google social-login">Google</button>
                         <button class="facebook social-login">Facebook</button>
