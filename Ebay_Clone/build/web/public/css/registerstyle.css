@@ -96,12 +96,21 @@ h1 {
 .input-group {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+}
+
+.username-input input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 40px;
+    background-color: #f7f7f7;
 }
 
 .input-group input {
     width: 48%;
     padding: 10px;
+    margin: 20px 0; 
     border: 1px solid #ddd;
     border-radius: 5px;
     height: 40px;

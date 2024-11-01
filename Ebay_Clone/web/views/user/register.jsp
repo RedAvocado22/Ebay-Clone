@@ -1,9 +1,3 @@
-<%-- 
-    Document   : register
-    Created on : Oct 26, 2024, 12:08:11 AM
-    Author     : ASUS
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,7 +36,10 @@
             <div class="form-section">
                 <h1 class="form-title">Create an account</h1>
 
-                <form>
+                <form method="POST" action="register">
+                    <div class="username-input width-input">
+                        <input type="text" placeholder="Username" required>
+                    </div>
                     <div class="input-group width-input">
                         <input type="text" placeholder="First name" required>
                         <input type="text" placeholder="Last name" required>
@@ -55,6 +52,7 @@
                         <input type="password" placeholder="Password" required>
                         <button type="button" class="toggle-password"></button>
                     </div>
+                    <span style="color: red">${error}</span>
                     <p class="terms">By selecting Create personal account, you agree to our <a href="#">User Agreement</a>
                         and acknowledge reading our <a href="#">User Privacy Notice</a>.</p>
                     <button type="submit" class="create-btn">Create personal account</button>
@@ -64,7 +62,7 @@
                     <div class="or-section">
                         <span></span>
                     </div>
-
+                 
                     <div class="social-icons">
                         <button class="google social-login">Google</button>
                         <button class="facebook social-login">Facebook</button>
