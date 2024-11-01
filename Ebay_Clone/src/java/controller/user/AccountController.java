@@ -5,6 +5,7 @@
  */
 package controller.user;
 
+import dao.AccountDAO;
 import dao.FeedbackDAO;
 import dao.ProductDAO;
 import java.io.IOException;
@@ -39,26 +40,53 @@ public class AccountController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ProductDAO productDAO = new ProductDAO();
-        
-        Account account = (Account) session.getAttribute("account");
+
         FeedbackDAO feedbackDAO = new FeedbackDAO();
-        
+        ProductDAO productDAO = new ProductDAO();
+        AccountDAO accountDAO = new AccountDAO();
+
+        Account account;
+        String seller = request.getParameter("username");
+        if (seller == null) {
+            account = (Account) session.getAttribute("account");
+        } else {
+            account = accountDAO.getByUsername(seller);
+            request.setAttribute("username", seller);
+        }
+
         List<Product> products = productDAO.getAll();
         List<Feedback> feedbacks = feedbackDAO.getAllByUsername(account.getUsername());
-        
-        products = products.stream().filter(p -> p.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();
-        List<Feedback> positive = feedbacks.stream().filter(f -> "positive".equals(f.getType())).toList();
-        List<Feedback> negetive = feedbacks.stream().filter(f -> "negative".equals(f.getType())).toList();
-        
-        request.setAttribute("products", products);
-        request.setAttribute("positive", positive);
-        request.setAttribute("negative", negetive);
-        
+
+        String section = request.getParameter("section");
+        if (section == null) {
+            section = "about";
+        }
+
+        switch (section) {
+            case "about" -> {
+                products = products.stream().filter(p -> p.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();
+                request.setAttribute("products", products);
+            }
+
+            case "feedback" -> {
+                List<Feedback> positive = feedbacks.stream().filter(f -> "positive".equals(f.getType())).toList();
+                List<Feedback> negetive = feedbacks.stream().filter(f -> "negative".equals(f.getType())).toList();
+
+                request.setAttribute("positive", positive);
+                request.setAttribute("negative", negetive);
+            }
+        }
+
+        request.setAttribute("section", section);
+        request.setAttribute("account", account);
+
+        PrintWriter out = response.getWriter();
+        for (Product feedback : products) {
+            out.println(feedback.getName());
+        }
         request.getRequestDispatcher("views/user/account.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -86,15 +114,5 @@ public class AccountController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

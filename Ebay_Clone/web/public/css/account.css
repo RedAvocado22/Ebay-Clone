@@ -302,6 +302,8 @@ footer p {
 }
 
 .feedback-content {
+    display: flex;
+    gap: 50px;
     margin-top: 20px;
 }
 
@@ -326,10 +328,6 @@ footer p {
 }
 
 .feedback-item {
-    display: none;
-}
-
-.feedback-item.active {
     display: block; /* Hiển thị phần feedback được chọn */
 }
 
