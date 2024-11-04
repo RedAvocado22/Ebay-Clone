@@ -12,7 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-//import java.io.PrintWriter;
 import java.util.List;
 import models.Product;
 
@@ -37,12 +36,10 @@ public class ProductsController extends HttpServlet {
         }
         
         if (keyword != null) {
-            products = products.stream().filter(p -> p.getName().contains(keyword)).toList();
+            products = products.stream().filter(p -> p.getName().toLowerCase().contains(keyword.toLowerCase())).toList();
         }
         
         request.setAttribute("products", products);
-//        PrintWriter out = response.getWriter();
-//        products.forEach(p -> out.println(p.toString()));
         request.getRequestDispatcher("/views/user/products.jsp").forward(request, response);
     }
 

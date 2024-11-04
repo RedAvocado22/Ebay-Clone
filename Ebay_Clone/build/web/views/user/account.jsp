@@ -49,7 +49,6 @@
                                     </a>
                                     <div class="product-price">${product.price}</div>
                                     <div class="shipping-info">Free shipping</div>
-<<<<<<< Updated upstream
                             </div>
                         </c:forEach>
                     </div>
