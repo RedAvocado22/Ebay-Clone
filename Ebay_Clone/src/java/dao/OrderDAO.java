@@ -11,7 +11,9 @@ import utils.DBUtils;
 public class OrderDAO extends DBUtils {
 
     public List<Order> getAll() {
-        List<Order> listOd = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
+        List<String> buyers = new ArrayList<>();
+        List<String> sellers = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT o.*\n"
                 + "FROM [dbo].[Orders] o\n"
@@ -23,24 +25,28 @@ public class OrderDAO extends DBUtils {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 int total = rs.getInt("Total");
-                String buyer = rs.getString("Buyer");
-                String seller = rs.getString("Seller");
+                String buyerName = rs.getString("Buyer");
+                String sellerName = rs.getString("Seller");
                 String status = rs.getString("Status");
 
-                Account sellerAccount = new Account();
-                Account buyerAccount = new Account();
-                buyerAccount.setUsername(buyer);
-                sellerAccount.setUsername(seller);
+                buyers.add(buyerName);
+                sellers.add(sellerName);
 
-                List<OrderItem> orderItems = (List<OrderItem>) new OrderItemDAO().getItemsByOrderId(id);
-                Order order = new Order(id, total, buyerAccount, sellerAccount, status, orderItems);
+                orders.add(new Order(id, total, null, null, status, null));
+            }
 
-                listOd.add(order);
+            OrderItemDAO orderItemDAO = new OrderItemDAO();
+            AccountDAO accountDAO = new AccountDAO();
+
+            for (int i = 0; i < orders.size(); i++) {
+                orders.get(i).setBuyer(accountDAO.getByUsername(buyers.get(i)));
+                orders.get(i).setSeller(accountDAO.getByUsername(sellers.get(i)));
+                orders.get(i).setOrders(orderItemDAO.getItemsByOrderId(orders.get(i).getId()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listOd;
+        return orders;
     }
 
     public void insert(Order order) {
@@ -141,6 +147,12 @@ public class OrderDAO extends DBUtils {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        for (Order order : new OrderDAO().getAll()) {
+            System.out.println(order);
         }
     }
 }
