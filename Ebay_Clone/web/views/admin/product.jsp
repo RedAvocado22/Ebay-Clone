@@ -24,17 +24,19 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${products}" var="p">
-                    <tr>
-                        <td>${p.id}</td>
-                        <td>${p.name}</td>
-                        <td>${p.price}</td>
-                        <td>${p.quantity}</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                </c:forEach>
+                        <tr>
+                            <td>${p.id}</td>
+                            <td>${p.name}</td>
+                            <td>${p.price}</td>
+                            <td>${p.quantity}</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <a href="admin?section=product&action=delete&id=${p.id}" class="button-delete"
+                                   class="btn btn-danger" 
+                                   onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
