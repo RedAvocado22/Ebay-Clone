@@ -29,7 +29,7 @@ public class ProductController extends HttpServlet {
 
         List<Product> products = productDAO.getAll();
         String idString = request.getParameter("id");
-
+        
         if (!idString.isEmpty() && idString != null) {
             int id = Integer.parseInt(idString);
             Product product = productDAO.findById(id);
