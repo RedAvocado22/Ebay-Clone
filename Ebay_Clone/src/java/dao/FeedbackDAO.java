@@ -87,26 +87,26 @@ public class FeedbackDAO extends DBUtils {
         }
     }
 
-    public void delete(Feedback feedback) {
+    public boolean delete(int id) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Feedbacks]\n"
                 + "   SET [Status] = 0\n"
                 + " WHERE [ID] = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setObject(1, feedback.getStatus());
-            ps.setInt(1, feedback.getId());
-            ps.executeUpdate();
+            ps.setInt(1, id);
+            int affectedRows = ps.executeUpdate();
+
+            return affectedRows > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-//    public static void main(String[] args) {
-//        FeedbackDAO feedbackDAO = new FeedbackDAO();
-//
-//        for (Feedback feedback : feedbackDAO.getAllByUsername("admin1")) {
-//            System.out.println(feedback.getBuyer().getUsername());
-//        }
-//    }
+    public static void main(String[] args) {
+        FeedbackDAO feedbackDAO = new FeedbackDAO();
+
+        System.out.println(feedbackDAO.delete(23));
+    }
 }

@@ -283,4 +283,20 @@
     background-color: #c82333;
 }
 
+.button-delete {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff4d4d;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-delete:hover {
+    background-color: #e60000;
+}
 
