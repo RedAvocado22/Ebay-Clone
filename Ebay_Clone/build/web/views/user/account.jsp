@@ -29,9 +29,11 @@
 
             <div class="profile-navigation">
                 <div class="section-btn">
-                    <a href="?section=about" id="about-tab" class="${section == 'about' ? 'active' : ''}">Shop</a>
-                    <a href="?section=feedback" id="feedback-tab" class="${section == 'feedback' ? 'active' : ''}">Feedback</a>
-                    <a href="?section=order" id="order-tab" class="${section == 'order' ? 'active' : ''}">Order</a>
+                    <a href="?section=about&username=${username}" id="about-tab" class="${section == 'about' ? 'active' : ''}">Shop</a>
+                    <a href="?section=feedback&username=${username}" id="feedback-tab" class="${section == 'feedback' ? 'active' : ''}">Feedback</a>
+                    <c:if test="${account.username == sessionScope.account.username}">
+                        <a href="?section=order&username=${username}" id="order-tab" class="${section == 'order' ? 'active' : ''}">Order</a>
+                    </c:if>
                 </div>
             </div>
 
@@ -39,7 +41,12 @@
                 <!-- Shop Section -->
                 <c:if test="${section == 'about'}">
                     <section id="shop-section">
+                        <div>
                         <h2>Shop</h2>
+                        <form>
+                            
+                        </form>
+                        </div>
                         <div class="product-list">
                             <c:forEach var="product" items="${products}">
                                 <div class="product-card">
@@ -49,47 +56,14 @@
                                     </a>
                                     <div class="product-price">${product.price}</div>
                                     <div class="shipping-info">Free shipping</div>
-                            </div>
-                        </c:forEach>
-                    </div>
-
-                    <p><span style="color: #707070;">Location:</span> United States</p>
-                    <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
-                </section>
-
-                <section id="feedback-section" style="display: none;">
-                    <h2>Customer Feedback</h2>
-
-                    <!-- Các nút chọn feedback -->
-                    <div class="feedback-buttons">
-                        <button class="btn-feedback" onclick="showFeedback('positive')">Positive: ${positive.size()}</button>
-                        <button class="btn-feedback" onclick="showFeedback('negative')">Negative: ${negative.size()}</button>
-                    </div>
-
-                    <!-- Nội dung feedback sẽ hiển thị tại đây -->
-                    <div class="feedback-content">
-                        <!-- Positive feedback -->
-                        <div id="positive-feedback" class="feedback-item hidden">
-                            <c:forEach var="p" items="positive">
-                                <div class="feedback-box">
-                                    <div class="avatar">
-                                        <img src="${pageContext.request.contextPath}${p.buyer.avatar}" alt="${p.buyer.name}">
-                                    </div>
-                                    <div class="feedback-content">
-                                        <p><strong>User: ${p.buyer.name}</strong> <br>${p.content}</p>
-                                        <div class="feedback-actions">
-                                            <span class="material-icons like">thumb_up</span>
-                                            <span class="material-icons dislike">thumb_down</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </c:forEach>
                         </div>
+
                         <p><span style="color: #707070;">Location:</span> United States</p>
                         <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
                     </section>
                 </c:if>
-
                 <!-- Feedback Section -->
                 <c:if test="${section == 'feedback'}">
                     <section id="feedback-section">
@@ -126,11 +100,13 @@
                 </c:if>
 
                 <!-- Order Section -->
-                <c:if test="${section == 'order'}">
-                    <section id="order-section">
-                        <h2>Order History</h2>
-                        <!-- Order Content Goes Here -->
-                    </section>
+                <c:if test="${account.username == sessionScope.account.username}">
+                    <c:if test="${section == 'order'}">
+                        <section id="order-section">
+                            <h2>Order History</h2>
+                            <!-- Order Content Goes Here -->
+                        </section>
+                    </c:if>
                 </c:if>
             </div>
         </div>

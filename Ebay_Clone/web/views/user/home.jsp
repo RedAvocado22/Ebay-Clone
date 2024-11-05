@@ -22,7 +22,7 @@
     <body>
         <jsp:include page="../common/header.jsp"></jsp:include>
             <div id="nav-categories">
-                <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore(New!)</a>
+                <a href="${pageContext.request.contextPath}/products">Explore(New!)</a>
             <c:forEach var="category" items="${categories}">
                 <a href="${pageContext.request.contextPath}/products?category=${category.id}">${category.name}</a>
             </c:forEach>

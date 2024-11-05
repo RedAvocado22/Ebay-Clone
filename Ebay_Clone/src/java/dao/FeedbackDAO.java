@@ -107,6 +107,8 @@ public class FeedbackDAO extends DBUtils {
     public static void main(String[] args) {
         FeedbackDAO feedbackDAO = new FeedbackDAO();
 
-        System.out.println(feedbackDAO.delete(23));
+        for (Feedback feedback : feedbackDAO.getAllByUsername("minhcuong292")) {
+            System.out.println(feedback.getBuyer().getAvatar());
+        }
     }
 }

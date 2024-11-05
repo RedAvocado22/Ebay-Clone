@@ -151,8 +151,14 @@ public class OrderDAO extends DBUtils {
     }
 
     public static void main(String[] args) {
-        for (Order order : new OrderDAO().getAll()) {
-            System.out.println(order);
+        OrderDAO dao = new OrderDAO();
+        
+        List<Order> orders = dao.getAll();
+        
+        orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
+        
+        for (Order order : orders) {
+            System.out.println(order.getOrders().size());
         }
     }
 }

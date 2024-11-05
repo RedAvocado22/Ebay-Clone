@@ -49,6 +49,7 @@ public class AccountController extends HttpServlet {
         String seller = request.getParameter("username");
         if (seller == null) {
             account = (Account) session.getAttribute("account");
+            request.setAttribute("username", account.getUsername());
         } else {
             account = accountDAO.getByUsername(seller);
             request.setAttribute("username", seller);

@@ -75,7 +75,7 @@ public class CartDAO extends DBUtils {
             e.printStackTrace();
         }
     }
-    
+
     public void delete(Product product, Cart cart) {
         con = getConnection();
         String sql = "delete CartDetail where ID_Product = ? and ID_Cart = ?";
@@ -91,10 +91,22 @@ public class CartDAO extends DBUtils {
         }
     }
 
-//    public static void main(String[] args) {
-//        CartDAO cartDAO = new CartDAO();
-//        for (CartItem cartItem : cartDAO.get("user2").getItems()) {
-//            System.out.println(cartItem.getProduct().getName());
-//        }
-//    }
+    public void create(String username) {
+        con = getConnection();
+        String sql = "INSERT INTO Carts (ID_Account) VALUES (?)";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.executeUpdate();
+
+            System.out.println("Cart created successfully for username: " + username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        CartDAO cartDAO = new CartDAO();
+    }
 }

@@ -31,7 +31,12 @@ public class CartController extends HttpServlet {
         }
 
         Cart cart = cartDAO.get(account.getUsername());
-        request.setAttribute("cart", cart.getItems());
+
+        if (cart != null) {
+            cartDAO.create(account.getUsername());
+            request.setAttribute("cart", cart.getItems());
+        }
+
         request.getRequestDispatcher("views/user/cart.jsp").forward(request, response);
     }
 
