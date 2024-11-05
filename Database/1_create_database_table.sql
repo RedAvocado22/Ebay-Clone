@@ -56,7 +56,7 @@ CREATE TABLE [Orders] (
     Total FLOAT NOT NULL,
     Buyer NVARCHAR(50) FOREIGN KEY REFERENCES Accounts(Username),
     Seller NVARCHAR(50) FOREIGN KEY REFERENCES Accounts(Username),
-    [Status] NVARCHAR(20) NOT NULL
+    [Status] NVARCHAR(20) DEFAULT 'Pending'
 );
 GO
 
@@ -74,7 +74,6 @@ CREATE TABLE Feedbacks (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     Content NVARCHAR(MAX) NOT NULL,
     [Type] NVARCHAR(10) CHECK (Type IN ('positive', 'negative')),
-    [Status] BIT NOT NULL DEFAULT 1,
 	Buyer NVARCHAR(50) FOREIGN KEY REFERENCES Accounts(Username),
     Seller NVARCHAR(50) FOREIGN KEY REFERENCES Accounts(Username)
 );

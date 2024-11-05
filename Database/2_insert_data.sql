@@ -3,25 +3,25 @@
 INSERT INTO Accounts (Username, [Password], Fullname, Email, [Role], [Status], Avatar)
 VALUES 
 -- Admins
-('minhcuong292', 'adminpass1', 'Sky Admin', 'skyadmin@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
-('danhhieu09', 'adminpass2', 'Cloud Boss', 'cloudboss@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
-('viethoang2004', 'adminpass3', 'Star Lord', 'starlord@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
+('minhcuong292', '123', 'Sky Admin', 'skyadmin@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
+('danhhieu09', '123', 'Cloud Boss', 'cloudboss@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
+('viethoang2004', '123', 'Star Lord', 'starlord@example.com', 'admin', 1, '/public/images/avatar/admin.png'),
 -- Users
-('sunnyday', 'password1', 'Sunny Day', 'sunnyday@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('moonlight', 'password2', 'Moon Light', 'moonlight@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('starrysky', 'password3', 'Starry Sky', 'starrysky@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('blueocean', 'password4', 'Blue Ocean', 'blueocean@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('greenfield', 'password5', 'Green Field', 'greenfield@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('redwood', 'password6', 'Red Wood', 'redwood@example.com', 'user', 1, '/public/images/avatar/user0.png'),
-('goldenleaf', 'password7', 'Golden Leaf', 'goldenleaf@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('silverstream', 'password8', 'Silver Stream', 'silverstream@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('blackforest', 'password9', 'Black Forest', 'blackforest@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('whitemountain', 'password10', 'White Mountain', 'whitemountain@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('purplehaze', 'password11', 'Purple Haze', 'purplehaze@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('crystalclear', 'password12', 'Crystal Clear', 'crystalclear@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('emeraldstone', 'password13', 'Emerald Stone', 'emeraldstone@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('rubyshine', 'password14', 'Ruby Shine', 'rubyshine@example.com', 'user', 1, '/public/images/avatar/user1.png'),
-('amberlight', 'password15', 'Amber Light', 'amberlight@example.com', 'user', 1, '/public/images/avatar/user1.png');
+('sunnyday', '123', 'Sunny Day', 'sunnyday@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('moonlight', '123', 'Moon Light', 'moonlight@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('starrysky', '123', 'Starry Sky', 'starrysky@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('blueocean', '123', 'Blue Ocean', 'blueocean@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('greenfield', '123', 'Green Field', 'greenfield@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('redwood', '123', 'Red Wood', 'redwood@example.com', 'user', 1, '/public/images/avatar/user0.png'),
+('goldenleaf', '123', 'Golden Leaf', 'goldenleaf@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('silverstream', '123', 'Silver Stream', 'silverstream@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('blackforest', '123', 'Black Forest', 'blackforest@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('whitemountain', '123', 'White Mountain', 'whitemountain@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('purplehaze', '123', 'Purple Haze', 'purplehaze@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('crystalclear', '123', 'Crystal Clear', 'crystalclear@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('emeraldstone', '123', 'Emerald Stone', 'emeraldstone@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('rubyshine', '123', 'Ruby Shine', 'rubyshine@example.com', 'user', 1, '/public/images/avatar/user1.png'),
+('amberlight', '123', 'Amber Light', 'amberlight@example.com', 'user', 1, '/public/images/avatar/user1.png');
 
 
 -- Insert data into Categories table (8 categories)
@@ -230,7 +230,12 @@ INSERT INTO [Orders] (Total, Buyer, Seller, [Status])
 VALUES 
 (199.99, 'sunnyday', 'minhcuong292', 'completed'),
 (299.99, 'moonlight', 'danhhieu09', 'shipped'),
-(79.99, 'starrysky', 'viethoang2004', 'completed');
+(79.99, 'starrysky', 'viethoang2004', 'completed'),
+(249.99, 'blueocean', 'greenfield', 'completed'),
+(89.99, 'greenfield', 'moonlight', 'processing'),
+(159.99, 'redwood', 'danhhieu09', 'completed'),
+(119.99, 'goldenleaf', 'whitemountain', 'shipped'),
+(299.49, 'blackforest', 'starrysky', 'completed');
 
 -- Insert data into OrderDetail table (5 products per order for each buyer)
 INSERT INTO OrderDetail (ID_Product, ID_Order, Quantity)
@@ -259,6 +264,40 @@ VALUES
 (23, 3, 2),
 (25, 3, 1);
 
+-- Order 4 (blueocean)
+(30, 4, 2),
+(31, 4, 1),
+(35, 4, 3),
+(38, 4, 1),
+(40, 4, 2),
+
+-- Order 5 (greenfield)
+(12, 5, 1),
+(14, 5, 2),
+(18, 5, 1),
+(23, 5, 4),
+(27, 5, 1),
+
+-- Order 6 (redwood)
+(5, 6, 3),
+(8, 6, 1),
+(16, 6, 2),
+(19, 6, 1),
+(21, 6, 3),
+
+-- Order 7 (goldenleaf)
+(9, 7, 2),
+(11, 7, 3),
+(15, 7, 1),
+(26, 7, 4),
+(29, 7, 1),
+
+-- Order 8 (blackforest)
+(6, 8, 5),
+(7, 8, 2),
+(13, 8, 3),
+(28, 8, 1),
+(32, 8, 2);
 
 
 -- Insert data into Feedback table (40 feedbacks, 15 users, and both users and admins as sellers)
@@ -318,7 +357,13 @@ VALUES
 ('goldenleaf'),
 ('silverstream'),
 ('blackforest'),
-('whitemountain');
+('whitemountain'),
+('purplehaze'),
+('crystalclear'),
+('emeraldstone'),
+('rubyshine'),
+('amberlight');
+
 
 -- Insert data into CartDetail table (linked to Cart and OrderDetail)
 INSERT INTO CartDetail (ID_Cart, ID_Product, Quantity)
@@ -347,6 +392,40 @@ VALUES
 (3, 23, 2), -- starrysky's cart contains 2 units of Product ID 23
 (3, 25, 1); -- starrysky's cart contains 1 unit of Product ID 25
 
+-- Cart for purplehaze
+(11, 3, 1),
+(11, 6, 1),
+(11, 9, 2),
+(11, 14, 1),
+(11, 18, 3),
+
+-- Cart for crystalclear
+(12, 1, 1),
+(12, 7, 2),
+(12, 12, 3),
+(12, 17, 1),
+(12, 20, 4),
+
+-- Cart for emeraldstone
+(13, 5, 2),
+(13, 8, 3),
+(13, 10, 1),
+(13, 13, 2),
+(13, 15, 1),
+
+-- Cart for rubyshine
+(14, 2, 4),
+(14, 4, 1),
+(14, 6, 1),
+(14, 11, 3),
+(14, 16, 2),
+
+-- Cart for amberlight
+(15, 12, 1),
+(15, 14, 2),
+(15, 19, 1),
+(15, 22, 3),
+(15, 25, 2);
 
 
 
