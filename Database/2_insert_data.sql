@@ -262,7 +262,7 @@ VALUES
 (14, 3, 1),
 (18, 3, 3),
 (23, 3, 2),
-(25, 3, 1);
+(25, 3, 1),
 
 -- Order 4 (blueocean)
 (30, 4, 2),
@@ -301,48 +301,48 @@ VALUES
 
 
 -- Insert data into Feedback table (40 feedbacks, 15 users, and both users and admins as sellers)
-INSERT INTO Feedbacks (Content, [Type], [Status], Buyer, Seller)
+INSERT INTO Feedbacks (Content, [Type], Buyer, Seller)
 VALUES 
-('Absolutely loved this product! It was even better than I expected and arrived so quickly. Thanks for an awesome experience!', 'positive', 1, 'sunnyday', 'minhcuong292'),
-('I had high hopes, but this didn’t live up to them. The quality was way below what I expected. Kind of a letdown.', 'negative', 1, 'moonlight', 'starrysky'),
-('For the price, this was a solid buy. It’s practical and does the job well. Happy with my purchase!', 'positive', 1, 'starrysky', 'blueocean'),
-('Honestly, the quality was just terrible. Not sure what went wrong, but I’m pretty disappointed.', 'negative', 1, 'blueocean', 'minhcuong292'),
-('Really happy with this purchase! The product is exactly what I was looking for, and the seller was super helpful.', 'positive', 1, 'greenfield', 'redwood'),
-('I wouldn’t buy this again. It’s not worth the price, and it didn’t work as advertised. Disappointed.', 'negative', 1, 'redwood', 'danhhieu09'),
-('Got my order really fast, which was a nice surprise. Everything was packaged well, too. Great experience overall!', 'positive', 1, 'goldenleaf', 'silverstream'),
-('Not impressed with the customer service here. Tried to get help, but it was such a struggle. Won’t be back.', 'negative', 1, 'silverstream', 'minhcuong292'),
-('Love this! It’s exactly as described and works perfectly. I’ll definitely recommend this seller.', 'positive', 1, 'blackforest', 'whitemountain'),
-('Sadly, the item was damaged when it arrived. Had to go through the hassle of a return, which wasn’t fun.', 'negative', 1, 'whitemountain', 'danhhieu09'),
-('Such a great deal! I feel like I got more than I paid for. Really happy with my purchase and will buy again.', 'positive', 1, 'purplehaze', 'crystalclear'),
-('They sent the wrong item, and it took ages to sort it out. Not thrilled with the experience overall.', 'negative', 1, 'crystalclear', 'viethoang2004'),
-('Highly recommend! The product quality is fantastic, and I’ve already told a few friends to check it out.', 'positive', 1, 'emeraldstone', 'rubyshine'),
-('Not what I was hoping for. The whole experience felt a bit frustrating. Probably won’t shop here again.', 'negative', 1, 'rubyshine', 'amberlight'),
-('Loved everything about this purchase! Fast delivery, great product—couldn’t be happier.', 'positive', 1, 'amberlight', 'minhcuong292'),
-('My item never even arrived. Really disappointed with how this was handled. Wasted my time and money.', 'negative', 1, 'greenfield', 'danhhieu09'),
-('Five stars! Great quality and a smooth buying experience. I’ll be coming back for more.', 'positive', 1, 'sunnyday', 'goldenleaf'),
-('Honestly, not worth the money. The product didn’t hold up, and I feel like I overpaid for what I got.', 'negative', 1, 'moonlight', 'viethoang2004'),
-('Fantastic customer support! They went above and beyond to help me out. Very happy with this seller.', 'positive', 1, 'starrysky', 'blackforest'),
-('Really happy with everything here. The product works well, and I’m planning to shop again soon.', 'positive', 1, 'blueocean', 'greenfield'),
-('I had to request a refund. The item wasn’t what I expected, and customer service wasn’t very helpful.', 'negative', 1, 'redwood', 'viethoang2004'),
-('Delivery was super quick, and I couldn’t be happier with the product. Will definitely recommend!', 'positive', 1, 'blackforest', 'whitemountain'),
-('Unfortunately, I received a broken item. It was disappointing and not what I expected from this seller.', 'negative', 1, 'goldenleaf', 'purplehaze'),
-('Best purchase I’ve made in a long time! Great quality and value. Very impressed with this seller.', 'positive', 1, 'silverstream', 'minhcuong292'),
-('Not thrilled with the product. It didn’t match the description, and I was hoping for better quality.', 'negative', 1, 'starrysky', 'greenfield'),
-('Customer service was really helpful and made the whole experience easy. Will definitely come back!', 'positive', 1, 'moonlight', 'danhhieu09'),
-('The item wasn’t as described, and I felt a bit misled. Not sure I’ll be buying from here again.', 'negative', 1, 'blueocean', 'redwood'),
-('Great quality! It’s obvious this product was made well. Very happy with my purchase.', 'positive', 1, 'greenfield', 'blackforest'),
-('Love the product! Everything went smoothly, and it was worth every penny. Thank you!', 'positive', 1, 'purplehaze', 'viethoang2004'),
-('Item was missing a few parts, which was frustrating. I had to follow up a lot to get things sorted out.', 'negative', 1, 'whitemountain', 'danhhieu09'),
-('Super happy with the product! It arrived in perfect condition and is just what I wanted.', 'positive', 1, 'goldenleaf', 'silverstream'),
-('Expected better quality. It just didn’t meet my expectations for the price. Disappointed.', 'negative', 1, 'redwood', 'minhcuong292'),
-('Product arrived exactly on time, and everything was just as described. Very pleased with my order.', 'positive', 1, 'crystalclear', 'danhhieu09'),
-('The packaging was terrible, and the item was a bit damaged. Not the best experience.', 'negative', 1, 'blackforest', 'minhcuong292'),
-('Smooth transaction from start to finish! Easy to work with and the product is fantastic.', 'positive', 1, 'emeraldstone', 'whitemountain'),
-('The product didn’t match the description at all. I wish it had been clearer before I bought it.', 'negative', 1, 'amberlight', 'crystalclear'),
-('Really happy with my purchase! The product is great, and everything went smoothly.', 'positive', 1, 'rubyshine', 'emeraldstone'),
-('Will definitely buy again from this seller. Product was exactly as described. Highly recommend.', 'positive', 1, 'sunnyday', 'viethoang2004'),
-('This was the worst experience I’ve had buying online. The product was terrible, and support was lacking.', 'negative', 1, 'silverstream', 'danhhieu09'),
-('Everything went perfectly! The product is great, and the seller was wonderful to work with.', 'positive', 1, 'moonlight', 'blackforest');
+('Absolutely loved this product! It was even better than I expected and arrived so quickly. Thanks for an awesome experience!', 'positive',  'sunnyday', 'minhcuong292'),
+('I had high hopes, but this didn’t live up to them. The quality was way below what I expected. Kind of a letdown.', 'negative',  'moonlight', 'starrysky'),
+('For the price, this was a solid buy. It’s practical and does the job well. Happy with my purchase!', 'positive',  'starrysky', 'blueocean'),
+('Honestly, the quality was just terrible. Not sure what went wrong, but I’m pretty disappointed.', 'negative',  'blueocean', 'minhcuong292'),
+('Really happy with this purchase! The product is exactly what I was looking for, and the seller was super helpful.', 'positive',  'greenfield', 'redwood'),
+('I wouldn’t buy this again. It’s not worth the price, and it didn’t work as advertised. Disappointed.', 'negative',  'redwood', 'danhhieu09'),
+('Got my order really fast, which was a nice surprise. Everything was packaged well, too. Great experience overall!', 'positive',  'goldenleaf', 'silverstream'),
+('Not impressed with the customer service here. Tried to get help, but it was such a struggle. Won’t be back.', 'negative',  'silverstream', 'minhcuong292'),
+('Love this! It’s exactly as described and works perfectly. I’ll definitely recommend this seller.', 'positive',  'blackforest', 'whitemountain'),
+('Sadly, the item was damaged when it arrived. Had to go through the hassle of a return, which wasn’t fun.', 'negative',  'whitemountain', 'danhhieu09'),
+('Such a great deal! I feel like I got more than I paid for. Really happy with my purchase and will buy again.', 'positive',  'purplehaze', 'crystalclear'),
+('They sent the wrong item, and it took ages to sort it out. Not thrilled with the experience overall.', 'negative',  'crystalclear', 'viethoang2004'),
+('Highly recommend! The product quality is fantastic, and I’ve already told a few friends to check it out.', 'positive',  'emeraldstone', 'rubyshine'),
+('Not what I was hoping for. The whole experience felt a bit frustrating. Probably won’t shop here again.', 'negative',  'rubyshine', 'amberlight'),
+('Loved everything about this purchase! Fast delivery, great product—couldn’t be happier.', 'positive',  'amberlight', 'minhcuong292'),
+('My item never even arrived. Really disappointed with how this was handled. Wasted my time and money.', 'negative',  'greenfield', 'danhhieu09'),
+('Five stars! Great quality and a smooth buying experience. I’ll be coming back for more.', 'positive',  'sunnyday', 'goldenleaf'),
+('Honestly, not worth the money. The product didn’t hold up, and I feel like I overpaid for what I got.', 'negative',  'moonlight', 'viethoang2004'),
+('Fantastic customer support! They went above and beyond to help me out. Very happy with this seller.', 'positive',  'starrysky', 'blackforest'),
+('Really happy with everything here. The product works well, and I’m planning to shop again soon.', 'positive',  'blueocean', 'greenfield'),
+('I had to request a refund. The item wasn’t what I expected, and customer service wasn’t very helpful.', 'negative',  'redwood', 'viethoang2004'),
+('Delivery was super quick, and I couldn’t be happier with the product. Will definitely recommend!', 'positive',  'blackforest', 'whitemountain'),
+('Unfortunately, I received a broken item. It was disappointing and not what I expected from this seller.', 'negative',  'goldenleaf', 'purplehaze'),
+('Best purchase I’ve made in a long time! Great quality and value. Very impressed with this seller.', 'positive',  'silverstream', 'minhcuong292'),
+('Not thrilled with the product. It didn’t match the description, and I was hoping for better quality.', 'negative',  'starrysky', 'greenfield'),
+('Customer service was really helpful and made the whole experience easy. Will definitely come back!', 'positive',  'moonlight', 'danhhieu09'),
+('The item wasn’t as described, and I felt a bit misled. Not sure I’ll be buying from here again.', 'negative',  'blueocean', 'redwood'),
+('Great quality! It’s obvious this product was made well. Very happy with my purchase.', 'positive',  'greenfield', 'blackforest'),
+('Love the product! Everything went smoothly, and it was worth every penny. Thank you!', 'positive',  'purplehaze', 'viethoang2004'),
+('Item was missing a few parts, which was frustrating. I had to follow up a lot to get things sorted out.', 'negative',  'whitemountain', 'danhhieu09'),
+('Super happy with the product! It arrived in perfect condition and is just what I wanted.', 'positive',  'goldenleaf', 'silverstream'),
+('Expected better quality. It just didn’t meet my expectations for the price. Disappointed.', 'negative',  'redwood', 'minhcuong292'),
+('Product arrived exactly on time, and everything was just as described. Very pleased with my order.', 'positive',  'crystalclear', 'danhhieu09'),
+('The packaging was terrible, and the item was a bit damaged. Not the best experience.', 'negative',  'blackforest', 'minhcuong292'),
+('Smooth transaction from start to finish! Easy to work with and the product is fantastic.', 'positive',  'emeraldstone', 'whitemountain'),
+('The product didn’t match the description at all. I wish it had been clearer before I bought it.', 'negative',  'amberlight', 'crystalclear'),
+('Really happy with my purchase! The product is great, and everything went smoothly.', 'positive',  'rubyshine', 'emeraldstone'),
+('Will definitely buy again from this seller. Product was exactly as described. Highly recommend.', 'positive',  'sunnyday', 'viethoang2004'),
+('This was the worst experience I’ve had buying online. The product was terrible, and support was lacking.', 'negative',  'silverstream', 'danhhieu09'),
+('Everything went perfectly! The product is great, and the seller was wonderful to work with.', 'positive',  'moonlight', 'blackforest');
 
 
 -- Insert data into Cart table (10 carts)
@@ -390,7 +390,7 @@ VALUES
 (3, 14, 1), -- starrysky's cart contains 1 unit of Product ID 14
 (3, 18, 3), -- starrysky's cart contains 3 units of Product ID 18
 (3, 23, 2), -- starrysky's cart contains 2 units of Product ID 23
-(3, 25, 1); -- starrysky's cart contains 1 unit of Product ID 25
+(3, 25, 1), -- starrysky's cart contains 1 unit of Product ID 25
 
 -- Cart for purplehaze
 (11, 3, 1),
