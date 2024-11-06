@@ -228,11 +228,11 @@ VALUES
 -- Insert data into [Order] table (5 orders)
 INSERT INTO [Orders] (Total, Buyer, Seller, [Status])
 VALUES 
-(585.4, 'minhcuong292', 'sunnyday', 'completed'), 
-(533.87, 'minhcuong292', 'danhhieu09', 'shipped'),   
-(630.36, 'minhcuong292', 'viethoang2004', 'completed'),  
-(290.91, 'blueocean', 'minhcuong292', 'completed'),  
-(256.91, 'greenfield', 'minhcuong292', 'pending');
+(104.96, 'minhcuong292', 'sunnyday', 'completed'), 
+(164.95, 'minhcuong292', 'danhhieu09', 'shipped'),   
+(99.42, 'minhcuong292', 'viethoang2004', 'completed'),  
+(114.43, 'blueocean', 'minhcuong292', 'completed'),  
+(35.47, 'greenfield', 'minhcuong292', 'pending');
 
 -- Insert data into OrderDetail table (5 products per order for each buyer)
 INSERT INTO OrderDetail (ID_Product, ID_Order, Quantity)
