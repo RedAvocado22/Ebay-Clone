@@ -32,10 +32,11 @@ public class AdminController extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.print(section);
-        
-        if (section == null) 
+
+        if (section == null) {
             section = "";
-        
+        }
+
         switch (section) {
             case "product" -> {
                 handeleProduct(request, response, action);
@@ -44,15 +45,15 @@ public class AdminController extends HttpServlet {
             case "order" -> {
                 handeleOrder(request, response, action);
             }
-            
+
             case "account" -> {
                 handeleAccount(request, response, action);
             }
-            
+
             case "feedback" -> {
                 handeleFeedback(request, response, action);
             }
-            
+
             default -> {
                 request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
             }
@@ -79,7 +80,14 @@ public class AdminController extends HttpServlet {
             request.setAttribute("products", products);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
+            switch (action) {
+                case "delete" -> {
+                    int productId = Integer.parseInt(request.getParameter("id"));
+                    boolean deletionSuccessful = productDAO.delete(productId);
+                    response.sendRedirect("admin?section=product");
+                }
 
+            }
         }
     }
 
@@ -90,6 +98,7 @@ public class AdminController extends HttpServlet {
 
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
+            orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
         } else {
 
         }
@@ -103,22 +112,35 @@ public class AdminController extends HttpServlet {
             request.setAttribute("accounts", accounts);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
-
+            switch (action) {
+                case "delete" -> {
+                    String username = request.getParameter("username");
+                    boolean deletionSuccessful = accountDAO.delete(username);
+                    response.sendRedirect("admin?section=account");}
+                case "active" -> {
+                    String username = request.getParameter("username");
+                    boolean deletionSuccessful = accountDAO.active(username);
+                    response.sendRedirect("admin?section=account");
+                }
+            }
         }
     }
 
     private void handeleFeedback(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
+        String username = request.getParameter("username");
         if (action == null) {
-            String username = request.getParameter("username");
             List<Feedback> feedbacks = feedbackDAO.getAllByUsername(username);
             String keyword = request.getParameter("keyword");
 
             request.setAttribute("feedbacks", feedbacks);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
-
+            switch (action) {
+                case "delete" ->{
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    boolean deletionSuccessful = feedbackDAO.delete(id);
+                    response.sendRedirect("admin?section=feedback&username=" + username);}
+            }
         }
     }
-    
-    
 }

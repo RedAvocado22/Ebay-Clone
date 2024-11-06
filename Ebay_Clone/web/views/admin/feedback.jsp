@@ -19,27 +19,30 @@
                         <th>Feedback ID</th>
                         <th>Customer Name</th>
                         <th>Feedback</th>
-                        <th>Status</th>
+                        <th>Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${feedbacks}" var="f">
-                    <tr>
-                        <td>${f.id}</td>
-                        <td>${f.buyer.username}</td>
-                        <td>${f.content}</td>
-                        <td>${f.status}</td>
-                        <td>
-                            <button class="btn-view">View</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                </c:forEach>
+                        <tr>
+                            <td>${f.id}</td>
+                            <td>${f.buyer.username}</td>
+                            <td>${f.content}</td>
+                            <td>${f.type}</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                    <a href="admin?section=feedback&username=${f.seller.username}&action=delete&id=${f.id}" class="button-delete"
+                                       class="btn btn-danger" 
+                                       onclick="return confirm('Are you sure you want to delete this user?')">
+                                        Delete
+                                    </a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     <!-- Add more feedback entries as needed -->
                 </tbody>
             </table>
         </div>
-
     </body>
 </html>

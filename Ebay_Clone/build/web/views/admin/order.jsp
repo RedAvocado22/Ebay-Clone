@@ -25,19 +25,16 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${orders}" var="o">
-                    <tr>
-                        <td>${o.id}</td>
-                        <td>${o.buyer.username}</td>
-                        <td>${o.total}</td>
-                        <td>${o.status}</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                </c:forEach>
-
-
+                        <tr>
+                            <td>${o.id}</td>
+                            <td>${o.buyer.username}</td>
+                            <td>${o.total}</td>
+                            <td>${o.status}</td>
+                            <td>
+                                <a href="admin?section=product&id=${o.id}">view</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     <!-- Add more orders as needed -->
                 </tbody>
             </table>

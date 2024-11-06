@@ -29,9 +29,11 @@
 
             <div class="profile-navigation">
                 <div class="section-btn">
-                    <a href="?section=about" id="about-tab" class="${section == 'about' ? 'active' : ''}">Shop</a>
-                    <a href="?section=feedback" id="feedback-tab" class="${section == 'feedback' ? 'active' : ''}">Feedback</a>
-                    <a href="?section=order" id="order-tab" class="${section == 'order' ? 'active' : ''}">Order</a>
+                    <a href="?section=about&username=${username}" id="about-tab" class="${section == 'about' ? 'active' : ''}">Shop</a>
+                    <a href="?section=feedback&username=${username}" id="feedback-tab" class="${section == 'feedback' ? 'active' : ''}">Feedback</a>
+                    <c:if test="${account.username == sessionScope.account.username}">
+                        <a href="?section=order&username=${username}" id="order-tab" class="${section == 'order' ? 'active' : ''}">Order</a>
+                    </c:if>
                 </div>
             </div>
 
@@ -39,7 +41,12 @@
                 <!-- Shop Section -->
                 <c:if test="${section == 'about'}">
                     <section id="shop-section">
-                        <h2>Shop</h2>
+                        <div class="shop-container">
+                            <h2>Shop</h2>
+                            <form method="post" action="account" class="shop-form"> 
+                                <input type="text" placeholder="Search here" name="keyword" class="shop-search-input">
+                            </form>
+                        </div>
                         <div class="product-list">
                             <c:forEach var="product" items="${products}">
                                 <div class="product-card">
@@ -89,7 +96,6 @@
                             <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
                     </section>
                 </c:if>
-
                 <!-- Feedback Section -->
                 <c:if test="${section == 'feedback'}">
                     <section id="feedback-section">
@@ -126,58 +132,64 @@
                 </c:if>
 
                 <!-- Order Section -->
-                <c:if test="${section == 'order'}">
-                    <section id="container">
-                        <h2>Order History</h2>
-                        <!-- Order Content Goes Here -->
-                        <div class="order_flex">
-                            <div class="order-section">
-                                <h3>Sold Orders</h3>
-                                <div class="order-card">
-                                    <div class="name_order">
-                                        <h3><strong>Order ID: 1</strong></h3>
-                                        <p>Buyer: Nguyễn Văn A</p>
-                                        <p>Seller: Trần Văn B</p>
-                                        <p>Status: Completed</p>
-                                    </div>
-                                    <div class="sub_total">
-                                        <div class="total_price">
-                                            <p>3,289,520.00 VND</p>
+                <c:if test="${account.username == sessionScope.account.username}">
+                    <c:if test="${section == 'order'}">
+                        <section id="container">
+                            <h2>Order History</h2>
+                            <!-- Order Content Goes Here -->
+                            <div class="order_flex">
+                                <div class="order-section">
+                                    <h3>Sold Orders</h3>
+                                    <c:forEach var="po" items="${purchased}">
+                                        <div class="order-card">
+                                            <div class="name_order">
+                                                <h3><strong>Order ID: ${po.id}</strong></h3>
+                                                <p>Buyer: ${po.buyer.fullname}</p>
+                                                <p>Seller: ${po.seller.fullname}</p>
+                                                <p>Status: ${po.status}</p>
+                                            </div>
+                                            <div class="sub_total">
+                                                <div class="total_price">
+                                                    <p>$${po.total}</p>
+                                                </div>
+                                                <p>Date: Oct-29 07:37</p>
+                                                <div class="view_detail">
+                                                    <a href="order?id=${po.id}">View detail</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p>Date: Oct-29 07:37</p>
-                                        <div class="view_detail">
-                                            <a href="#">View detail</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </c:forEach>
 
 
-                                <!-- Thêm nhiều order-card nếu cần -->
-                            </div>
-                            <!-- Bought Orders Section -->
-                            <div class="order-section">
-                                <h3>Bought Orders</h3>
-                                <div class="order-card">
-                                    <div class="name_order">
-                                        <h3><strong>Order ID: 1</strong></h3>
-                                        <p>Buyer: Nguyễn Văn A</p>
-                                        <p>Seller: Trần Văn B</p>
-                                        <p>Status: Completed</p>
-                                    </div>
-                                    <div class="sub_total">
-                                        <div class="total_price">
-                                            <p>3,289,520.00 VND</p>
-                                        </div>
-                                        <p>Date: Oct-29 07:37</p>
-                                        <div class="view_detail">
-                                            <a href="#">View detail</a>
-                                        </div>
-                                    </div>
+                                    <!-- Thêm nhiều order-card nếu cần -->
                                 </div>
-                                <!-- Thêm nhiều order-card nếu cần -->
+                                <!-- Bought Orders Section -->
+                                <div class="order-section">
+                                    <h3>Purchased Orders</h3>
+                                    <c:forEach var="so" items="${sold}">
+                                        <div class="order-card">
+                                            <div class="name_order">
+                                                <h3><strong>Order ID: ${so.id}</strong></h3>
+                                                <p>Buyer: ${so.buyer.fullname}</p>
+                                                <p>Seller: ${so.seller.fullname}</p>
+                                                <p>Status: ${so.status}</p>
+                                            </div>
+                                            <div class="sub_total">
+                                                <div class="total_price">
+                                                    <p>$${so.total}</p>
+                                                </div>
+                                                <p>Date: Oct-29 07:37</p>
+                                                <div class="view_detail">
+                                                    <a href="order?id=${so.id}">View detail</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </c:if>
+>>>>>>> 86e3de980025ae60062c3ad070bc5e512ad57a9c
                 </c:if>
             </div>
         </div>
