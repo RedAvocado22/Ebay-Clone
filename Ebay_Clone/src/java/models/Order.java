@@ -63,6 +63,14 @@ public class Order {
         this.status = status;
     }
 
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+
     public List<OrderItem> getOrders() {
         return items;
     }

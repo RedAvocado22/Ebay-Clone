@@ -48,6 +48,8 @@ public class OrderItemDAO extends DBUtils {
 
     public List<OrderItem> getItemsByOrderId(int orderId) {
         List<OrderItem> listItems = new ArrayList<>();
+        List<Integer> idList = new ArrayList();
+        
         String sql = "SELECT p.ID, od.Quantity "
                 + "FROM [dbo].[OrderDetail] od "
                 + "JOIN [dbo].[Products] p ON od.ID_Product = p.ID "
@@ -60,17 +62,16 @@ public class OrderItemDAO extends DBUtils {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                int productID = rs.getInt("ID");
+                idList.add(rs.getInt("ID"));
                 int quantity = rs.getInt("Quantity");
 
-                ProductDAO productDAO = new ProductDAO();
-                Product product = productDAO.findById(productID);
+                listItems.add(new OrderItem(null, quantity));
+            }
+            ProductDAO productDAO = new ProductDAO();
 
-                OrderItem item = new OrderItem();
-                item.setProduct(product);
-                item.setQuantity(quantity);
-
-                listItems.add(item);
+            for (int i = 0; i < listItems.size(); i++) {
+                Product product = productDAO.findById(idList.get(i));
+                listItems.get(i).setProduct(product);
             }
 
         } catch (SQLException e) {
