@@ -28,9 +28,9 @@
                         <img src="${pageContext.request.contextPath}/${seller.avatar}" alt="${seller.avatar}">
                     </div>
                     <div class="seller-infor">
-                        <a class="seller-name" href="#">${seller.fullname} (${seller.username})</a>
+                        <a class="seller-name" href="account?username=${seller.username}">${seller.fullname} (${seller.username})</a>
                         <br>
-                        <a class="contact-seller" href="#">Contact seller</a>
+                        <a class="contact-seller" href="account?username=${seller.username}">Contact seller</a>
                     </div>
 
                 </div>
