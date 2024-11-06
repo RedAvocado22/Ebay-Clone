@@ -103,10 +103,10 @@ public class AdminController extends HttpServlet {
         if (action == null) {
             List<Order> orders = orderDAO.getAll();
             String keyword = request.getParameter("keyword");
-
+            String username = request.getParameter("username");
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
-            orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
+            orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals(username)).toList();
         } else {
 
         }
@@ -128,7 +128,7 @@ public class AdminController extends HttpServlet {
                 }
                 case "active" -> {
                     String username = request.getParameter("username");
-                    boolean deletionSuccessful = accountDAO.active(username);
+                    boolean activeSuccessful = accountDAO.active(username);
                     response.sendRedirect("admin?section=account");
                 }
             }

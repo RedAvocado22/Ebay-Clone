@@ -85,7 +85,6 @@
     <div class="dashboard-wrapper">
         <div class="main-content">
             <h1>Welcome to the Admin Dashboard</h1>
-            <p>Hello, <strong>${sessionScope.user.fullName}</strong>!</p>
             <p>Welcome to the management panel. Here, you can manage various aspects of the platform, such as orders, products, accounts, feedback, and categories. Use the sidebar to navigate through different management sections.</p>
             
             <div class="welcome-section">
