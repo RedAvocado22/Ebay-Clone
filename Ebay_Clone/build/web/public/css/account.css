@@ -459,3 +459,35 @@ h1 {
     text-decoration: underline;
     color: blue;
 }
+
+.shop-container {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.shop-form {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.shop-search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}

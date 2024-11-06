@@ -17,7 +17,10 @@
                 <div class="profile-header">
                     <div class="profile-info">
                         <img src="${pageContext.request.contextPath}${account.avatar}" alt="Profile Picture" class="profile-image">
-                    <h1>${account.fullname}</h1>
+                    <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-bottom: 15px">
+                        <h1 style="margin: 0">${account.fullname}</h1>
+                        <h4>(${account.username})</h4>
+                    </div>
                 </div>
                 <div class="edit-form">
                     <c:if test="${account.username == sessionScope.account.username}">
@@ -63,38 +66,6 @@
                         <p><span style="color: #707070;">Location:</span> United States</p>
                         <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
                     </section>
-
-                    <section id="feedback-section" style="display: none;">
-                        <h2>Customer Feedback</h2>
-
-                        <!-- Các nút chọn feedback -->
-                        <div class="feedback-buttons">
-                            <button class="btn-feedback" onclick="showFeedback('positive')">Positive: ${positive.size()}</button>
-                            <button class="btn-feedback" onclick="showFeedback('negative')">Negative: ${negative.size()}</button>
-                        </div>
-
-                        <!-- Nội dung feedback sẽ hiển thị tại đây -->
-                        <div class="feedback-content">
-                            <!-- Positive feedback -->
-                            <div id="positive-feedback" class="feedback-item hidden">
-                                <c:forEach var="p" items="positive">
-                                    <div class="feedback-box">
-                                        <div class="avatar">
-                                            <img src="${pageContext.request.contextPath}${p.buyer.avatar}" alt="${p.buyer.name}">
-                                        </div>
-                                        <div class="feedback-content">
-                                            <p><strong>User: ${p.buyer.name}</strong> <br>${p.content}</p>
-                                            <div class="feedback-actions">
-                                                <span class="material-icons like">thumb_up</span>
-                                                <span class="material-icons dislike">thumb_down</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                            <p><span style="color: #707070;">Location:</span> United States</p>
-                            <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
-                    </section>
                 </c:if>
                 <!-- Feedback Section -->
                 <c:if test="${section == 'feedback'}">
@@ -139,7 +110,7 @@
                             <!-- Order Content Goes Here -->
                             <div class="order_flex">
                                 <div class="order-section">
-                                    <h3>Sold Orders</h3>
+                                    <h3>Purchased Orders</h3>
                                     <c:forEach var="po" items="${purchased}">
                                         <div class="order-card">
                                             <div class="name_order">
@@ -165,7 +136,7 @@
                                 </div>
                                 <!-- Bought Orders Section -->
                                 <div class="order-section">
-                                    <h3>Purchased Orders</h3>
+                                    <h3>Sold Orders</h3>
                                     <c:forEach var="so" items="${sold}">
                                         <div class="order-card">
                                             <div class="name_order">
@@ -189,7 +160,6 @@
                             </div>
                         </section>
                     </c:if>
->>>>>>> 86e3de980025ae60062c3ad070bc5e512ad57a9c
                 </c:if>
             </div>
         </div>
