@@ -228,76 +228,39 @@ VALUES
 -- Insert data into [Order] table (5 orders)
 INSERT INTO [Orders] (Total, Buyer, Seller, [Status])
 VALUES 
-(585.4, 'sunnyday', 'minhcuong292', 'completed'), 
-(533.87, 'moonlight', 'danhhieu09', 'shipped'),   
-(630.36, 'starrysky', 'viethoang2004', 'completed'),  
-(290.91, 'blueocean', 'greenfield', 'completed'),  
-(256.91, 'greenfield', 'moonlight', 'processing'),  
-(389.40, 'redwood', 'danhhieu09', 'completed'),   
-(480.89, 'goldenleaf', 'whitemountain', 'shipped'), 
-(597.87, 'blackforest', 'starrysky', 'completed'); 
+(585.4, 'minhcuong292', 'sunnyday', 'completed'), 
+(533.87, 'minhcuong292', 'danhhieu09', 'shipped'),   
+(630.36, 'minhcuong292', 'viethoang2004', 'completed'),  
+(290.91, 'blueocean', 'minhcuong292', 'completed'),  
+(256.91, 'greenfield', 'minhcuong292', 'pending');
 
 -- Insert data into OrderDetail table (5 products per order for each buyer)
 INSERT INTO OrderDetail (ID_Product, ID_Order, Quantity)
 VALUES 
--- Order 1 (sunnyday)
+-- Order 1 
 (1, 1, 2),
 (2, 1, 1),
-(6, 1, 1),
-(10, 1, 3),
-(15, 1, 2),
-(20, 1, 1),
+(35, 1, 1),
 
--- Order 2 (moonlight)
-(3, 2, 1),
-(4, 2, 2),
-(7, 2, 3),
-(12, 2, 1),
-(17, 2, 2),
-(22, 2, 4),
+-- Order 2 
+(15, 2, 1),
+(26, 2, 2),
+(178, 2, 2),
 
 -- Order 3 (starrysky)
-(5, 3, 5),
-(8, 3, 2),
-(14, 3, 1),
-(18, 3, 3),
-(23, 3, 2),
-(25, 3, 1),
+(19, 3, 5),
+(171, 3, 2),
+(179, 3, 1),
 
 -- Order 4 (blueocean)
-(30, 4, 2),
-(31, 4, 1),
-(35, 4, 3),
-(38, 4, 1),
-(40, 4, 2),
+(12, 4, 2),
+(25, 4, 1),
+(33, 4, 3),
+(164, 4, 1),
 
 -- Order 5 (greenfield)
-(12, 5, 1),
-(14, 5, 2),
-(18, 5, 1),
-(23, 5, 4),
-(27, 5, 1),
-
--- Order 6 (redwood)
-(5, 6, 3),
-(8, 6, 1),
-(16, 6, 2),
-(19, 6, 1),
-(21, 6, 3),
-
--- Order 7 (goldenleaf)
-(9, 7, 2),
-(11, 7, 3),
-(15, 7, 1),
-(26, 7, 4),
-(29, 7, 1),
-
--- Order 8 (blackforest)
-(6, 8, 5),
-(7, 8, 2),
-(13, 8, 3),
-(28, 8, 1),
-(32, 8, 2);
+(177, 5, 1),
+(185, 5, 2);
 
 
 -- Insert data into Feedback table (40 feedbacks, 15 users, and both users and admins as sellers)
