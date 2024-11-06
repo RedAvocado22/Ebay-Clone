@@ -47,6 +47,8 @@ public class AccountController extends HttpServlet {
 
         Account account;
         String seller = request.getParameter("username");
+        String keyword = request.getParameter("keyword");
+        
         if (seller == null) {
             account = (Account) session.getAttribute("account");
             request.setAttribute("username", account.getUsername());
@@ -63,6 +65,12 @@ public class AccountController extends HttpServlet {
             section = "about";
         }
 
+        if (keyword != null) {
+            if (!keyword.isEmpty()) {
+                products = products.stream().filter(p -> p.getName().toLowerCase().contains(keyword.toLowerCase())).toList();
+            }
+        }
+        
         switch (section) {
             case "about" -> {
                 products = products.stream().filter(p -> p.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();

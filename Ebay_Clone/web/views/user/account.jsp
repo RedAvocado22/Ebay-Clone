@@ -41,11 +41,11 @@
                 <!-- Shop Section -->
                 <c:if test="${section == 'about'}">
                     <section id="shop-section">
-                        <div>
-                        <h2>Shop</h2>
-                        <form>
-                            
-                        </form>
+                        <div class="shop-container">
+                            <h2>Shop</h2>
+                            <form method="post" action="account" class="shop-form"> 
+                                <input type="text" placeholder="Search here" name="keyword" class="shop-search-input">
+                            </form>
                         </div>
                         <div class="product-list">
                             <c:forEach var="product" items="${products}">
@@ -102,9 +102,56 @@
                 <!-- Order Section -->
                 <c:if test="${account.username == sessionScope.account.username}">
                     <c:if test="${section == 'order'}">
-                        <section id="order-section">
+                        <section id="container">
                             <h2>Order History</h2>
                             <!-- Order Content Goes Here -->
+                            <div class="order_flex">
+                                <div class="order-section">
+                                    <h3>Sold Orders</h3>
+                                    <div class="order-card">
+                                        <div class="name_order">
+                                            <h3><strong>Order ID: 1</strong></h3>
+                                            <p>Buyer: Nguyễn Văn A</p>
+                                            <p>Seller: Trần Văn B</p>
+                                            <p>Status: Completed</p>
+                                        </div>
+                                        <div class="sub_total">
+                                            <div class="total_price">
+                                                <p>3,289,520.00 VND</p>
+                                            </div>
+                                            <p>Date: Oct-29 07:37</p>
+                                            <div class="view_detail">
+                                                <a href="#">View detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Thêm nhiều order-card nếu cần -->
+                                </div>
+                                <!-- Bought Orders Section -->
+                                <div class="order-section">
+                                    <h3>Bought Orders</h3>
+                                    <div class="order-card">
+                                        <div class="name_order">
+                                            <h3><strong>Order ID: 1</strong></h3>
+                                            <p>Buyer: Nguyễn Văn A</p>
+                                            <p>Seller: Trần Văn B</p>
+                                            <p>Status: Completed</p>
+                                        </div>
+                                        <div class="sub_total">
+                                            <div class="total_price">
+                                                <p>3,289,520.00 VND</p>
+                                            </div>
+                                            <p>Date: Oct-29 07:37</p>
+                                            <div class="view_detail">
+                                                <a href="#">View detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Thêm nhiều order-card nếu cần -->
+                                </div>
+                            </div>
                         </section>
                     </c:if>
                 </c:if>

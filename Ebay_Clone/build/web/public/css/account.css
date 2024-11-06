@@ -131,10 +131,6 @@ footer p {
     font-size: 14px;
 }
 
-#shop-section h2{
-    margin-bottom: 50px;
-}
-
 .status{
     display: flex;
     justify-content: start;
@@ -373,4 +369,124 @@ footer p {
 
 .feedback-actions .dislike:hover {
     background-color: #ffebee;
+}
+.shop-container {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.shop-form {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.shop-search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#container {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+#container h2{
+    text-align: left
+}
+
+.order_flex{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-section {
+    width: 48%;
+}
+
+.order-section h3 {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.order-card p {
+    color: #555;
+    font-size: 14px;
+}
+
+.order-card h3 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.order-card {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total_price p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.sub_total {
+    text-align: right;
+}
+
+.view_detail {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.view_detail a {
+    color: #555555;
+    text-decoration: none;
+}
+
+.view_detail a:hover {
+    text-decoration: underline;
+    color: blue;
 }
