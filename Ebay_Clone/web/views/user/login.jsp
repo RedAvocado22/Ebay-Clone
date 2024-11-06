@@ -17,13 +17,13 @@
 
 <body>
     <div class="logo">
-        <a href="${pageContext.request.contextPath}/views/home.jsp"><img src="${pageContext.request.contextPath}/public/images/icon/ebay_icon.png" alt=""></a>
+        <a href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/public/images/icon/ebay_icon.png" alt=""></a>
 
     </div>
     <div class="login-container">
         <form class="login-form" method="post" action="login">
             <h2>Sign in to your account</h2>
-            <p>New to eBay? <a href="#">Create account</a></p>
+            <p>New to eBay? <a href="${pageContext.request.contextPath}/register">Create account</a></p>
             <input name="username" type="text" placeholder="Email or username" class="input-field">
             <input name="password" type="password" placeholder="Password" class="input-field">
             <c:if test="${not empty error}">

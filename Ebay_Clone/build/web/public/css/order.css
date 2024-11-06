@@ -1,0 +1,178 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 4, 2024, 6:58:44 PM
+    Author     : ASUS
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body-style {
+    background-color: #ffffff;
+    padding-top: 120px; /* Add padding to avoid content hiding behind fixed section */
+    display: flex;
+    justify-content: center;
+}
+
+.cart-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container-seller{
+    width: 50%;
+}
+
+.seller-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    border: #e6e6e6 1px solid;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.seller-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.seller-section p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.product {
+    display: flex;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.product img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+
+
+.product-details p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+label {
+    margin-top: 5px;
+}
+
+/* Fixed position for subtotal section */
+.subtotal-section {
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    width: 25%;
+    border: #e0e0e0 1px solid;
+    position: sticky;
+    top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 200px;
+}
+
+.subtotal-section p{
+    padding-top: 10px;
+}
+
+.subtotal-section h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 15px;
+}
+
+.checkout-btn {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 10px 108px;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background-color: #005bb5;
+}
+
+.price-flex{
+    color: #555555;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity-product input{
+    width: 50px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.price-product{
+    font-size: larger;
+    color: black;
+    font-weight: bold;
+}
+
+.product-details{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-detail{
+    width: 50%;
+}
+
+.seller-section a{
+    color: black;
+    text-decoration: none;
+}
+
+.seller-section a:hover{
+    text-decoration: underline;
+}
+
+.delete-button{
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 50px;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.subtotal-price{
+    font-size: larger;
+    display: flex;
+    justify-content: end;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.price{
+    margin-left: 20px;
+}

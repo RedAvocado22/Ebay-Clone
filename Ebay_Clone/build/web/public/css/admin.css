@@ -1,0 +1,302 @@
+/* General Layout */
+.dashboard-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar-admin {
+    width: 250px;
+    padding: 1rem;
+    border-right: 1px solid #ddd;
+    background-color: #ffffff;
+}
+
+.sidebar-admin .sidebar-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.sidebar-admin .nav-link {
+    color: #333;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-admin .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar-admin .nav-link:hover,
+.sidebar-admin .nav-link.active {
+    background-color: #0055a5;
+    color: #ffffff;
+}
+
+.sidebar-admin .dropdown {
+    margin-top: 20px;
+}
+
+.sidebar-admin .dropdown-toggle {
+    color: #333;
+    text-decoration: none;
+}
+
+.sidebar-admin .dropdown-menu {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Breadcrumb */
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.breadcrumb-item {
+    color: #000000;
+    text-decoration: none;
+    padding: 0 5px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-bottom: 1px solid white;
+    background-color: white;
+    cursor: default;
+}
+
+/* Định dạng dấu phân cách */
+.breadcrumb-separator {
+    color: gray;
+}
+
+.breadcrumb-item:last-of-type + .breadcrumb-separator {
+    display: none;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-left: 20px; /* Tạo khoảng cách giữa sidebar và main-content */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+}
+
+.btn-add {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-add:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styling */
+.account-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.account-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.account-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.account-table .btn-manage {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.account-table .btn-manage:hover {
+    background-color: #0056b3;
+}
+
+/* Status Styling */
+.status.connected {
+    color: green;
+    font-weight: bold;
+}
+
+.status.disconnected {
+    color: red;
+    font-weight: bold;
+}
+
+/* Dropdown Styling */
+.dropdown-menu-dark {
+    text-align: center;
+    border-radius: 5px;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 15px;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #0055a5;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+/* General Table Styling */
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table-container thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-container tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-container td {
+    border: 1px solid #ddd;
+}
+
+.table-container .btn-edit,
+.table-container .btn-delete {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.table-container .btn-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.table-container .btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.table-container .btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.table-container .btn-delete:hover {
+    background-color: #c82333;
+}
+
+.button-delete {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff4d4d;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-delete:hover {
+    background-color: #e60000;
+}
+

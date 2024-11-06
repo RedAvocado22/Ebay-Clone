@@ -9,39 +9,6 @@ import utils.DBUtils;
 
 public class OrderItemDAO extends DBUtils {
 
-//    public List<OrderItem> getAllItems() {
-//        List<OrderItem> listItems = new ArrayList<>();
-//        con = getConnection();
-//        String sql = "SELECT p.Name, p.Image, p.Price, od.Quantity\n"
-//                + "  FROM [dbo].[OrderDetail] od\n"
-//                + "  JOIN [dbo].[Product] p \n"
-//                + "  ON od.ID_Product = p.ID";
-//        try {
-//            ps = con.prepareStatement(sql);
-//            rs = ps.executeQuery();
-//            while (rs.next()) {
-//                String productName = rs.getString("Name");
-//                String productImage = rs.getString("Image");
-//                Double productPrice = rs.getDouble("Price");
-//                int quantity = rs.getInt("Quantity");
-//
-//                Product product = new Product();
-//                product.setName(productName);
-//                product.setImage(productImage);
-//                product.setPrice(productPrice);
-//
-//                OrderItem oi = new OrderItem();
-//                oi.setProduct(product);
-//                oi.setQuantity(quantity);
-//
-//                listItems.add(oi);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return listItems;
-//    }
-
     public void insertItem(OrderItem orderItem, int orderId) {
         con = getConnection();
         String sql = "INSERT INTO [dbo].[OrderDetail]\n"
@@ -81,33 +48,30 @@ public class OrderItemDAO extends DBUtils {
 
     public List<OrderItem> getItemsByOrderId(int orderId) {
         List<OrderItem> listItems = new ArrayList<>();
-        con = getConnection();
-        String sql = "SELECT p.Name, p.Image, p.Price, od.Quantity "
+        List<Integer> idList = new ArrayList();
+        
+        String sql = "SELECT p.ID, od.Quantity "
                 + "FROM [dbo].[OrderDetail] od "
-                + "JOIN [dbo].[Product] p ON od.ID_Product = p.ID "
+                + "JOIN [dbo].[Products] p ON od.ID_Product = p.ID "
                 + "WHERE od.ID_Order = ?";
 
         try {
+            con = getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, orderId); 
+            ps.setInt(1, orderId);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                String productName = rs.getString("Name");
-                String productImage = rs.getString("Image");
-                double productPrice = rs.getDouble("Price");
+                idList.add(rs.getInt("ID"));
                 int quantity = rs.getInt("Quantity");
 
-                Product product = new Product();
-                product.setName(productName);
-                product.setImage(productImage);
-                product.setPrice(productPrice);
+                listItems.add(new OrderItem(null, quantity));
+            }
+            ProductDAO productDAO = new ProductDAO();
 
-                OrderItem item = new OrderItem();
-                item.setProduct(product);
-                item.setQuantity(quantity);
-
-                listItems.add(item);
+            for (int i = 0; i < listItems.size(); i++) {
+                Product product = productDAO.findById(idList.get(i));
+                listItems.get(i).setProduct(product);
             }
 
         } catch (SQLException e) {

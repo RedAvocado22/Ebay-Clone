@@ -90,8 +90,6 @@ function scrollb(list, direction) {
 document.querySelector(".arrow-left").addEventListener("click", () => scrollb("geschenkideen", "left"));
 document.querySelector(".arrow-right").addEventListener("click", () => scrollb("geschenkideen", "right"));
 
-//another-banner
-// Slide show code for footer images
 const listFooter = document.querySelector('.list-footer');
 const footerImgs = document.getElementsByClassName('footer-banners');
 const footerLeft = document.querySelector('.footer-left');

@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-image {
+    width: 60%;
+    height: 547px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+}
+
+.product-image img {
+    object-fit: contain;
+    max-width: 820px;
+    height: 547px;
+}
+
+.product-details {
+    width: 35%;
+    margin: auto;
+}
+
+.seller {
+    display: flex;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    align-items: center;
+    padding: 7px 0px;
+}
+
+.seller-infor a {
+    color: black;
+    font-size: 10px;
+}
+
+.seller-name {
+    font-weight: bold;
+}
+
+.avatar {
+    width: 10%;
+}
+
+.avatar img {
+    width: 60%;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.cart-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.seller-info {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.price-infor {
+    font-size: 14px;
+    width: 132px;
+    height: 31px;
+}
+
+.quantity {
+    font-size: 12px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 25px;
+    color: #333;
+    margin: 10px 0px;
+}
+
+.status-info {
+    font-size: 10px;
+    color: #888;
+    margin: 20px 0px;
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: #8f8f8f 1px solid;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.buy-now-btn {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.add-to-cart-btn {
+    background-color: white;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 25px;
+    border: #007bff 1px solid;
+}
+
+.add-to-watchlist-btn {
+    background-color: white;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 25px;
+    border: #007bff 1px solid;
+}
+
+.shipping-info {
+    margin-top: 20px;
+    color: gray;
+    font-size: 14px;
+}
+
+.shipping {
+    display: flex;
+}
+
+.shipping-fee {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.shipping-fee2 {
+    margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+.shipping img {
+    width: 80%;
+}
+
+/* similar-items */
+
+.similar-items h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.similar-items {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.similar-items h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.similar-items-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.item-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.item-shipping,
+.item-sold,
+.item-auction,
+.item-feedback {
+    font-size: 14px;
+    color: gray;
+}
+
+.item-sold {
+    color: red;
+}

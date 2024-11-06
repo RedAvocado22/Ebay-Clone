@@ -1,0 +1,493 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.profile {
+    width: 80%;
+    background-color: white;
+    border-radius: 8px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f7f7f7;
+    height: 136px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-info h1 {
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.edit-form{
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+    margin-right: 40px;
+}
+
+.edit-profile-btn {
+    border: none;
+    font-size: 15px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.edit-profile-btn:hover{
+    text-decoration: underline;
+}
+
+.profile-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.profile-navigation a {
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+}
+
+.profile-navigation a.active {
+    border-bottom: 3px solid black;
+}
+
+.profile-content {
+    padding: 20px 0;
+}
+
+.search-section {
+    display: flex;
+}
+
+.search-bar {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background-color: #0073bb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: #707070;
+    text-decoration: none;
+}
+
+footer p {
+    color: #666;
+    font-size: 14px;
+}
+
+.status{
+    display: flex;
+    justify-content: start;
+}
+
+.status p{
+    margin-top: 20px;
+    color: black;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+
+#feedback-section h2{
+    padding: 20px 0;
+}
+
+#order-section h2{
+    padding-bottom: 50px;
+}
+
+/* Product list */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center; /* Căn giữa từng sản phẩm trong lưới */
+    margin: 10px 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    min-width: 400px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center; /* Căn giữa nội dung bên trong card */
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 16px;
+    margin-bottom: 10px !important;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.shipping-info {
+    color: #666;
+    font-size: 14px;
+}
+
+/*order*/
+/* Phần order-container chia đôi cột */
+.order-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Mỗi cột đơn hàng */
+.order-half {
+    width: 48%;
+}
+
+/* Tạo layout cho từng đơn hàng */
+.order-list-item {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-list-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.order-info h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.order-info p {
+    margin: 2px 0;
+    color: #555;
+}
+
+/* Định nghĩa chế độ toàn màn hình cho sold và bought orders */
+.order-fullscreen {
+    width: 100%;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Điều chỉnh khi chiếm toàn màn hình */
+.order-container.fullscreen {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.order-container.fullscreen .order-half {
+    display: none;
+}
+
+.order-container.fullscreen .order-half.active {
+    display: block;
+    width: 100%;
+}
+
+.btn-control-order{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-order{
+    border: none;
+    background-color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.order-navigation a.kira{
+    border-bottom: 3px solid black;
+}
+
+/*feedback*/
+/* Đặt phần feedback item ẩn ban đầu */
+.btn-feedback{
+    border: none;
+    background-color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.feedback-content {
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.feedback-buttons a{
+    padding: 10px 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.feedback-buttons button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 3px solid transparent; /* Mặc định không có border */
+}
+
+.feedback-buttons button.open {
+    border-bottom: 3px solid black; /* Gạch chân khi nút được nhấn */
+}
+
+.feedback-item {
+    display: block; /* Hiển thị phần feedback được chọn */
+}
+
+.feedback-box {
+    display: flex;
+    align-items: flex-start;
+    border-radius: 10px;
+    width: 600px;
+    gap: 15px;
+}
+
+.avatar img {
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.feedback-content {
+    flex-grow: 1;
+}
+
+.feedback-content p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.feedback-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.feedback-actions span {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-actions .like:hover {
+    background-color: #e0f7fa;
+}
+
+.feedback-actions .dislike:hover {
+    background-color: #ffebee;
+}
+
+#container {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+#container h2{
+    text-align: left
+}
+
+.order_flex{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-section {
+    width: 48%;
+}
+
+.order-section h3 {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.order-card p {
+    color: #555;
+    font-size: 14px;
+}
+
+.order-card h3 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.order-card {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total_price p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.sub_total {
+    text-align: right;
+}
+
+.view_detail {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.view_detail a {
+    color: #555555;
+    text-decoration: none;
+}
+
+.view_detail a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+.shop-container {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.shop-form {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.shop-search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}

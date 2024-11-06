@@ -20,11 +20,11 @@
         <title>Ebay</title>
     </head>
     <body>
-        <jsp:include page="common/header.jsp"></jsp:include>
+        <jsp:include page="../common/header.jsp"></jsp:include>
             <div id="nav-categories">
-                <a href="https://youtube.com/@ThongNhat-SSG104-FPTU">Explore(New!)</a>
+                <a href="${pageContext.request.contextPath}/products">Explore(New!)</a>
             <c:forEach var="category" items="${categories}">
-                <a href="${pageContext.request.contextPath}/product?category=${category.id}">${category.name}</a>
+                <a href="${pageContext.request.contextPath}/products?category=${category.id}">${category.name}</a>
             </c:forEach>
             <a href="${pageContext.request.contextPath}/account">Sell</a>
         </div>
@@ -69,7 +69,10 @@
                                 src="${pageContext.request.contextPath}${product.image}"
                                 />
                             <p>
-                                ${product.price}$ <span class="right">${product.name}</span>
+                                <a style="color: black; text-decoration: none" href="${pageContext.request.contextPath}/product?id=${product.id}">
+                                    ${product.name}
+                                </a> 
+                                <span class="right">${product.price}$</span>
                             </p>
                         </li>
                     </c:forEach>
@@ -80,49 +83,49 @@
 
             <h1 class="category-h1">Explore Popular Categories</h1>
             <div class="categories">
-                <a href="${pageContext.request.contextPath}/product?category=1">
+                <a href="${pageContext.request.contextPath}/products?category=1">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_5.png" alt="beauty">
                         <p>Electronics</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=2">
+                <a href="${pageContext.request.contextPath}/products?category=2">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_4.png" alt="">
                         <p>Clothing</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=3">
+                <a href="${pageContext.request.contextPath}/products?category=3">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_6.jpg" alt="">
                         <p>Home & Kitchen</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=4">
+                <a href="${pageContext.request.contextPath}/products?category=4">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_3.png" alt="">
                         <p>Books</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=5">
+                <a href="${pageContext.request.contextPath}/products?category=5">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_2.png" alt="">
                         <p>Toys</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=6">
+                <a href="${pageContext.request.contextPath}/products?category=6">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_7.jpg" alt="">
                         <p>Sports</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=7">
+                <a href="${pageContext.request.contextPath}/products?category=7">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/beauty_icon.png" alt="">
                         <p>Beauty</p>
                     </div>
                 </a>
-                <a href="${pageContext.request.contextPath}/product?category=8">
+                <a href="${pageContext.request.contextPath}/products?category=8">
                     <div class="category">
                         <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
                         <p>Jewelry</p>
@@ -141,10 +144,8 @@
                     </div>
                 </div>
             </div> 
-        </div>
-    </main>
-    <hr />
-    <jsp:include page="common/footer.jsp"></jsp:include> 
-    <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
-</body>
+        </main>
+        <jsp:include page="../common/footer.jsp"></jsp:include> 
+        <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
+    </body>
 </html>

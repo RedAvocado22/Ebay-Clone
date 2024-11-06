@@ -11,41 +11,48 @@ import utils.DBUtils;
 public class OrderDAO extends DBUtils {
 
     public List<Order> getAll() {
-        List<Order> listOd = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
+        List<String> buyers = new ArrayList<>();
+        List<String> sellers = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT o.*\n"
-                + "FROM [dbo].[Order] o\n"
-                + "JOIN [dbo].[Account] b ON o.Buyer = b.Username\n"
-                + "JOIN [dbo].[Account] s ON o.Seller = s.Username";
+                + "FROM [dbo].[Orders] o\n"
+                + "JOIN [dbo].[Accounts] b ON o.Buyer = b.Username\n"
+                + "JOIN [dbo].[Accounts] s ON o.Seller = s.Username";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 int total = rs.getInt("Total");
-                String buyer = rs.getString("Buyer");
-                String seller = rs.getString("Seller");
+                String buyerName = rs.getString("Buyer");
+                String sellerName = rs.getString("Seller");
                 String status = rs.getString("Status");
 
-                Account account = new Account();
-                account.setUsername(buyer);
-                account.setUsername(seller);
+                buyers.add(buyerName);
+                sellers.add(sellerName);
 
-                List<OrderItem> orderItems = (List<OrderItem>) new OrderItemDAO().getItemsByOrderId(id);
-                Order order = new Order(id, total, account, account, status, orderItems);
+                orders.add(new Order(id, total, null, null, status, null));
+            }
 
-                listOd.add(order);
+            OrderItemDAO orderItemDAO = new OrderItemDAO();
+            AccountDAO accountDAO = new AccountDAO();
+
+            for (int i = 0; i < orders.size(); i++) {
+                orders.get(i).setBuyer(accountDAO.getByUsername(buyers.get(i)));
+                orders.get(i).setSeller(accountDAO.getByUsername(sellers.get(i)));
+                orders.get(i).setOrders(orderItemDAO.getItemsByOrderId(orders.get(i).getId()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listOd;
+        return orders;
     }
 
     public void insert(Order order) {
         con = getConnection();
 
-        String sql = "INSERT INTO [dbo].[Order]\n"
+        String sql = "INSERT INTO [dbo].[Orders]\n"
                 + "           ([Total]\n"
                 + "           ,[Buyer]\n"
                 + "           ,[Seller]\n"
@@ -79,7 +86,7 @@ public class OrderDAO extends DBUtils {
 
     private int getLastId() {
         con = getConnection();
-        String sql = "SELECT TOP 1 ID FROM [dbo].[Order] ORDER BY ID DESC";
+        String sql = "SELECT TOP 1 ID FROM [dbo].[Orders] ORDER BY ID DESC";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -95,7 +102,7 @@ public class OrderDAO extends DBUtils {
 
     public Order getById(int id) {
         con = getConnection();
-        String sql = "SELECT * FROM [dbo].[Order] WHERE ID = ?";
+        String sql = "SELECT * FROM [dbo].[Orders] WHERE ID = ?";
         Order order = null;
 
         try {
@@ -130,7 +137,7 @@ public class OrderDAO extends DBUtils {
 
     public void updateOrderStatus(int orderId, String status) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Order] SET Status = ? WHERE ID = ?";
+        String sql = "UPDATE [dbo].[Orders] SET Status = ? WHERE ID = ?";
 
         try {
             ps = con.prepareStatement(sql);
@@ -140,6 +147,18 @@ public class OrderDAO extends DBUtils {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        OrderDAO dao = new OrderDAO();
+        
+        List<Order> orders = dao.getAll();
+        
+        orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
+        
+        for (Order order : orders) {
+            System.out.println(order.getOrders().size());
         }
     }
 }

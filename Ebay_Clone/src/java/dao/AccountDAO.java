@@ -10,7 +10,7 @@ public class AccountDAO extends DBUtils {
 
     public Account login(String username, String password) {
         con = getConnection();
-        String sql = "SELECT * FROM [dbo].[Account]\n"
+        String sql = "SELECT * FROM [dbo].[Accounts]\n"
                 + "WHERE [Username] = ? AND  [Password] = ? ";
         try {
             ps = con.prepareStatement(sql);
@@ -27,7 +27,7 @@ public class AccountDAO extends DBUtils {
                 String avatar = rs.getString("Avatar");
                 return new Account(
                         username, password, 
-                        fullname, email, role, avatar, avatar
+                        fullname, email, role, "1", avatar
                 );
             }
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class AccountDAO extends DBUtils {
 
     public boolean register(Account account) {
         con = getConnection();
-        String sql = "INSERT INTO [dbo].[Account]\n"
+        String sql = "INSERT INTO [dbo].[Accounts]\n"
                 + "           ([Username]\n"
                 + "           ,[Password]\n"
                 + "           ,[Fullname]\n"
@@ -60,7 +60,7 @@ public class AccountDAO extends DBUtils {
             ps.setObject(5, account.getAvatar());
 
             int affected = ps.executeUpdate();
-            rs = ps.getGeneratedKeys();
+            
             if (affected > 0) {
                 return true;
             }
@@ -72,10 +72,11 @@ public class AccountDAO extends DBUtils {
 
     public Account getByUsername(String username) {
         con = getConnection();
-        String sql = "SELECT * FROM [dbo].[Account]\n"
+        String sql = "SELECT * FROM [dbo].[Accounts]\n"
                 + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
+            ps.setString(1, username);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -95,7 +96,7 @@ public class AccountDAO extends DBUtils {
     public List<Account> getAll() {
         List<Account> listFound = new ArrayList<>();
         con = getConnection();
-        String sql = "SELECT * FROM [dbo].[Account]";
+        String sql = "SELECT * FROM [dbo].[Accounts]";
         try {
             ps = con.prepareStatement(sql);
 
@@ -120,7 +121,7 @@ public class AccountDAO extends DBUtils {
 
     public void update(Account account) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Account]\n"
+        String sql = "UPDATE [dbo].[Accounts]\n"
                 + "   SET [Password] = ?\n"
                 + "      ,[Fullname] = ?\n"
                 + "      ,[Email] = ?\n"
@@ -148,20 +149,43 @@ public class AccountDAO extends DBUtils {
         }
     }
 
-    public void delete(String username) {
+    public boolean delete(String username) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Account]\n"
+        String sql = "UPDATE [dbo].[Accounts]\n"
                 + "SET [Status] = 0\n"
                 + "WHERE [Username] = ?";
         try {
             ps = con.prepareStatement(sql);
+            ps.setString(1, username);
 
-            ps.setObject(1, username);
+            int affectedRows = ps.executeUpdate();
 
-            ps.executeUpdate();
-            rs = ps.getGeneratedKeys();
+            return affectedRows > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
+    }
+    public boolean active(String username){
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Accounts]\n"
+                + "SET [Status] = 1\n"
+                + "WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+
+            int affectedRows = ps.executeUpdate();
+
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        AccountDAO a = new AccountDAO();
+        
+        System.out.println(a.delete("user15"));
     }
 }
