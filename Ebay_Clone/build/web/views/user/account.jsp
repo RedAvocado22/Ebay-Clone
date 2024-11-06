@@ -49,44 +49,44 @@
                                     </a>
                                     <div class="product-price">${product.price}</div>
                                     <div class="shipping-info">Free shipping</div>
-                            </div>
-                        </c:forEach>
-                    </div>
-
-                    <p><span style="color: #707070;">Location:</span> United States</p>
-                    <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
-                </section>
-
-                <section id="feedback-section" style="display: none;">
-                    <h2>Customer Feedback</h2>
-
-                    <!-- Các nút chọn feedback -->
-                    <div class="feedback-buttons">
-                        <button class="btn-feedback" onclick="showFeedback('positive')">Positive: ${positive.size()}</button>
-                        <button class="btn-feedback" onclick="showFeedback('negative')">Negative: ${negative.size()}</button>
-                    </div>
-
-                    <!-- Nội dung feedback sẽ hiển thị tại đây -->
-                    <div class="feedback-content">
-                        <!-- Positive feedback -->
-                        <div id="positive-feedback" class="feedback-item hidden">
-                            <c:forEach var="p" items="positive">
-                                <div class="feedback-box">
-                                    <div class="avatar">
-                                        <img src="${pageContext.request.contextPath}${p.buyer.avatar}" alt="${p.buyer.name}">
-                                    </div>
-                                    <div class="feedback-content">
-                                        <p><strong>User: ${p.buyer.name}</strong> <br>${p.content}</p>
-                                        <div class="feedback-actions">
-                                            <span class="material-icons like">thumb_up</span>
-                                            <span class="material-icons dislike">thumb_down</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </c:forEach>
                         </div>
+
                         <p><span style="color: #707070;">Location:</span> United States</p>
                         <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
+                    </section>
+
+                    <section id="feedback-section" style="display: none;">
+                        <h2>Customer Feedback</h2>
+
+                        <!-- Các nút chọn feedback -->
+                        <div class="feedback-buttons">
+                            <button class="btn-feedback" onclick="showFeedback('positive')">Positive: ${positive.size()}</button>
+                            <button class="btn-feedback" onclick="showFeedback('negative')">Negative: ${negative.size()}</button>
+                        </div>
+
+                        <!-- Nội dung feedback sẽ hiển thị tại đây -->
+                        <div class="feedback-content">
+                            <!-- Positive feedback -->
+                            <div id="positive-feedback" class="feedback-item hidden">
+                                <c:forEach var="p" items="positive">
+                                    <div class="feedback-box">
+                                        <div class="avatar">
+                                            <img src="${pageContext.request.contextPath}${p.buyer.avatar}" alt="${p.buyer.name}">
+                                        </div>
+                                        <div class="feedback-content">
+                                            <p><strong>User: ${p.buyer.name}</strong> <br>${p.content}</p>
+                                            <div class="feedback-actions">
+                                                <span class="material-icons like">thumb_up</span>
+                                                <span class="material-icons dislike">thumb_down</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <p><span style="color: #707070;">Location:</span> United States</p>
+                            <p><span style="color: #707070;">Member since:</span> Oct 16, 2024</p>
                     </section>
                 </c:if>
 
@@ -127,9 +127,56 @@
 
                 <!-- Order Section -->
                 <c:if test="${section == 'order'}">
-                    <section id="order-section">
+                    <section id="container">
                         <h2>Order History</h2>
                         <!-- Order Content Goes Here -->
+                        <div class="order_flex">
+                            <div class="order-section">
+                                <h3>Sold Orders</h3>
+                                <div class="order-card">
+                                    <div class="name_order">
+                                        <h3><strong>Order ID: 1</strong></h3>
+                                        <p>Buyer: Nguyễn Văn A</p>
+                                        <p>Seller: Trần Văn B</p>
+                                        <p>Status: Completed</p>
+                                    </div>
+                                    <div class="sub_total">
+                                        <div class="total_price">
+                                            <p>3,289,520.00 VND</p>
+                                        </div>
+                                        <p>Date: Oct-29 07:37</p>
+                                        <div class="view_detail">
+                                            <a href="#">View detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Thêm nhiều order-card nếu cần -->
+                            </div>
+                            <!-- Bought Orders Section -->
+                            <div class="order-section">
+                                <h3>Bought Orders</h3>
+                                <div class="order-card">
+                                    <div class="name_order">
+                                        <h3><strong>Order ID: 1</strong></h3>
+                                        <p>Buyer: Nguyễn Văn A</p>
+                                        <p>Seller: Trần Văn B</p>
+                                        <p>Status: Completed</p>
+                                    </div>
+                                    <div class="sub_total">
+                                        <div class="total_price">
+                                            <p>3,289,520.00 VND</p>
+                                        </div>
+                                        <p>Date: Oct-29 07:37</p>
+                                        <div class="view_detail">
+                                            <a href="#">View detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Thêm nhiều order-card nếu cần -->
+                            </div>
+                        </div>
                     </section>
                 </c:if>
             </div>
