@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -163,7 +164,7 @@
                         <div class="item-details">
                             <p class="product-name">${item.product.name}</p>
                             <p class="product-seller">Sold by: ${item.product.seller.username}</p>
-                            <p class="product-price">Unit price: ${item.product.price}$</p>
+                            <p class="product-price">Unit price: $<fmt:formatNumber value="${item.product.price}" type="number" maxFractionDigits="2"></fmt:formatNumber></p>
                         </div>
                     </div>
                     <div class="qty-select">
@@ -180,7 +181,7 @@
                         </form>
                     </div>
                     <div class="total-price">
-                        Total: ${lineTotal}$
+                        Total: $<fmt:formatNumber value="${lineTotal}" type="number" maxFractionDigits="2"></fmt:formatNumber>
                     </div>
                     <div class="actions">
                         <form action="cart?action=delete&id=${item.product.id}" method="post">
@@ -190,7 +191,7 @@
                 </div>
             </c:forEach>
             <div class="total-section">
-                <p>Subtotal: <span id="subtotal">US $<c:out value="${total}" /></span></p>
+                <p>Subtotal: <span id="subtotal">$<fmt:formatNumber value="${total}" type="number" minFractionDigits="2" maxFractionDigits="2" /></span></p>
                 <form action="checkout" method="get" style="display: inline;">
                     <button class="btn-checkout" type="submit">Go to checkout</button>
                 </form>

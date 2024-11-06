@@ -93,7 +93,7 @@ public class CartDAO extends DBUtils {
 
     public void create(String username) {
         con = getConnection();
-        String sql = "INSERT INTO Carts (ID_Account) VALUES (?)";
+        String sql = "INSERT Carts VALUES (?)";
 
         try {
             ps = con.prepareStatement(sql);

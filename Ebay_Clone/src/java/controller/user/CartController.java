@@ -59,6 +59,10 @@ public class CartController extends HttpServlet {
         ProductDAO productDAO = new ProductDAO();
         CartDAO cartDAO = new CartDAO();
         Cart cart = cartDAO.get(account.getUsername());
+        if (cart == null) {
+            cartDAO.create(account.getUsername());
+            cart = new Cart();
+        }
 
         switch (action) {
             case "change" -> {
@@ -75,7 +79,10 @@ public class CartController extends HttpServlet {
             }
 
             case "add" -> {
-                boolean isExist = cart.getItems().stream().anyMatch(c -> c.getProduct().getId() == id);
+                boolean isExist = false;
+                if (cart.getItems() != null) {
+                    isExist = cart.getItems().stream().anyMatch(c -> c.getProduct().getId() == id);
+                }
 
                 if (isExist) {
                     for (CartItem item : cart.getItems()) {
