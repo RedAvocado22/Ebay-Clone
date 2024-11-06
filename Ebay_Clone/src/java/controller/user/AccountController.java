@@ -7,6 +7,7 @@ package controller.user;
 
 import dao.AccountDAO;
 import dao.FeedbackDAO;
+import dao.OrderDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import models.Account;
 import models.Feedback;
+import models.Order;
 import models.Product;
 
 /**
@@ -44,11 +46,12 @@ public class AccountController extends HttpServlet {
         FeedbackDAO feedbackDAO = new FeedbackDAO();
         ProductDAO productDAO = new ProductDAO();
         AccountDAO accountDAO = new AccountDAO();
+        OrderDAO orderDAO = new OrderDAO();
 
         Account account;
         String seller = request.getParameter("username");
         String keyword = request.getParameter("keyword");
-        
+
         if (seller == null) {
             account = (Account) session.getAttribute("account");
             request.setAttribute("username", account.getUsername());
@@ -70,7 +73,7 @@ public class AccountController extends HttpServlet {
                 products = products.stream().filter(p -> p.getName().toLowerCase().contains(keyword.toLowerCase())).toList();
             }
         }
-        
+
         switch (section) {
             case "about" -> {
                 products = products.stream().filter(p -> p.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();
@@ -83,6 +86,14 @@ public class AccountController extends HttpServlet {
 
                 request.setAttribute("positive", positive);
                 request.setAttribute("negative", negetive);
+            }
+
+            case "order" -> {
+                List<Order> orders = orderDAO.getAll();
+                List<Order> purchased = orders.stream().filter(o -> o.getBuyer().getUsername().equalsIgnoreCase(account.getUsername())).toList();
+                List<Order> sold = orders.stream().filter(o -> o.getSeller().getUsername().equalsIgnoreCase(account.getUsername())).toList();
+                request.setAttribute("purchased", purchased);
+                request.setAttribute("sold", sold);
             }
         }
 

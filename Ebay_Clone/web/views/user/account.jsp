@@ -108,48 +108,51 @@
                             <div class="order_flex">
                                 <div class="order-section">
                                     <h3>Sold Orders</h3>
-                                    <div class="order-card">
-                                        <div class="name_order">
-                                            <h3><strong>Order ID: 1</strong></h3>
-                                            <p>Buyer: Nguyễn Văn A</p>
-                                            <p>Seller: Trần Văn B</p>
-                                            <p>Status: Completed</p>
-                                        </div>
-                                        <div class="sub_total">
-                                            <div class="total_price">
-                                                <p>3,289,520.00 VND</p>
+                                    <c:forEach var="po" items="${purchased}">
+                                        <div class="order-card">
+                                            <div class="name_order">
+                                                <h3><strong>Order ID: ${po.id}</strong></h3>
+                                                <p>Buyer: ${po.buyer.fullname}</p>
+                                                <p>Seller: ${po.seller.fullname}</p>
+                                                <p>Status: ${po.status}</p>
                                             </div>
-                                            <p>Date: Oct-29 07:37</p>
-                                            <div class="view_detail">
-                                                <a href="#">View detail</a>
+                                            <div class="sub_total">
+                                                <div class="total_price">
+                                                    <p>$${po.total}</p>
+                                                </div>
+                                                <p>Date: Oct-29 07:37</p>
+                                                <div class="view_detail">
+                                                    <a href="order?id=${po.id}">View detail</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </c:forEach>
 
 
                                     <!-- Thêm nhiều order-card nếu cần -->
                                 </div>
                                 <!-- Bought Orders Section -->
                                 <div class="order-section">
-                                    <h3>Bought Orders</h3>
-                                    <div class="order-card">
-                                        <div class="name_order">
-                                            <h3><strong>Order ID: 1</strong></h3>
-                                            <p>Buyer: Nguyễn Văn A</p>
-                                            <p>Seller: Trần Văn B</p>
-                                            <p>Status: Completed</p>
-                                        </div>
-                                        <div class="sub_total">
-                                            <div class="total_price">
-                                                <p>3,289,520.00 VND</p>
+                                    <h3>Purchased Orders</h3>
+                                    <c:forEach var="so" items="${sold}">
+                                        <div class="order-card">
+                                            <div class="name_order">
+                                                <h3><strong>Order ID: ${so.id}</strong></h3>
+                                                <p>Buyer: ${so.buyer.fullname}</p>
+                                                <p>Seller: ${so.seller.fullname}</p>
+                                                <p>Status: ${so.status}</p>
                                             </div>
-                                            <p>Date: Oct-29 07:37</p>
-                                            <div class="view_detail">
-                                                <a href="#">View detail</a>
+                                            <div class="sub_total">
+                                                <div class="total_price">
+                                                    <p>$${so.total}</p>
+                                                </div>
+                                                <p>Date: Oct-29 07:37</p>
+                                                <div class="view_detail">
+                                                    <a href="order?id=${so.id}">View detail</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Thêm nhiều order-card nếu cần -->
+                                    </c:forEach>
                                 </div>
                             </div>
                         </section>
