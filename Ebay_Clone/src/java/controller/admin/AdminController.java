@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -27,6 +28,13 @@ public class AdminController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+
+        if (account == null) {
+            request.getRequestDispatcher("login").forward(request, response);
+            return;
+        }
         String section = request.getParameter("section");
         String action = request.getParameter("action");
 
@@ -116,7 +124,8 @@ public class AdminController extends HttpServlet {
                 case "delete" -> {
                     String username = request.getParameter("username");
                     boolean deletionSuccessful = accountDAO.delete(username);
-                    response.sendRedirect("admin?section=account");}
+                    response.sendRedirect("admin?section=account");
+                }
                 case "active" -> {
                     String username = request.getParameter("username");
                     boolean deletionSuccessful = accountDAO.active(username);
@@ -136,10 +145,11 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
             switch (action) {
-                case "delete" ->{
+                case "delete" -> {
                     int id = Integer.parseInt(request.getParameter("id"));
                     boolean deletionSuccessful = feedbackDAO.delete(id);
-                    response.sendRedirect("admin?section=feedback&username=" + username);}
+                    response.sendRedirect("admin?section=feedback&username=" + username);
+                }
             }
         }
     }
