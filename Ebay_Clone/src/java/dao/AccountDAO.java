@@ -166,7 +166,23 @@ public class AccountDAO extends DBUtils {
         }
         return false;
     }
-    
+    public boolean active(String username){
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Accounts]\n"
+                + "SET [Status] = 1\n"
+                + "WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+
+            int affectedRows = ps.executeUpdate();
+
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public static void main(String[] args) {
         AccountDAO a = new AccountDAO();
         

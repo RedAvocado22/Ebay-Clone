@@ -31,15 +31,10 @@
                             <td>${o.total}</td>
                             <td>${o.status}</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <a href="admin?section=order&action=delete&id=${o.id}" class="button-delete"
-                                   class="btn btn-danger" 
-                                   onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                <a href="admin?section=product&id=${o.id}">view</a>
                             </td>
                         </tr>
                     </c:forEach>
-
-
                     <!-- Add more orders as needed -->
                 </tbody>
             </table>

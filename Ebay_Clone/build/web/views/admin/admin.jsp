@@ -24,9 +24,9 @@
                 </a>
                 <hr>
                 <ul class="nav flex-column mb-auto">
-                    <a href="${pageContext.request.contextPath}/admin?section=order" class="nav-link"><i class="fas fa-box"></i> Order Management</a></li>
-                    <a href="${pageContext.request.contextPath}/admin?section=product" class="nav-link"><i class="fas fa-tags"></i> Product Management</a></li>
                     <a href="${pageContext.request.contextPath}/admin?section=account" class="nav-link"><i class="fas fa-user"></i> Account Management</a></li>
+                    <a href="${pageContext.request.contextPath}/admin?section=product" class="nav-link"><i class="fas fa-tags"></i> Product Management</a></li>
+                    <a href="${pageContext.request.contextPath}/admin?section=order" class="nav-link"><i class="fas fa-box"></i> Order Management</a></li>
                 </ul>
                 <hr>
                 <div class="dropdown">

@@ -23,22 +23,21 @@ public class FeedbackDAO extends DBUtils {
                 int id = rs.getInt("ID");
                 String content = rs.getString("Content");
                 String type = rs.getString("Type");
-                String status = rs.getString("Status");
                 String buyerName = rs.getString("Buyer");
                 String sellerName = rs.getString("Seller");
 
                 buyers.add(buyerName);
                 sellers.add(sellerName);
-                
-                listFound.add(new Feedback(id, content, type, status, null, null));
+
+                listFound.add(new Feedback(id, content, type, null, null));
             }
-            
+
             AccountDAO accountDAO = new AccountDAO();
             for (int i = 0; i < listFound.size(); i++) {
                 listFound.get(i).setBuyer(accountDAO.getByUsername(buyers.get(i)));
                 listFound.get(i).setSeller(accountDAO.getByUsername(sellers.get(i)));
             }
-            
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -89,9 +88,8 @@ public class FeedbackDAO extends DBUtils {
 
     public boolean delete(int id) {
         con = getConnection();
-        String sql = "UPDATE [dbo].[Feedbacks]\n"
-                + "   SET [Status] = 0\n"
-                + " WHERE [ID] = ?";
+        String sql = "DELETE FROM [dbo].[Feedbacks]\n"
+                + "      WHERE [ID] = ? ";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);

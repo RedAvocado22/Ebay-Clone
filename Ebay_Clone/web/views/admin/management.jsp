@@ -93,9 +93,7 @@
                 <ul>
                     <li>To view and manage customer orders, go to <strong>Order Management</strong>.</li>
                     <li>To update and manage products, navigate to <strong>Product Management</strong>.</li>
-                    <li>To handle user feedback, visit <strong>Feedback Management</strong>.</li>
-                    <li>To organize product categories, go to <strong>Category Management</strong>.</li>
-                    <li>For managing user accounts, select <strong>Account Management</strong>.</li>
+                    <li>For managing user account and feedback about, select <strong>Account Management</strong>.</li>
                 </ul>
             </div>
         </div>
