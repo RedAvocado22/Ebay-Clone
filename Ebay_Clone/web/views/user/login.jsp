@@ -30,6 +30,7 @@
                 <div style="color: red; margin-bottom: 15px; font-family: inherit">${error}</div>
             </c:if>
             <button class="continue-btn" type="submit">Sign in</button>
+            <a href="${pageContext.request.contextPath}/forgetPass" style="color: blue;">Do you forget password?</a>
             <div class="or-section">
                 <span></span>
             </div>
