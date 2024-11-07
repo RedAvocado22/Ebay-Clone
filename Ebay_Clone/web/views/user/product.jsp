@@ -34,25 +34,27 @@
                     </div>
                 </div>
                 <div class="price-infor">
-                    <p class="price">${product.price}</p>
+                    <p class="price"> $${product.price}</p>
                 </div>
 
                 <c:if test="${product.quantity == 0}">
                     <p class="item-sold" style="margin: 30px 0;">Stock: OUT OF STOCK</p>
                 </c:if> 
                 <c:if test="${product.quantity > 0}">
-                    <div style="margin: 30px 0;">
-                        <p class="status-info">
-                            Stock: <b style="color: black;"> ${product.quantity} </b>
-                        </p>
+                    <c:if test="${seller.username != sessionScope.account.username}">
+                        <div style="margin: 30px 0;">
+                            <p class="status-info">
+                                Stock: <b style="color: black;"> ${product.quantity} </b>
+                            </p>
 
-                        <label class="quantity">Quantity:</label>
-                        <form action="cart?action=add" method="post">
-                            <input type="number" id="quantity" value="1" min="1" max="${product.quantity}" name="quantity" class="quantity-input">
-                            <input value="${product.id}" type="text" name="id" hidden>
-                            <button class="buy-now-btn" type="submit">Add to cart</button>
-                        </form>
-                    </div>
+                            <label class="quantity">Quantity:</label>
+                            <form action="cart?action=add" method="post">
+                                <input type="number" id="quantity" value="1" min="1" max="${product.quantity}" name="quantity" class="quantity-input">
+                                <input value="${product.id}" type="text" name="id" hidden>
+                                <button class="buy-now-btn" type="submit">Add to cart</button>
+                            </form>
+                        </div>
+                    </c:if>
                 </c:if> 
                 <button class="add-to-watchlist-btn"> Add to watchlist</button>
 

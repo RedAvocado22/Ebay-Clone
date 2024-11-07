@@ -15,7 +15,7 @@ import models.Account;
 public class RegisterController extends HttpServlet {
 
     private AccountDAO accountDAO;
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    private static final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     private static final int MIN_PASSWORD_LENGTH = 6;
 
     @Override
