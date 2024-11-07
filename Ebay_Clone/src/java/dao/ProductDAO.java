@@ -111,9 +111,11 @@ public class ProductDAO extends DBUtils {
                 + "           ,[Price]\n"
                 + "           ,[Quantity]\n"
                 + "           ,[Image]\n"
+                + "           ,[CategoryID]\n"
                 + "           ,[Seller])\n"
                 + "     VALUES\n"
                 + "           (?\n"
+                + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
@@ -125,8 +127,9 @@ public class ProductDAO extends DBUtils {
             ps.setObject(1, product.getName());
             ps.setObject(2, product.getPrice());
             ps.setObject(3, product.getQuantity());
+            ps.setObject(5, product.getCategory());
             ps.setObject(4, product.getImage());
-            ps.setObject(5, product.getSeller().getUsername());
+            ps.setObject(6, product.getSeller().getUsername());
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();

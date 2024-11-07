@@ -103,10 +103,10 @@
     <body>
         <jsp:include page="../common/header.jsp"></jsp:include>
 
-        <div class="form-section">
-            <h2>Complete Your Upload Product</h2>
+            <div class="form-section">
+                <h2>Complete Your Upload Product</h2>
 
-            <!-- Hiển thị thông báo nếu có -->
+                <!-- Hiển thị thông báo nếu có -->
             <c:if test="${not empty message}">
                 <div class="message success">${message}</div>
             </c:if>
@@ -130,14 +130,9 @@
                 <!-- Product Category -->
                 <label for="category">Category</label>
                 <select id="category" name="category" required>
-                    <option value="1">Electronics</option>
-                    <option value="2">Clothing</option>
-                    <option value="3">Home & Kitchen</option>
-                    <option value="4">Books</option>
-                    <option value="5">Toys</option>
-                    <option value="6">Sports</option>
-                    <option value="7">Beauty</option>
-                    <option value="8">Jewelry</option>
+                    <c:forEach items="${categories}" var="category">
+                        <option value="${category.id}">${category.name}</option>
+                    </c:forEach>
                 </select>
 
                 <!-- Image Upload Section -->
@@ -161,24 +156,24 @@
 
         <jsp:include page="../common/footer.jsp"></jsp:include>
 
-        <script>
-            function previewImage(event) {
-                const preview = document.getElementById('preview');
-                const file = event.target.files[0];
+            <script>
+                function previewImage(event) {
+                    const preview = document.getElementById('preview');
+                    const file = event.target.files[0];
 
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        preview.src = e.target.result;
-                        preview.style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    preview.src = '';
-                    preview.style.display = 'none';
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                            preview.style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.src = '';
+                        preview.style.display = 'none';
+                    }
                 }
-            }
-        </script>
-        <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
+            </script>
+            <script src="${pageContext.request.contextPath}/public/js/js.js"></script>
     </body>
 </html>

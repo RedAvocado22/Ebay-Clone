@@ -1,5 +1,6 @@
 package controller.user;
 
+import dao.CategoryDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -13,52 +14,55 @@ import models.Account;
 import models.Product;
 import dao.ProductDAO;
 import java.io.File;
+import models.Category;
 
 @WebServlet(name = "AddController", urlPatterns = {"/add"})
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 10, // 10MB
-        maxRequestSize = 1024 * 1024 * 50 // 50MB
+        fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 50
 )
 public class AddController extends HttpServlet {
 
-    private static final String UPLOAD_DIRECTORY = "uploads";
+    private static final String UPLOAD_DIRECTORY = "/public/images/products";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String section = request.getParameter("section");
 
+        CategoryDAO categoryDAO = new CategoryDAO();
+
         if ("addProduct".equals(section)) {
-            // Chuyển tiếp đến add.jsp nếu section là addProduct
+            request.setAttribute("categories", categoryDAO.getAll());
             request.getRequestDispatcher("/views/user/add.jsp").forward(request, response);
         } else {
-            // Xử lý các trường hợp khác nếu cần
-            response.sendRedirect("account.jsp");
+            response.sendRedirect("account");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         Account seller = (Account) session.getAttribute("account");
 
         if (seller == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
             return;
         }
 
         try {
-            // Lấy dữ liệu từ form
             String name = request.getParameter("productName");
             double price = Double.parseDouble(request.getParameter("price"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int category = Integer.parseInt(request.getParameter("category"));
 
-            // Đường dẫn thực tế để lưu ảnh
-            String uploadPath = getServletContext().getRealPath("") + "public/images/product";
+            CategoryDAO categoryDAO = new CategoryDAO();
+            Category cate = categoryDAO.getAll().stream().filter(c -> c.getId() == category).findFirst().orElse(null);
+            
+            String uploadPath = new File(getServletContext().getRealPath("")).getParentFile().getParent()
+                    + File.separator + "web" + File.separator + UPLOAD_DIRECTORY + "/" + cate.getName().toLowerCase();
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
@@ -67,30 +71,26 @@ public class AddController extends HttpServlet {
             String imagePath = null;
             for (Part part : request.getParts()) {
                 if ("productImage".equals(part.getName()) && part.getSize() > 0) {
-                    String fileName = extractFileName(part);
-                    imagePath = "public/images/product/" + fileName; // Lưu đường dẫn tương đối
-                    part.write(uploadPath + File.separator + fileName); // Ghi file vào thư mục
+                    String fileName = System.currentTimeMillis() + "_" + extractFileName(part);
+                    imagePath = UPLOAD_DIRECTORY + "/" + cate.getName().toLowerCase() + "/" + fileName;
+                    part.write(uploadDir.getAbsolutePath() + File.separator + fileName);
                     break;
                 }
             }
 
-            // Tạo đối tượng Product
-            Product product = new Product(0, name, price, quantity, imagePath, category, seller);
+            if (imagePath == null) {
+                throw new IOException("No file uploaded or file is empty.");
+            }
 
-            // Thêm sản phẩm vào cơ sở dữ liệu
+            Product product = new Product(0, name, price, quantity, imagePath, category, seller);
             ProductDAO productDAO = new ProductDAO();
             productDAO.insert(product);
 
-            // Đặt thông báo thành công trong session
             session.setAttribute("successMessage", "New product uploaded successfully!");
-
-            // Chuyển hướng về account.jsp của người bán
             response.sendRedirect("account?section=about&username=" + seller.getUsername());
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Chuyển hướng về lại form thêm sản phẩm nếu có lỗi
+        } catch (ServletException | IOException | NumberFormatException e) {
             request.setAttribute("error", "Failed to upload product. Please try again.");
-            request.getRequestDispatcher("add.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/user/add.jsp").forward(request, response);
         }
     }
 
