@@ -203,6 +203,60 @@ public class AccountDAO extends DBUtils {
         return false;
     }
 
+    public boolean resetPassword(String username, String newPassword) {
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Accounts] SET [Password] = ? WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, newPassword);
+            ps.setString(2, username);
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public boolean isUsernameExists(String username) {
+        con = getConnection();
+        String sql = "SELECT Username FROM [dbo].[Accounts] WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         AccountDAO a = new AccountDAO();
 
