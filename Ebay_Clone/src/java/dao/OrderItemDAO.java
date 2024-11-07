@@ -34,6 +34,25 @@ public class OrderItemDAO extends DBUtils {
         }
     }
 
+    public boolean deleteAllItem(int orderID) {
+        con = getConnection();
+        String sql = "DELETE FROM [dbo].[OrderDetail] WHERE [ID_Order] = ?";
+        boolean isDeleted = false;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, orderID);
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isDeleted = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isDeleted;
+    }
+
     public void deleteItem(int orderItemID) {
         con = getConnection();
         String sql = "DELETE FROM [dbo].[OrderDetail]\n"
@@ -49,7 +68,7 @@ public class OrderItemDAO extends DBUtils {
     public List<OrderItem> getItemsByOrderId(int orderId) {
         List<OrderItem> listItems = new ArrayList<>();
         List<Integer> idList = new ArrayList();
-        
+
         String sql = "SELECT p.ID, od.Quantity "
                 + "FROM [dbo].[OrderDetail] od "
                 + "JOIN [dbo].[Products] p ON od.ID_Product = p.ID "

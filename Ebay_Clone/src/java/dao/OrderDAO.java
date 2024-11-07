@@ -49,6 +49,48 @@ public class OrderDAO extends DBUtils {
         return orders;
     }
 
+    public boolean update(int ID, String status) {
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Orders] SET [Status] = ? WHERE [ID] = ?";
+        boolean isUpdated = false;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setInt(2, ID);
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isUpdated = true; 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        
+        return isUpdated;
+    }
+
+    public boolean delete(int ID) {
+        con = getConnection();
+        String sql = "DELETE [dbo].[Orders] WHERE [ID] = ?";
+        boolean isDeleted = false;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ID);
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isDeleted = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+
+        return isDeleted;
+    }
+
     public void insert(Order order) {
         con = getConnection();
 
@@ -118,11 +160,9 @@ public class OrderDAO extends DBUtils {
                 String sellerUsername = rs.getString("Seller");
                 String status = rs.getString("Status");
 
-                Account buyer = new Account();
-                buyer.setUsername(buyerUsername);
-
-                Account seller = new Account();
-                seller.setUsername(sellerUsername);
+                AccountDAO accountDAO = new AccountDAO();
+                Account buyer = accountDAO.getByUsername(buyerUsername);
+                Account seller = accountDAO.getByUsername(sellerUsername);
 
                 List<OrderItem> orderItems = new OrderItemDAO().getItemsByOrderId(orderId);
 
@@ -137,11 +177,11 @@ public class OrderDAO extends DBUtils {
 
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
-        
+
         List<Order> orders = dao.getAll();
-        
+
         orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
-        
+
         for (Order order : orders) {
             System.out.println(order.getOrders().size());
         }
