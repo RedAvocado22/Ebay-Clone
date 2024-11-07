@@ -229,10 +229,10 @@ VALUES
 INSERT INTO [Orders] (Total, Buyer, Seller, [Status])
 VALUES 
 (104.96, 'minhcuong292', 'sunnyday', 'completed'), 
-(164.95, 'minhcuong292', 'danhhieu09', 'shipped'),   
-(99.42, 'minhcuong292', 'viethoang2004', 'completed'),  
-(114.43, 'blueocean', 'minhcuong292', 'completed'),  
-(35.47, 'greenfield', 'minhcuong292', 'pending');
+(154.95, 'minhcuong292', 'danhhieu09', 'shipped'),   
+(95.43, 'minhcuong292', 'viethoang2004', 'completed'),  
+(91.44, 'blueocean', 'minhcuong292', 'completed'),  
+(40.97, 'greenfield', 'minhcuong292', 'pending');
 
 -- Insert data into OrderDetail table (5 products per order for each buyer)
 INSERT INTO OrderDetail (ID_Product, ID_Order, Quantity)
@@ -245,22 +245,20 @@ VALUES
 -- Order 2 
 (15, 2, 1),
 (26, 2, 2),
-(178, 2, 2),
+(34, 2, 2),
 
 -- Order 3 (starrysky)
 (19, 3, 5),
-(171, 3, 2),
-(179, 3, 1),
+(27, 3, 2),
 
 -- Order 4 (blueocean)
 (12, 4, 2),
 (25, 4, 1),
 (33, 4, 3),
-(164, 4, 1),
 
 -- Order 5 (greenfield)
-(177, 5, 1),
-(185, 5, 2);
+(33, 5, 1),
+(25, 5, 2);
 
 
 -- Insert data into Feedback table (40 feedbacks, 15 users, and both users and admins as sellers)

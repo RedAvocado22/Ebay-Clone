@@ -4,16 +4,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import models.Account;
-import models.Category;
 import models.Product;
 import utils.DBUtils;
 
 public class ProductDAO extends DBUtils {
 
     public List<Product> getAll() {
-        List<Product> listFound = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
         con = getConnection();
         String sql = "SELECT p.*\n"
                 + "  FROM [dbo].[Products] p\n"
@@ -35,12 +33,14 @@ public class ProductDAO extends DBUtils {
                 sellerAccount.setUsername(seller);
                 Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
 
-                listFound.add(product);
+                products.add(product);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        return listFound;
+        
+//        products = products.stream().filter(p -> p.getQuantity() > 0).toList();
+        return products;
     }
 
     public List<Product> findByName(String keyword) {
@@ -75,6 +75,23 @@ public class ProductDAO extends DBUtils {
         return listFound;
     }
 
+    public boolean updateQuantity(int id, int quantity) {
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Products] SET [Quantity] = ? WHERE [ID] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, quantity);
+            ps.setInt(2, id);
+
+            int affectedRows = ps.executeUpdate();
+
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     public Product findById(int id) {
         Product productFound = null;
         con = getConnection();
@@ -111,9 +128,11 @@ public class ProductDAO extends DBUtils {
                 + "           ,[Price]\n"
                 + "           ,[Quantity]\n"
                 + "           ,[Image]\n"
+                + "           ,[CategoryID]\n"
                 + "           ,[Seller])\n"
                 + "     VALUES\n"
                 + "           (?\n"
+                + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
@@ -125,8 +144,9 @@ public class ProductDAO extends DBUtils {
             ps.setObject(1, product.getName());
             ps.setObject(2, product.getPrice());
             ps.setObject(3, product.getQuantity());
+            ps.setObject(5, product.getCategory());
             ps.setObject(4, product.getImage());
-            ps.setObject(5, product.getSeller().getUsername());
+            ps.setObject(6, product.getSeller().getUsername());
 
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
@@ -162,7 +182,7 @@ public class ProductDAO extends DBUtils {
 
     public boolean delete(int id) {
         con = getConnection();
-        String sql = "DELETE FROM [dbo].[Products] WHERE [ID] = ?";
+        String sql = "DELETE [dbo].[Products] WHERE [ID] = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -184,8 +204,8 @@ public class ProductDAO extends DBUtils {
                 + "  ORDER BY [ID] DESC";
         try {
             ps = con.prepareStatement(sql);
-
             rs = ps.executeQuery();
+            
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String name = rs.getString("Name");
@@ -196,9 +216,8 @@ public class ProductDAO extends DBUtils {
                 int category = rs.getInt("CategoryID");
                 Account sellerAccount = new Account();
                 sellerAccount.setUsername(seller);
-                Product product = new Product(id, name, price, quantity, img, category, sellerAccount);
 
-                listFound.add(product);
+                listFound.add(new Product(id, name, price, quantity, img, category, sellerAccount));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

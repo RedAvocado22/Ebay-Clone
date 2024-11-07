@@ -26,7 +26,7 @@ public class AccountDAO extends DBUtils {
                 String role = rs.getString("Role");
                 String avatar = rs.getString("Avatar");
                 return new Account(
-                        username, password, 
+                        username, password,
                         fullname, email, role, "1", avatar
                 );
             }
@@ -60,7 +60,7 @@ public class AccountDAO extends DBUtils {
             ps.setObject(5, account.getAvatar());
 
             int affected = ps.executeUpdate();
-            
+
             if (affected > 0) {
                 return true;
             }
@@ -166,7 +166,8 @@ public class AccountDAO extends DBUtils {
         }
         return false;
     }
-    public boolean active(String username){
+
+    public boolean active(String username) {
         con = getConnection();
         String sql = "UPDATE [dbo].[Accounts]\n"
                 + "SET [Status] = 1\n"
@@ -183,9 +184,82 @@ public class AccountDAO extends DBUtils {
         }
         return false;
     }
+
+    public boolean forgotPassword(String username) {
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Accounts]\n"
+                + "   SET [Password] = ?\n"
+                + " WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setObject(1, username);
+
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean resetPassword(String username, String newPassword) {
+        con = getConnection();
+        String sql = "UPDATE [dbo].[Accounts] SET [Password] = ? WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, newPassword);
+            ps.setString(2, username);
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public boolean isUsernameExists(String username) {
+        con = getConnection();
+        String sql = "SELECT Username FROM [dbo].[Accounts] WHERE [Username] = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         AccountDAO a = new AccountDAO();
-        
+
         System.out.println(a.delete("user15"));
     }
 }

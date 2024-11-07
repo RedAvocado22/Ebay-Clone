@@ -30,10 +30,14 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
-
+        
         if (account == null) {
             request.getRequestDispatcher("login").forward(request, response);
             return;
+        }
+        
+        if (!"admin".equalsIgnoreCase(account.getRole())) {
+            request.getRequestDispatcher("views/denied.jsp").forward(request, response);
         }
         String section = request.getParameter("section");
         String action = request.getParameter("action");
@@ -84,18 +88,15 @@ public class AdminController extends HttpServlet {
         if (action == null) {
             List<Product> products = productDAO.getAll();
             String keyword = request.getParameter("keyword");
-
+            String username = request.getParameter("username");
+            if (username != null) {
+                if (!username.isEmpty()) {
+                    products = products.stream().filter(o -> o.getSeller().getUsername().equalsIgnoreCase(username)).toList();
+                }
+            }
             request.setAttribute("products", products);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
-            switch (action) {
-                case "delete" -> {
-                    int productId = Integer.parseInt(request.getParameter("id"));
-                    boolean deletionSuccessful = productDAO.delete(productId);
-                    response.sendRedirect("admin?section=product");
-                }
-
-            }
         }
     }
 
@@ -103,12 +104,14 @@ public class AdminController extends HttpServlet {
         if (action == null) {
             List<Order> orders = orderDAO.getAll();
             String keyword = request.getParameter("keyword");
-
+            String username = request.getParameter("username");
+            if (username != null) {
+                if (!username.isEmpty()) {
+                    orders = orders.stream().filter(o -> o.getBuyer().getUsername().equalsIgnoreCase(username) || o.getSeller().getUsername().equalsIgnoreCase(username)).toList();
+                }
+            }
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
-            orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals("moonlight")).toList();
-        } else {
-
         }
     }
 
@@ -128,7 +131,7 @@ public class AdminController extends HttpServlet {
                 }
                 case "active" -> {
                     String username = request.getParameter("username");
-                    boolean deletionSuccessful = accountDAO.active(username);
+                    boolean activeSuccessful = accountDAO.active(username);
                     response.sendRedirect("admin?section=account");
                 }
             }

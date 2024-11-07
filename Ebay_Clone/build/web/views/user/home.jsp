@@ -85,25 +85,25 @@
             <div class="categories">
                 <a href="${pageContext.request.contextPath}/products?category=1">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_5.png" alt="beauty">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_3.png" alt="beauty">
                         <p>Electronics</p>
                     </div>
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=2">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_4.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_6.jpg" alt="">
                         <p>Clothing</p>
                     </div>
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=3">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_6.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_7.jpg" alt="">
                         <p>Home & Kitchen</p>
                     </div>
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=4">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_3.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_8.png" alt="">
                         <p>Books</p>
                     </div>
                 </a>
@@ -115,19 +115,19 @@
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=6">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_7.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_4.png" alt="">
                         <p>Sports</p>
                     </div>
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=7">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/beauty_icon.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_9.png" alt="">
                         <p>Beauty</p>
                     </div>
                 </a>
                 <a href="${pageContext.request.contextPath}/products?category=8">
                     <div class="category">
-                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/public/images/icon/icon_5.png" alt="">
                         <p>Jewelry</p>
                     </div>
                 </a>

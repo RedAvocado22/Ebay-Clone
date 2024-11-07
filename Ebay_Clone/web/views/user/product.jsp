@@ -32,21 +32,30 @@
                         <br>
                         <a class="contact-seller" href="account?username=${seller.username}">Contact seller</a>
                     </div>
-
                 </div>
                 <div class="price-infor">
-                    <p class="price">${product.price}</p>
+                    <p class="price"> $${product.price}</p>
                 </div>
-                <p class="status-info">
-                    Stock: <b style="color: black;"> ${product.quantity} </b>
-                </p>
 
-                <label class="quantity">Quantity:</label>
-                <form action="cart?action=add" method="post">
-                    <input type="number" id="quantity" value="1" min="1" max="${product.quantity}" name="quantity" class="quantity-input">
-                    <input value="${product.id}" type="text" name="id" hidden>
-                    <button class="buy-now-btn" type="submit">Add to cart</button>
-                </form>
+                <c:if test="${product.quantity == 0}">
+                    <p class="item-sold" style="margin: 30px 0;">Stock: OUT OF STOCK</p>
+                </c:if> 
+                <c:if test="${product.quantity > 0}">
+                    <c:if test="${seller.username != sessionScope.account.username}">
+                        <div style="margin: 30px 0;">
+                            <p class="status-info">
+                                Stock: <b style="color: black;"> ${product.quantity} </b>
+                            </p>
+
+                            <label class="quantity">Quantity:</label>
+                            <form action="cart?action=add" method="post">
+                                <input type="number" id="quantity" value="1" min="1" max="${product.quantity}" name="quantity" class="quantity-input">
+                                <input value="${product.id}" type="text" name="id" hidden>
+                                <button class="buy-now-btn" type="submit">Add to cart</button>
+                            </form>
+                        </div>
+                    </c:if>
+                </c:if> 
                 <button class="add-to-watchlist-btn"> Add to watchlist</button>
 
                 <div class="shipping-info">
@@ -83,9 +92,14 @@
                             <a href="product?id=${p.id}">
                                 <p class="item-title">${p.name}</p>
                             </a>
-                            <p class="item-price">${p.price}$</p>
+                            <p class="item-price">Price: ${p.price}$</p>
                             <p class="item-shipping">Free 2-3 day shipping</p>
-                            <p class="item-sold">Stock: ${p.quantity}</p>
+                            <c:if test="${p.quantity == 0}">
+                                <p class="item-sold">Stock: OUT STOCK</p>
+                            </c:if> 
+                            <c:if test="${p.quantity >= 0}">
+                                <p class="item-sold">Stock: ${p.quantity}</p>
+                            </c:if> 
                         </div>
                     </c:forEach>
                 </div>

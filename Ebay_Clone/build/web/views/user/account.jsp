@@ -37,6 +37,9 @@
                     <c:if test="${account.username == sessionScope.account.username}">
                         <a href="?section=order&username=${username}" id="order-tab" class="${section == 'order' ? 'active' : ''}">Order</a>
                     </c:if>
+                    <c:if test="${account.username == sessionScope.account.username}">
+                        <a href="${pageContext.request.contextPath}/add?section=addProduct" id="add-product-tab" class="${section == 'addProduct' ? 'active' : ''}">Add Product</a>
+                    </c:if>
                 </div>
             </div>
 
@@ -130,11 +133,8 @@
                                             </div>
                                         </div>
                                     </c:forEach>
-
-
-                                    <!-- Thêm nhiều order-card nếu cần -->
                                 </div>
-                                <!-- Bought Orders Section -->
+                                <!-- Sold Orders Section -->
                                 <div class="order-section">
                                     <h3>Sold Orders</h3>
                                     <c:forEach var="so" items="${sold}">

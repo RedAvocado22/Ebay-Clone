@@ -176,3 +176,57 @@ label {
 .price{
     margin-left: 20px;
 }
+
+.subtotal-price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.subtotal-price h3 {
+    margin: 0 10px;
+    font-weight: normal;
+}
+
+.price {
+    color: #ff4d00; /* Similar to the orange tone in the image */
+    font-weight: bold;
+}
+
+form {
+    display: inline-block; /* Align buttons horizontally */
+    margin: 0 5px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+}
+
+.btn-primary {
+    width: 150px;
+    background-color: #ff4d00; /* Orange color */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #ffffff; /* White background */
+    color: black;
+    border: 1px solid #ddd; /* Light gray border */
+}
+
+.btn-secondary:hover {
+    border-color: #ff4d00; /* Orange border on hover */
+}
+
+.btn-primary:hover {
+    background-color: #e03c00; /* Darker orange on hover */
+}
