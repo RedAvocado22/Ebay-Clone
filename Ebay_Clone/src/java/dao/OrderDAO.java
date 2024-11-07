@@ -135,21 +135,6 @@ public class OrderDAO extends DBUtils {
         return order;
     }
 
-    public void updateOrderStatus(int orderId, String status) {
-        con = getConnection();
-        String sql = "UPDATE [dbo].[Orders] SET Status = ? WHERE ID = ?";
-
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, status);
-            ps.setInt(2, orderId);
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
         

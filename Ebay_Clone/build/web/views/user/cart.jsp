@@ -192,7 +192,7 @@
             </c:forEach>
             <div class="total-section">
                 <p>Subtotal: <span id="subtotal">$<fmt:formatNumber value="${total}" type="number" minFractionDigits="2" maxFractionDigits="2" /></span></p>
-                <form action="checkout" method="get" style="display: inline;">
+                <form action="checkout" method="post" style="display: inline;">
                     <button class="btn-checkout" type="submit">Go to checkout</button>
                 </form>
             </div>

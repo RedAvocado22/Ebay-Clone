@@ -91,6 +91,17 @@ public class CartDAO extends DBUtils {
         }
     }
 
+    public void deleteAllItems(int cartId) {
+        con = getConnection();
+        String sql = "DELETE CartDetail WHERE ID_Cart = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cartId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public void create(String username) {
         con = getConnection();
         String sql = "INSERT Carts VALUES (?)";
