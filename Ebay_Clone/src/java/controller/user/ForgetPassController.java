@@ -12,8 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import models.Account;
 
 /**
  *
@@ -46,19 +44,19 @@ public class ForgetPassController extends HttpServlet {
         AccountDAO accountDAO = new AccountDAO();
 
         if (!newPassword.equals(cfPassword)) {
-            request.setAttribute("error", "Mật khẩu xác nhận không khớp.");
+            request.setAttribute("error", "Password do not match!");
             request.getRequestDispatcher("views/user/forgetPass.jsp").forward(request, response);
             return;
         }
-        
+
         boolean success = accountDAO.resetPassword(username, newPassword);
         if (success) {
-            request.setAttribute("message", "Mật khẩu đã được cập nhật thành công.");
+            request.setAttribute("message", "Password updated succesful!");
+            request.getRequestDispatcher("login").forward(request, response);
         } else {
-            request.setAttribute("error", "Đã có lỗi xảy ra. Vui lòng thử lại.");
+            request.setAttribute("error", "Username doesn't existed!");
         }
 
-        // Chuyển hướng về trang quên mật khẩu
         request.getRequestDispatcher("views/user/forgetPass.jsp").forward(request, response);
     }
 }
