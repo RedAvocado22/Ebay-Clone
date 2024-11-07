@@ -31,7 +31,6 @@
                             <td>${f.content}</td>
                             <td>${f.type}</td>
                             <td>
-                                <button class="btn-view">View</button>
                                     <a href="admin?section=feedback&username=${f.seller.username}&action=delete&id=${f.id}" class="button-delete"
                                        class="btn btn-danger" 
                                        onclick="return confirm('Are you sure you want to delete this user?')">

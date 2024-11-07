@@ -19,7 +19,6 @@
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Stock</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +28,6 @@
                             <td>${p.name}</td>
                             <td>${p.price}</td>
                             <td>${p.quantity}</td>
-                            <td>
-                                <button class="btn-edit">Edit</button>
-                                <a href="admin?section=product&action=delete&id=${p.id}" class="button-delete"
-                                   class="btn btn-danger" 
-                                   onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
-                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

@@ -84,18 +84,15 @@ public class AdminController extends HttpServlet {
         if (action == null) {
             List<Product> products = productDAO.getAll();
             String keyword = request.getParameter("keyword");
-
+            String username = request.getParameter("username");
+            if (username != null) {
+                if (!username.isEmpty()) {
+                    products = products.stream().filter(o -> o.getSeller().getUsername().equalsIgnoreCase(username)).toList();
+                }
+            }
             request.setAttribute("products", products);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
         } else {
-            switch (action) {
-                case "delete" -> {
-                    int productId = Integer.parseInt(request.getParameter("id"));
-                    boolean deletionSuccessful = productDAO.delete(productId);
-                    response.sendRedirect("admin?section=product");
-                }
-
-            }
         }
     }
 
@@ -104,11 +101,13 @@ public class AdminController extends HttpServlet {
             List<Order> orders = orderDAO.getAll();
             String keyword = request.getParameter("keyword");
             String username = request.getParameter("username");
+            if (username != null) {
+                if (!username.isEmpty()) {
+                    orders = orders.stream().filter(o -> o.getBuyer().getUsername().equalsIgnoreCase(username) || o.getSeller().getUsername().equalsIgnoreCase(username)).toList();
+                }
+            }
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/views/admin/admin.jsp").forward(request, response);
-            orders = orders.stream().filter(o -> o.getBuyer().getUsername().equals(username)).toList();
-        } else {
-
         }
     }
 

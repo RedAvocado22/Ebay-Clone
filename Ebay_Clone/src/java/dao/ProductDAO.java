@@ -182,7 +182,7 @@ public class ProductDAO extends DBUtils {
 
     public boolean delete(int id) {
         con = getConnection();
-        String sql = "DELETE FROM [dbo].[Products] WHERE [ID] = ?";
+        String sql = "DELETE [dbo].[Products] WHERE [ID] = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);

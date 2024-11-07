@@ -23,20 +23,20 @@
                 <td>${a.email}</td>
                 <td>${a.role}</td>
                 <td>
-                    <a href="admin?section=feedback&username=${a.username}">view</a>
+                    <a href="admin?section=feedback&username=${a.username}">feedback</a>
                     <a href="admin?section=order&username=${a.username}">order</a>
-                    <button class="btn-manage">Edit</button>
+                    <a href="admin?section=product&username=${a.username}">product</a>
                     <c:if test="${a.status == 1}">
                         <a href="admin?section=account&action=delete&username=${a.username}" class="button-delete"
                            class="btn btn-danger" 
-                           onclick="return confirm('Are you sure you want to delete this user?')">
+                           onclick="return confirm('Are you sure you want to suppend this user?')">
                             Delete
                         </a>
                     </c:if>
                     <c:if test="${a.status == 0}">
                         <a href="admin?section=account&action=active&username=${a.username}" class="button-delete"
                            class="btn btn-danger" 
-                           onclick="return confirm('Are you sure you want to delete this user?')">
+                           onclick="return confirm('Are you sure you want to active this user?')">
                             Active
                         </a>
                     </c:if>
