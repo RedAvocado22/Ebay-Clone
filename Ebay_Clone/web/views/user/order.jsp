@@ -79,9 +79,9 @@
                                 <c:if test="${order.status == 'Received' && sessionScope.account.username == order.buyer.username}">
                                     <form method="post" action="order?id=${order.id}">
                                         <input hidden value="feedback" type="text" name="action">
-                                        <div style="display: flex; flex-direction: column; gap: 20px; justify-content: flex-end">
-                                            <input type="textarea" name="content" placeholder="Enter your feedback" style="width: 450px; height: 250px">
-                                            <select name="type">
+                                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                                            <input type="textarea" name="content" placeholder="Enter your feedback" style="width: 800px; padding-bottom: 60px">
+                                            <select name="type" style="border: 1px solid #676774; padding: 5px 0px; background-color: #ffffff;" >
                                                 <option value="positive">Positive</option>
                                                 <option value="negative">Negative</option>
                                             </select>
