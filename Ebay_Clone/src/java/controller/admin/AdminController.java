@@ -30,10 +30,14 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
-
+        
         if (account == null) {
             request.getRequestDispatcher("login").forward(request, response);
             return;
+        }
+        
+        if (!"admin".equalsIgnoreCase(account.getRole())) {
+            request.getRequestDispatcher("views/denied.jsp").forward(request, response);
         }
         String section = request.getParameter("section");
         String action = request.getParameter("action");
